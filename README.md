@@ -80,7 +80,7 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
         - Control Groups: Resource usage (CPU, Memory) isolation and limitation for each process. 
 - Without Docker, each VM consumes 30% resources (Memory, CPU)
 
-![image](![image](https://user-images.githubusercontent.com/10358317/146052308-7ce330ca-8bb3-4838-8bd5-879b70ca5f34.png)) (Ref: Kubernetes.io)
+![image](![image](https://user-images.githubusercontent.com/10358317/146052308-7ce330ca-8bb3-4838-8bd5-879b70ca5f34.png) (Ref: Kubernetes.io)
 
 ### Architecture  <a name="architecture"></a>
 
