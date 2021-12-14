@@ -1,28 +1,18 @@
 # Fast-Kubernetes
-This repo covers Kubernetes Environment and Architecture: Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, PV, PVC, Secret, Kubeadm, Possible Scenarios.
+This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, PV, PVC, Secret, Kubeadm, etc.) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
 
-This repo aims to cover Docker details (Dockerfile, Image, Container, Commands, Volumes, Docker-Compose, Networks, Swarm, Stack) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
-
-**Keywords:** Docker-Image, Dockerfile, Containerization, Docker-Compose, Docker-Volume, Docker-Network, Docker-Swarm, Service, Cheatsheet.
+**Keywords:** Containerization, Kubernetes, Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, Volume, Cheatsheet.
 
 # Quick Look (HowTo)
 - [App: Creating First Docker Image and Container using Docker File](https://github.com/omerbsezer/Fast-Docker/blob/main/FirstImageFirstContainer.md)
-- [App: Binding Volume to the Different Containers](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerVolume.md)
-- [App: Binding Mount to the Container](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerVolume.md#app_mount)
-- [App: Docker-Compose File - Creating 2 Different Containers:  WordPress Container depends on MySql Container](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerCompose.md)
-- [App: Creating Docker Swarm Cluster With 5 PCs using PlayWithDocker : 3 x WordPress Containers and 1 x MySql Container using Docker-Compose File](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerStackService.md)
-- [App: Running Docker Free Local Registry, Tagging Image, Pushing Image to the Local Registry, Pulling Image From Local Registry and Deleting Images from Local Registry](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerLocalRegistry.md)
-- [App: Transferring Content between Host PC and Docker Container](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerTransferringContent.md)
-- [App: Creating Docker Container using Dockerfile to Build C++ on Ubuntu18.04](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerfileForLinuxC%2B%2BBuild.md)
-- [App: Creating Docker Container using Dockerfile to Build C++ on Windows](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerfileForWindowsC%2B%2BBuild.md)
-- [Docker Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerCommandCheatSheet.md)
+- [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerCommandCheatSheet.md)
 
 # Table of Contents
 - [Motivation](#motivation)
     - [Needs](#needs)
     - [Benefits](#benefits)
     - [Problems Docker does not solve](#problems)
-- [What is Docker?](#whatIsDocker)
+- [What is Kubernetes?](#whatIsDocker)
     - [Architecture](#architecture)
     - [Installation](#installation)
     - [Docker Engine (Deamon, REST API, CLI)](#engine)
@@ -44,7 +34,7 @@ This repo aims to cover Docker details (Dockerfile, Image, Container, Commands, 
 - [References](#references)
 
 ## Motivation <a name="motivation"></a>
-Why should we use Docker? "Docker changed the way applications used to build and ship. It has completely revolutionized the containerization world." (Ref:ItNext)
+Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available." (Ref: KubernetesIo)
 
 ### Needs <a name="needs"></a>
 - Installing all dependencies, setting up a new environment for SW (time-consuming every time to install environment for testing ) 
@@ -483,10 +473,6 @@ Goto: [Docker Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blo
 - Docker and Kubernetes Tutorial | Full Course [2021] - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
 
 ## References  <a name="references"></a>
-- [Docker.com](https://www.docker.com/)
-- [docs.docker.com](https://docs.docker.com/get-started/overview/)
-- [docker-handbook-borosan](https://borosan.gitbook.io/docker-handbook/docker-images)
-- [life-cycle-medium](https://medium.com/future-vision/docker-lifecycle-tutorial-and-quickstart-guide-c5fd5b987e0d)
-- [Infoworld](https://www.infoworld.com/article/3310941/why-you-should-use-docker-and-containers.html)
-- [ItNext](https://itnext.io/getting-started-with-docker-facts-you-should-know-d000e5815598)
+- [KubernetesIo](https://kubernetes.io/docs/concepts/overview/)
+
 - [udemy-course:adan-zye-docker](https://www.udemy.com/course/adan-zye-docker/)
