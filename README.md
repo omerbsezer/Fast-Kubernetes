@@ -38,7 +38,7 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 - [References](#references)
 
 ## Motivation <a name="motivation"></a>
-Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available." (Ref: KubernetesIo)
+Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available." (Ref: Kubernetes.io)
 
 ### Needs <a name="needs"></a>
 - Installing all dependencies, setting up a new environment for SW (time-consuming every time to install environment for testing ) 
@@ -80,7 +80,7 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
         - Control Groups: Resource usage (CPU, Memory) isolation and limitation for each process. 
 - Without Docker, each VM consumes 30% resources (Memory, CPU)
 
-![image](https://user-images.githubusercontent.com/10358317/113183089-ef51fa00-9253-11eb-9ade-771905ce8ebd.png) (Ref: Docker.com)
+![image](![image](https://user-images.githubusercontent.com/10358317/146052308-7ce330ca-8bb3-4838-8bd5-879b70ca5f34.png)) (Ref: Kubernetes.io)
 
 ### Architecture  <a name="architecture"></a>
 
@@ -477,6 +477,6 @@ Goto: [Docker Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blo
 - Docker and Kubernetes Tutorial | Full Course [2021] - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
 
 ## References  <a name="references"></a>
-- [KubernetesIo](https://kubernetes.io/docs/concepts/overview/)
+- [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
 
 - [udemy-course:adan-zye-docker](https://www.udemy.com/course/adan-zye-docker/)
