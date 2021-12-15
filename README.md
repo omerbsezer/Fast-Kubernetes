@@ -98,14 +98,18 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
             - Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
             - Endpoints controller: Populates the Endpoints object (that is, joins Services & Pods).
             - Service Account & Token controllers: Create default accounts and API access tokens for new namespaces"
-     - **Cloud Controller Manager:** "It embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. The cloud-controller-manager only runs controllers that are specific to your cloud provider"
-        - "The following controllers can have cloud provider dependencies:
+     - **Cloud Controller Manager:** "It embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. The cloud-controller-manager only runs controllers that are specific to your cloud provider
+        -  The following controllers can have cloud provider dependencies:
             - Node controller: For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding
             - Route controller: For setting up routes in the underlying cloud infrastructure
             - Service controller: For creating, updating and deleting cloud provider load balancers."
-- **Node:**
-    - **Kubelet:**
-    - **Kube-proxy:** 
+- **Node:** "Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment."
+    - **Kubelet:** "An agent that runs on each node in the cluster. It makes sure that containers are running in a Pod. The kubelet takes a set of PodSpecs that are provided through various mechanisms and ensures that the containers described in those PodSpecs are running and healthy."
+    - **Kube-proxy:** "It is a network proxy that runs on each node in your cluster, implementing part of the Kubernetes Service concept.
+        - It maintains network rules on nodes. These network rules allow network communication to your Pods from network sessions inside or outside of your cluster.
+        - It uses the operating system packet filtering layer if there is one and it's available. Otherwise, kube-proxy forwards the traffic itself."
+    - **Container Runtime:** "The container runtime is the software that is responsible for running containers.
+        -  Kubernetes supports several container runtimes: **Docker, containerd, CRI-O,** and any implementation of the Kubernetes CRI (Container Runtime Interface)"  
 
 ![image](https://user-images.githubusercontent.com/10358317/146250916-a9298521-526b-451a-9810-6813e4165db5.png)
 
