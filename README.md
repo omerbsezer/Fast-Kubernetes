@@ -79,13 +79,30 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
 
 ![image](https://user-images.githubusercontent.com/10358317/146250114-18759a06-e6a6-4554-bc7f-b23a13534f77.png)
 
-### Kubernetes Components <a name="components"></a>
-- **Control Plane:** 
-    - **API Server:**
-    - **Controller Manager (c-m):** 
-    - **Etcd:**
-    - **Scheduler:**
-    - **Cloud Controller Manager:** 
+### Kubernetes Components <a name="components"></a> (Ref: Kubernetes.io)
+- **Control Plane:** User enters commands and configuration files from control plane. It controls all cluster.
+    - **API Server:** "It exposes the Kubernetes API. The API server is the front end for the Kubernetes control plane."
+    - **Etcd:** "Consistent and highly-available key value store used as Kubernetes' backing store for all cluster data (meta data, objects, etc.)."
+    - **Scheduler:** "It watches for newly created Pods with no assigned node, and selects a node for them to run on. 
+        -  Factors taken into account for scheduling decisions include: 
+            -  individual and collective resource requirements, 
+            -  hardware/software/policy constraints, 
+            -  affinity and anti-affinity specifications, 
+            -  data locality, 
+            -  inter-workload interference,
+            -  deadlines."
+    - **Controller Manager:** "It runs controller processes.
+        - Logically, each controller is a separate process, but to reduce complexity, they are all compiled into a single binary and run in a single process.
+        - Some types of these controllers are:
+            - Node controller: Responsible for noticing and responding when nodes go down.
+            - Job controller: Watches for Job objects that represent one-off tasks, then creates Pods to run those tasks to completion.
+            - Endpoints controller: Populates the Endpoints object (that is, joins Services & Pods).
+            - Service Account & Token controllers: Create default accounts and API access tokens for new namespaces"
+     - **Cloud Controller Manager:** "It embeds cloud-specific control logic. The cloud controller manager lets you link your cluster into your cloud provider's API, and separates out the components that interact with that cloud platform from components that only interact with your cluster. The cloud-controller-manager only runs controllers that are specific to your cloud provider"
+        - "The following controllers can have cloud provider dependencies:
+            - Node controller: For checking the cloud provider to determine if a node has been deleted in the cloud after it stops responding
+            - Route controller: For setting up routes in the underlying cloud infrastructure
+            - Service controller: For creating, updating and deleting cloud provider load balancers."
 - **Node:**
     - **Kubelet:**
     - **Kube-proxy:** 
