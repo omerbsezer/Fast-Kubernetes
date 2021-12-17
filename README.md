@@ -113,34 +113,70 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
 
 ![image](https://user-images.githubusercontent.com/10358317/146250916-a9298521-526b-451a-9810-6813e4165db5.png)
 
-### Installation  <a name="installation"></a>
+### Installation <a name="installation"></a>
 
 - **Kubectl:**
 - On Premise Cluster: KubeAdm
     - https://docs.docker.com/engine/install/ubuntu/
 
 
+### Kubectl Config – Usage <a name="kubectl"></a>
 
-## Play With Docker  <a name="playWithDocker"></a>
+### Pod: Creating, Yaml, LifeCycle <a name="pod"></a>
 
-- https://labs.play-with-docker.com/
+### MultiContainer Pod, Init Container <a name="multicontainerpod"></a>
 
-![image](https://user-images.githubusercontent.com/10358317/113187037-ae101900-9258-11eb-9789-781ca2f6a464.png)
+### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
 
-## Docker Commands Cheatsheet <a name="cheatsheet"></a>
+### Deployment <a name="deployment"></a>
 
-Goto: [Docker Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerCommandCheatSheet.md)
+### Replicaset <a name="replicaset"></a>
+
+### Rollout and Rollback <a name="rollout-rollback"></a>
+
+### Network, Service <a name="network-service"></a>
+
+### Liveness and Readiness Probe <a name="liveness-readiness"></a>
+
+### Resource Limit, Environment Variable <a name="environmentvariable"></a>
+
+### Volume <a name="volume"></a>
+
+### Secret <a name="secret"></a>
+
+### ConfigMap <a name="configmap"></a>
+
+### Node – Pod Affinity <a name="node-pod-affinity"></a>
+
+### Taint and Toleration <a name="taint-tolereation"></a>
+
+### Deamon Set <a name="daemon-set"></a>
+
+### Persistent Volume and Persistent Volume Claim <a name="pvc"></a>
+
+### Storage Class <a name="storageclass"></a>
+
+### Stateful Set <a name="statefulset"></a>
+
+### Job, CronJob <a name="job"></a>
+
+### Ingress <a name="ingress"></a>
+
+## Play With Kubernetes <a name="playWithKubernetes"></a>
+
+- https://labs.play-with-k8s.com/
+
+
+## Kubernetes Commands Cheatsheet <a name="cheatsheet"></a>
+
+Goto: [Kubernetes Commands Cheatsheet]()
 
 ## Other Useful Resources Related Docker  <a name="resource"></a>
-- Original Docker Document: https://docs.docker.com/get-started/
-- Cheatsheet: https://github.com/wsargent/docker-cheat-sheet
-- Workshop: https://dockerlabs.collabnix.com/workshop/docker/
-- All-in-one Docker Image for Deep Learning: https://github.com/floydhub/dl-docker
-- Various Dockerfiles for Different Purposes: https://github.com/jessfraz/dockerfiles
-- Docker Tutorial for Beginners [FULL COURSE in 3 Hours]- Youtube: https://www.youtube.com/watch?v=3c-iBn73dDE&t=6831s
+- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
+
 - Docker and Kubernetes Tutorial | Full Course [2021] - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
 
 ## References  <a name="references"></a>
 - [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
-
+- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
 - [udemy-course:adan-zye-docker](https://www.udemy.com/course/adan-zye-docker/)
