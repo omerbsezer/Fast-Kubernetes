@@ -115,10 +115,13 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
 
 ### Installation <a name="installation"></a>
 
-- **Kubectl:**
-- On Premise Cluster: KubeAdm
-    - https://docs.docker.com/engine/install/ubuntu/
+Download
+- **Kubectl:** The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. 
+- **Minikube:** It is a tool that lets you run Kubernetes locally. It runs a single-node Kubernetes cluster on your personal computer 
+- **KubeAdm:** You can use the kubeadm tool to create and manage Kubernetes clusters. This is for creating cluster with computers.
+from here: https://kubernetes.io/docs/tasks/tools/ 
 
+For learning K8s and running on a computer, Kubectl and Minikube are enough to install
 
 ### Kubectl Config – Usage <a name="kubectl"></a>
 
