@@ -127,6 +127,8 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 **PS:** Cloud providers (Azure, Google Cloud, AWS) offer managed K8s (control plane is managed by cloud provides). You can easily create your cluster (number of computer and details) and make connection with Kubectl (using CLI get-credentials of cluster on the cloud)
 
 ### Kubectl Config – Usage <a name="kubectl"></a>
+- You can communicate with Ks cluster in different ways: REST API, Command Line Tool (CLI-Kubectl), GUI (kube-dashboard, etc.)
+- After installation, you can find the kubernetes config file (C:\Users\User\.kube\config)
 
 ### Pod: Creating, Yaml, LifeCycle <a name="pod"></a>
 
