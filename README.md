@@ -127,8 +127,17 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 **PS:** Cloud providers (Azure, Google Cloud, AWS) offer managed K8s (control plane is managed by cloud provides). You can easily create your cluster (number of computer and details) and make connection with Kubectl (using CLI get-credentials of cluster on the cloud)
 
 ### Kubectl Config – Usage <a name="kubectl"></a>
-- You can communicate with Ks cluster in different ways: REST API, Command Line Tool (CLI-Kubectl), GUI (kube-dashboard, etc.)
-- After installation, you can find the kubernetes config file (C:\Users\User\.kube\config)
+#### Config File
+- You can communicate with K8s cluster in different ways: REST API, Command Line Tool (CLI-Kubectl), GUI (kube-dashboard, etc.)
+- After installation, you can find the kubernetes config file (C:\Users\User\.kube\config) that is YAML file.
+- Config file contains 3 main parts: Clusters (cluster certificate data, server, name), Context (cluster and user, namespace), Users (name, config features, certificates, etc.)
+
+#### Usage
+- Kubectl is our main command line tool that connects minikube. There are many combination of commands. So it is not possible to list all commands. 
+- When run "kubectl" on the terminal, it can be seen some simple commands. Also "kubectl <command> --help" gives more information.
+- Commands pattern: kubectl [get|delete|edit|apply] [objectType: pods|deployment|services|etc.] [podName|serviceName|deploymentName|etc.]
+- Example: "kubectl get pods podName", "kubectl delete pods test_pod", "kubectl describe pods firstpod", etc.
+- All necessary/most usable commands are listed in the "Kubernetes Commands Cheatsheet". Please have a look to get more information and usage.
 
 ### Pod: Creating, Yaml, LifeCycle <a name="pod"></a>
 
