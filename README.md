@@ -135,7 +135,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 #### Usage
 - Kubectl is our main command line tool that connects minikube. There are many combination of commands. So it is not possible to list all commands. 
 - When run "kubectl" on the terminal, it can be seen some simple commands. Also "kubectl <command> --help" gives more information.
-- Commands pattern: kubectl [get|delete|edit|apply] [objectType: pods|deployment|services|etc.] [podName|serviceName|deploymentName|etc.]
+- Commands pattern: kubectl [get|delete|edit|apply] [pods|deployment|services|etc.] [podName|serviceName|deploymentName|etc.]
 - Example: "kubectl get pods podName", "kubectl delete pods test_pod", "kubectl describe pods firstpod", etc.
 - All necessary/most usable commands are listed in the "Kubernetes Commands Cheatsheet". Please have a look to get more information and usage.
 
