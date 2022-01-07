@@ -137,7 +137,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 - When run "kubectl" on the terminal, it can be seen some simple commands. Also "kubectl <command> --help" gives more information.
 - Pattern: kubectl [get|delete|edit|apply] [pods|deployment|services] [podName|serviceName|deploymentName]
 - Example: "kubectl get pods podName", "kubectl delete pods test_pod", "kubectl describe pods firstpod", etc.
-- All necessary/most usable commands are listed in the "(Kubernetes Commands Cheatsheet)[https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md]". Please have a look to get more information and usage.
+- All necessary/most usable commands are listed in the "[Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)". Please have a look to get more information and usage.
 
 ### Pod: Creating, Yaml, LifeCycle <a name="pod"></a>
 
@@ -186,7 +186,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 
 ## Kubernetes Commands Cheatsheet <a name="cheatsheet"></a>
 
-Goto: [Kubernetes Commands Cheatsheet]()
+Goto: [Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
