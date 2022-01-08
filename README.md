@@ -145,7 +145,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 - Each pod has unique id (uid).
 - Each pod has unique IP address.
 - Containers in the same Pod run on the same Node (computer), and these containers can communicate with each other on the localhost. 
-- Creation of the first pod, imperative way (with command):
+- Creation of the first pod, IMPERATIVE WAY (with command):
 ```
 kubectl run firstpod --image=nginx --restart=Never
 kubectl get pods -o wide
@@ -171,6 +171,56 @@ kubectl exec -it firstpod -- /bin/sh
 ```
 kubectl delete pods firstpod
 ```
+### YAML File
+- Declerative way (with file), Imperative way (with command)
+- Template:
+```
+apiVersion:
+kind:
+metadata:
+spec:
+```
+- First pod (nginx) with file (filename: pod1.yaml):
+```
+apiVersion: v1      
+kind: Pod
+metadata:
+  name: firstpod
+  labels:
+    app: frontend
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+```
+- Run file (first goto pod1.yaml path):
+```
+kubectl apply -f pod1.yaml
+```
+![image](https://user-images.githubusercontent.com/10358317/148652119-59556685-be97-4b39-a5aa-fd5c075425bf.png)
+
+### Pod Life Cycle
+- Pending: API->etcd, pod created, pod id created, but not running on the node.
+- Creating: Scheduler take pod from etcd, assing on node. Kubelet on the Node pull images from docker registry or repository.
+- ImagePullBackOff: Kubelet can not pull image from registry. E.g. Image name is fault (typo error), Authorization Failure, Username/Pass error.
+- Running: 
+    - Container closes in 3 ways:
+        - 1. App completes the mission and closes automatically without giving error,
+        - 2. Use or System sends close signal and closes automatically without giving error,
+        - 3. Giving error, collapsed and closes with giving error code. 
+    - Rastart Policies (it can defined in the pod definition): 
+        - Always: Default value, kubelet starts always when closing with or without error, 
+        - On-failure: It starts again when it gets only error, 
+        - Never: It never restarts in any case.
+ - Successed (completed): If the container closes successfully without error and restart policy is configured as on-failure/never, it converts to succeed.
+ - Failed
+ - CrashLoopBackOff: 
+    - If restart policy is configured as always and container closes again and again, container restarts again and again (Restart waiting duration before restarting again: 10 sec -> 20 sec -> 40 sec -> .. -> 5mins), It runs every 5 mins if the pod is crashed.
+    - If container runs more than 10 mins, status converted from 'CrashLoopBackOff' to 'Running'.
+
+![image](https://user-images.githubusercontent.com/10358317/148652381-a856397b-c8d0-421d-b317-c30544bc4f60.png)
 
 ### MultiContainer Pod, Init Container <a name="multicontainerpod"></a>
 
