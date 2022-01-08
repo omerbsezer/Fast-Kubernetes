@@ -194,6 +194,9 @@ spec:
     image: nginx:latest
     ports:
     - containerPort: 80
+    env:
+      - name: USER
+    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 20']  
 ```
 - Run file (first goto pod1.yaml path):
 ```
