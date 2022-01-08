@@ -171,7 +171,7 @@ kubectl exec -it firstpod -- /bin/sh
 ```
 kubectl delete pods firstpod
 ```
-### YAML File
+#### Pod: YAML File
 - Declerative way (with file), Imperative way (with command)
 - Template:
 ```
@@ -204,7 +204,7 @@ kubectl apply -f pod1.yaml
 ```
 ![image](https://user-images.githubusercontent.com/10358317/148652119-59556685-be97-4b39-a5aa-fd5c075425bf.png)
 
-### Pod Life Cycle
+#### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
 - **Creating:** Scheduler take pod from etcd, assing on node. Kubelet on the Node pull images from docker registry or repository.
 - **ImagePullBackOff:** Kubelet can not pull image from registry. E.g. Image name is fault (typo error), Authorization Failure, Username/Pass error.
