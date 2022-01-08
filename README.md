@@ -224,6 +224,13 @@ kubectl apply -f pod1.yaml
     - If container runs more than 10 mins, status converted from 'CrashLoopBackOff' to 'Running'.
 
 ### MultiContainer Pod, Init Container <a name="multicontainerpod"></a>
+- Best Practice: 1 Container runs in 1 Pod normally, because the smallest element in K8s is Pod (Pod can be scaled up/down).
+- Multicontainers run in the same Pod when containers are dependent of each other. 
+- Multicontainers in one Pod have following features:
+  - Multi containers that run on the same Pod run on the same Node.
+  - Containers in the same Pod run/pause/deleted at the same time.
+  - Containers in the same Pod communicate with each other on localhost, there is not any network isolation.
+  - Containers in the same Pod use one volume commonly and they can reasch same files in the volume.   
 
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
 
