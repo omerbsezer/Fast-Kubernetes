@@ -64,11 +64,14 @@ kubectl get pods -A -o json | jq -r ".items[].spec.containers[].name"   #jq pars
 ```
 
 #### commands help
+- 'help' to learn more for commands
 ```
 kubectl apply --help #explain command
+kubectl delete --help
 ```
 
-#### object explain
+#### object help: with explain
+- 'explain' to learn more for objects 
 ```
 kubectl explain pod
 kubectl explain deployment
