@@ -60,7 +60,7 @@ kubectl get pods -A -o wide # all-namespace with more detailed
 kubectl get pods -A -o yaml
 kubectl get pods -A -o json
 kubectl get pods -A -o go-template
-kubectl get pods -A -o json | jq -r ".items[].spec.containers[].name"  
+kubectl get pods -A -o json | jq -r ".items[].spec.containers[].name"   #jq parser query 
 ```
 
 #### commands help
