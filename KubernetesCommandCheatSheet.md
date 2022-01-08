@@ -47,6 +47,7 @@ kubectl [get|delete|edit|apply] [pods, deployment, services, etc.] [podName, ser
 
 #### namespace, -n 
 ```
+kubectl get pods # default namespace
 kubectl get pods -n kube-system  #list kube-system namespace pods.
 kubectl get pods --all-namespaces
 kubectl get pods -A # all-namespace
