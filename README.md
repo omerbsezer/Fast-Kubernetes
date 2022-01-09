@@ -7,8 +7,9 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 **Keywords:** Containerization, Kubernetes, Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, Volume, Cheatsheet.
 
 # Quick Look (HowTo)
-- [App: Creating First Docker Image and Container using Docker File](https://github.com/omerbsezer/Fast-Docker/blob/main/FirstImageFirstContainer.md)
-- [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Docker/blob/main/DockerCommandCheatSheet.md)
+- [App: Creating First Pod Image Declerative Way (With File)]()
+- [App: Multicontainer in a Pod: Sidecar and Volume Application]()
+- [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
 - [Motivation](#motivation)
