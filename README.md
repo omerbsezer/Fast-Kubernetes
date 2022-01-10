@@ -394,7 +394,48 @@ kubectl config set-context --current  --namespace=default  #now namespace is def
 kubectl delete namespaces development  #delete development namespace
 ```
 ### Deployment <a name="deployment"></a>
+- A Deployment provides declarative updates for Pods and ReplicaSets.
+- We define states in the deployment, deployment controller compares desired state and take necessary actions to keep desire state. 
+- Deployment object is the higher level K8s object that controls and keeps state of single or multiple pods automatically.
+- Imperative way:   
+```
+kubectl create deployment firstdeployment --image=nginx:latest --replicas=2 
+kubectl get deployments
+kubectl get pods -w    #on another terminal
+kubectl delete pods <oneofthepodname> #we can see another terminal, new pod will be created (to keep 2 replicas)  
+kubectl scale deployments firstdeployment --replicas=5
+kubectl delete deployments firstdeployment
+```
 
+- Declerative way:    
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstdeployment
+  labels:
+    team: development
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80    
+```
+- Template: pod definition
+- spec>selector>matchLabels select the pods' labels which are controlled by the deployment
+- template>metadata>labels are the labels of the Pods.
+- Important: spec>selector>matchLabels and template>metadata>labels should be same to run by deployment.
+    
 ### Replicaset <a name="replicaset"></a>
 
 ### Rollout and Rollback <a name="rollout-rollback"></a>
