@@ -255,7 +255,67 @@ spec:
 ```
 
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
--
+#### Label
+- Label is important to reach the K8s objects with key:value pairs.
+- key:value is used for labels. E.g. tier:frontend, stage:test, name:app1, team:development
+- prefix may also be used for optional with key:value. E.g. example.com/tier:front-end, kubernetes.io/ , k8s.io/
+- In the file (declerative way), labels are added under metadata. It is possible to add multiple labels. 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+  labels:
+    app: firstapp
+    tier: frontend
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+```
+- In the command (imperative way), we can also add label to the pods.
+```
+kubectl label pods pod1 team=development  #adding label team=development on pod1
+kubectl get pods --show-labels
+kubectl label pods pod1 team-  #remove team (key:value) from pod1
+kubectl label --overwrite pods pod1 team=test #overwrite/change label on pod1
+kubectl label pods --all foo=bar  # add label foo=bar for all pods
+```
+#### Selector
+- We can select/filter pod with kubectl command. 
+```
+kubectl get pods -l "app=firstapp" --show-labels
+kubectl get pods -l "app=firstapp,tier=frontend" --show-labels
+kubectl get pods -l "app=firstapp,tier!=frontend" --show-labels
+kubectl get pods -l "app,tier=frontend" --show-labels #equality-based selector
+kubectl get pods -l "app in (firstapp)" --show-labels  #set-based selector
+kubectl get pods -l "app not in (firstapp)" --show-labels  #set-based selector
+kubectl get pods -l "app=firstapp,app=secondapp" --show-labels # comma means and => firstapp and secondapp
+kubectl get pods -l "app in (firstapp,secondapp)" --show-labels # it means or => firstapp or secondapp
+```
+#### Node Selector
+- With Node Selector, we can choose which pod run on which Node. 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod11
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+  nodeSelector:
+    hddtype: ssd
+```
+- It is also possible to label nodes with imperative way. 
+```
+kubectl get pods -w #always watch
+kubectl label nodes minikube hddtype=ssd #after labelling node, pod11 configuration can run, because node is labelled with hddtype:ssd 
+```
 
 ### Deployment <a name="deployment"></a>
 
