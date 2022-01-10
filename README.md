@@ -432,14 +432,21 @@ spec:
         - containerPort: 80    
 ```
 - Template: pod definition
-- spec>selector>matchLabels select the pods' labels which are controlled by the deployment
-- template>metadata>labels are the labels of the Pods.
-- Important: spec>selector>matchLabels and template>metadata>labels should be same to run by deployment.
+- spec>selector>matchLabels: select the pods' labels which are controlled by the deployment
+- template>metadata>labels: the labels of the Pods.
+- **Important:** spec>selector>matchLabels and template>metadata>labels should be same to run by deployment.
     
 ### Replicaset <a name="replicaset"></a>
+- Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
+- Replicaset is the responsible for the management of replica creation and remove. But, when the pods are updated (e.g. image changed), it can not update replicaset pods. However, deployment can update for all change. So, best practice is to use deployment directly, not to use replicaset directly.
+    
+![image](https://user-images.githubusercontent.com/10358317/148804992-8ad27155-1c1e-436f-949e-4aec9a1a9d05.png)
+
 
 ### Rollout and Rollback <a name="rollout-rollback"></a>
-
+- Rollback: 
+    
+    
 ### Network, Service <a name="network-service"></a>
 
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
