@@ -439,14 +439,76 @@ spec:
 ### Replicaset <a name="replicaset"></a>
 - Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
 - Replicaset is the responsible for the management of replica creation and remove. But, when the pods are updated (e.g. image changed), it can not update replicaset pods. However, deployment can update for all change. So, best practice is to use deployment directly, not to use replicaset directly.
+- **Important:** It can be possible to create replicaset directly, but we could not use rollout/rollback, undo features with replicaset. Deployment provide to use rollout/rollback, undo features.
     
 ![image](https://user-images.githubusercontent.com/10358317/148804992-8ad27155-1c1e-436f-949e-4aec9a1a9d05.png)
 
 
 ### Rollout and Rollback <a name="rollout-rollback"></a>
-- Rollback: 
+- Rollout and Rollback enable to update and return back containers that run under the deployment.
+- 2 strategy for rollout and rollback: Recreate and Rolling.
+- **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used:     
+```    
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rcdeployment
+  labels:
+    team: development
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: recreate
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: recreate
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+``` 
+```    
+kubectl apply -f deployrecreate.yaml
+kubectl set image deployment rcdeployment nginx=httpd   #all old pods are deleted, and created newly. In a short time period, it can not be reached any sw service.  
+```        
     
-    
+- **Rolling Strategy (default)**: It updates pods step by step. Pods are updated step by step, all pods are not deleted at the same time.
+- maxUnavailable: At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
+- maxSurge: At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)    
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rolldeployment
+  labels:
+    team: development
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: rolling
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2   # Percentage also possible, e.g. 25%
+      maxSurge: 2         # Percentage also possible, e.g. 20%
+  template:
+    metadata:
+      labels:
+        app: rolling
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80    
+```    
 ### Network, Service <a name="network-service"></a>
 
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
