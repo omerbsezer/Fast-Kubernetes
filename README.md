@@ -233,7 +233,29 @@ kubectl apply -f pod1.yaml
   - Containers in the same Pod communicate with each other on localhost, there is not any network isolation.
   - Containers in the same Pod use one volume commonly and they can reasch same files in the volume.   
 
+#### Init Container
+- Init container is used for configuration of app before running app container. 
+- Init container handle what it should run, then it closes successfully, after init container close, app container starts. 
+- Example below shows how to define init containers in one Pod. There are 2 containers: appcontainer and initcontainer. Initcontainer is polling the service (myservice). When it finds, it closes and app container starts.  
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: initcontainerpod
+spec:
+  containers:
+  - name: appcontainer
+    image: busybox
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+  initContainers:
+  - name: initcontainer
+    image: busybox
+    command: ['sh', '-c', "until nslookup myservice; do echo waiting for myservice; sleep 2; done"]
+```
+
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
+-
 
 ### Deployment <a name="deployment"></a>
 
@@ -286,4 +308,4 @@ Goto: [Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubern
 ## References  <a name="references"></a>
 - [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
-- [udemy-course:adan-zye-docker](https://www.udemy.com/course/adan-zye-docker/)
+- [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
