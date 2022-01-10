@@ -313,8 +313,35 @@ spec:
 ```
 - It is also possible to label nodes with imperative way. 
 ```
+kubectl apply -f podnode.yaml
 kubectl get pods -w #always watch
 kubectl label nodes minikube hddtype=ssd #after labelling node, pod11 configuration can run, because node is labelled with hddtype:ssd 
+```
+#### Annotation
+- It is similar to label, but it is used for the detailed information (e.g. owner, notification-email, releasedate, etc.) that are not used for linking objects. 
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: annotationpod
+  annotations:
+    owner: "owner-name"
+    notification-email: "owner@email.com"
+    releasedate: "01.01.2022"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+spec:
+  containers:
+  - name: annotationcontainer
+    image: nginx
+    ports:
+    - containerPort: 80
+```
+
+```
+kubectl apply -f podannotation.yaml
+kubectl describe pod annotationpod
+kubectl annotate pods annotationpod foo=bar #imperative way
 ```
 
 ### Deployment <a name="deployment"></a>
