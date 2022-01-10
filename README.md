@@ -389,6 +389,7 @@ kubectl exec -it namespacedpod -n development -- /bin/sh  #run namespacepod in d
     
 ```
 kubectl config set-context --current  --namespace=development  #now default namespace is development
+kubectl get pods     #returns pods in the development namespace  
 kubectl config set-context --current  --namespace=default  #now namespace is default 
 kubectl delete namespaces development  #delete development namespace
 ```
