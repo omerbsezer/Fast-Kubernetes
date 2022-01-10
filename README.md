@@ -342,8 +342,56 @@ spec:
 kubectl apply -f podannotation.yaml
 kubectl describe pod annotationpod
 kubectl annotate pods annotationpod foo=bar #imperative way
+kubectl delete -f podannotation.yaml
 ```
 
+#### Namespaces
+- Namespaces provides a mechanism for isolating groups of resources within a single cluster. It provides a scope for names. 
+- Namespaces cannot be nested inside one another and each Kubernetes resource can only be in one namespace.
+- Kubectl commands run on default namespaces if it is not determined in the command.
+
+![image](https://user-images.githubusercontent.com/10358317/148784384-96681287-e4c4-46e8-b63f-5953270a5b28.png)
+
+```
+kubectl get pods --namespaces kube-system  #get all pods in the kube-system namespaces
+kubectl get pods --all-namespaces  # get pods from all namespaces
+kubectl create namespace development  #create new development namespace in imperative way
+kubectl get pods -n development  # get pods from all namespace
+```
+- In declerative way, it is possible to create namespaces and run pod on the related namespace.
+
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: development
+  name: namespacepod
+spec:
+  containers:
+  - name: namespacecontainer
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+```
+
+```
+kubectl apply -f namespace.yaml
+kubectl get pods -n development  #get pods in the development namespace
+kubectl exec -it namespacedpod -n development -- /bin/sh  #run namespacepod in development namespace
+```
+
+- We can avoid to use -n <namespacename> for all command with changing of default namespace  (because, if we don't use -n namespace, kubectl commands run on the default namespace).    
+    
+```
+kubectl config set-context --current  --namespace=development  #now default namespace is development
+kubectl config set-context --current  --namespace=default  #now namespace is default 
+kubectl delete namespaces development  #delete development namespace
+```
 ### Deployment <a name="deployment"></a>
 
 ### Replicaset <a name="replicaset"></a>
