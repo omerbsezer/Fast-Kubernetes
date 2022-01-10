@@ -509,6 +509,22 @@ spec:
         ports:
         - containerPort: 80    
 ```    
+```    
+kubectl apply -f deployrolling.yaml --record
+kubectl set image deployment rolldeployment nginx=httpd:alpine --record     #  8<=nums of containers<=12
+kubectl rollout history deployment rolldeployment                  #shows record/history revisions 
+kubectl rollout history deployment rolldeployment --revision=2     #select the details of the one of the revisions
+kubectl rollout undo deployment rolldeployment                     #returns back to previous deployment revision
+kubectl rollout undo deployment rolldeployment --to-revision=1     #returns back to the selected revision=1
+kubectl rollout undo deployment rolldeployment --to-revision=3     #returns back to the selected revision=3
+```
+    
+```
+kubectl rollout status deployment rolldeployment -w     #show live status of the rollout deployment
+kubectl rollout pause deployment rolldeployment         #pause the rollout while updating pods 
+kubectl rollout resume deployment rolldeployment        #resume the rollout if rollout paused
+```
+    
 ### Network, Service <a name="network-service"></a>
 
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
