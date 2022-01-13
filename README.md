@@ -528,7 +528,9 @@ kubectl rollout resume deployment rolldeployment        #resume the rollout if r
 ### Network, Service <a name="network-service"></a>
 - IP address interval is assigned (--pod-network-cidr) by K8s
 - Each pod has unique IP address.
-- Each Pod in the cluster can be reachable from other pods without using NAT
+- Each Pod in the cluster can be reachable from other pods without using NAT.
+    
+#### Service
 
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 
