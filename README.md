@@ -526,12 +526,36 @@ kubectl rollout resume deployment rolldeployment        #resume the rollout if r
 ```
     
 ### Network, Service <a name="network-service"></a>
-- IP address interval is assigned (--pod-network-cidr) by K8s
-- Each pod has unique IP address.
-- Each Pod in the cluster can be reachable from other pods without using NAT.
+#### K8s Networking Requirements
+- Each pod has unique and own IP address (Containers within a pod share network namespaces).
+- All PODs can communicate with all other pods without NAT (Network Address Translation)
+- All NODEs can communicate with all pods without NAT.
+- The IP of the POD is same throughout the cluster.
+
+ ![image](https://user-images.githubusercontent.com/10358317/149517766-4c0ab7e7-9e20-48a9-a540-e0b4a99390d8.png) (Ref: Udemy Course: Kubernetes-Temelleri)
+
+#### CNI (Container Network Interface)
+- Networking of container and nodes with different vendors and devices is difficult to handle. So K8s give this responsibility to CNI plugins to handle networking requirements. 
+- "CNI (Container Network Interface), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins." => https://github.com/containernetworking/cni 
+- K8s has CNI plugins that are selected by the users. Some of the CNI methods are: Flannel, calico, weave, and canal. 
+- Calico (https://github.com/projectcalico/calico) is the one of the popular and open source CNI method/plugin in K8s.
+    - Network Management in the cluster: 
+        - IP assignments to Pods
+        - IP Table Management
+        - Overlay definition between Nodes without using NAT (e.g. --pod-network-cidr management) 
+        - Vxlan Interface implementation and etc. 
     
 #### Service
-
+- "An abstract way to expose an application running on a set of Pods as a network service.
+- Kubernetes ServiceTypes allow you to specify what kind of Service you want. The default is ClusterIP.
+- Type values and their behaviors are:
+    - ClusterIP: Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster. This is the default ServiceType.
+    - NodePort: Exposes the Service on each Node's IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created. You'll be able to contact the NodePort Service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
+    - LoadBalancer: Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
+    - ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up." (Ref: Kubernetes.io)
+    
+Go to: Application scenario for Services
+    
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 
 ### Resource Limit, Environment Variable <a name="environmentvariable"></a>
@@ -557,7 +581,8 @@ kubectl rollout resume deployment rolldeployment        #resume the rollout if r
 ### Job, CronJob <a name="job"></a>
 
 ### Ingress <a name="ingress"></a>
-
+- Ingress is not a Service type, but it acts as the entry point for your cluster.
+    
 ## Play With Kubernetes <a name="playWithKubernetes"></a>
 
 - https://labs.play-with-k8s.com/
