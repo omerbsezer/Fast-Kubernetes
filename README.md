@@ -553,8 +553,21 @@ kubectl rollout resume deployment rolldeployment        #resume the rollout if r
     - NodePort: Exposes the Service on each Node's IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created. You'll be able to contact the NodePort Service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
     - LoadBalancer: Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
     - ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up." (Ref: Kubernetes.io)
-    
-Go to: Application scenario for Services
+- Example of Service Object Definition:  (Selector binds service to the related pods, get traffic from port 80 to port 9376) 
+```    
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  selector:
+    app: MyApp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 9376
+```    
+For more information, please go to the Service Scenraio: Application scenario for Services
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 
