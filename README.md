@@ -9,6 +9,7 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 # Quick Look (HowTo)
 - [App: Creating First Pod Image Declerative Way (With File)]()
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
+- [App: Service Implementation between Frontend-Backend]()
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -567,7 +568,7 @@ spec:
       port: 80
       targetPort: 9376
 ```    
-For more information, please go to the Service Scenraio: Application scenario for Services
+For more information, please go to the Service Scenario: Application scenario for Services
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 
