@@ -1,13 +1,13 @@
-## App: K8s Service Implementation between Frontend-Backend
+## App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)
 
-This scenario shows how to run multi-containers in the cluster using the Docker Stack file by creating a service in Docker Swarm. It goes following:
-- Creating Docker Swarm Cluster (2 Manager Nodes, 3 Worker Nodes) using [PlayWithDocker](https://labs.play-with-docker.com/)
-- Copying docker-compose.yml file into the Manager node to create Docker Service
-- Creating Docker Service and showing the service's details
-- Going to one of the Worker Node, stepping into the container, showing the connection using ping.
-- Removing one of the containers in the Worker Node and showing the recreation by Docker Service.
-- Stopping and removing all containers in the Docker Service.
+This scenario shows how to create Services (ClusterIp, NodePort and LoadBalancer). It goes following:
+- Create Deployments for frontend and backend.
+- Create ClusterIP Service to reach backend pods.
+- Create NodePort Service to reach frontend pods from Internet.
+- Create Loadbalancer Service on the cloud K8s cluster to reach frontend pods from Internet.
 
+
+![image](https://user-images.githubusercontent.com/10358317/149774101-d4cfa70a-f461-4d9d-b2c4-f29de65e0e8b.png) (Ref: Udemy Course: Kubernetes-Temelleri)
 
 ### Steps
 
@@ -130,3 +130,13 @@ spec:
 - If you run on the cloud, you'll see the external-ip of the loadbalancer service. 
 
 ![image](https://user-images.githubusercontent.com/10358317/149772479-a6262368-ab70-4c79-9897-a8162d5dc767.png)
+
+![image](https://user-images.githubusercontent.com/10358317/149772584-705ab659-4e5e-496e-999c-cabaf3c5a9d2.png)
+
+- In addition, it can be possible service with Imperative way (with command).
+- kubectl expose deployment <deploymentName> --type=<typeOfService> --name=<nameOfService>
+
+![image](https://user-images.githubusercontent.com/10358317/149773190-44d11369-ee98-400b-b84a-57527fc1fba7.png)
+  
+## References  <a name="references"></a>
+- [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)  
