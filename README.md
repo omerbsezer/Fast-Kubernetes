@@ -9,7 +9,7 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 # Quick Look (HowTo)
 - [App: Creating First Pod Image Declerative Way (With File)]()
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
-- [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/edit/main/K8s-Service-App.md)
+- [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -568,7 +568,7 @@ spec:
       port: 80
       targetPort: 9376
 ```    
-For more information, please go to the Service Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/edit/main/K8s-Service-App.md)
+For more information, please go to the Service Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 
