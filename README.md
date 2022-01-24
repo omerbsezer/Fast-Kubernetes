@@ -574,7 +574,7 @@ Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and L
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 #### Liveness Probe
-- "The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress."
+- "The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress." (Ref: Kubernetes.io)
 - There are different ways of controlling Pods:
     - httpGet,
     - exec command,
@@ -586,6 +586,8 @@ Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and L
 Go to the Scenario: [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
     
 #### Readiness Probe
+- "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services." (Ref: Kubernetes.io)
+- Readiness probe is similar to liveness pod. Only difference is to define "readinessProbe" instead of "livenessProbe".
 
 Go to the Scenario: [App: K8s Readiness Probe]()     
     
