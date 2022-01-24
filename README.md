@@ -6,11 +6,11 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 
 **Keywords:** Containerization, Kubernetes, Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, Volume, Cheatsheet.
 
-# Quick Look (HowTo)
+# Quick Look (HowTo): Application Scenarios
 - [App: Creating First Pod Image Declerative Way (With File)]()
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
-- [App: K8s Liveness Probe]()   
+- [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [App: K8s Readiness Probe]()   
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
@@ -582,33 +582,14 @@ Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and L
     - grpc, etc.
 - initialDelaySeconds: waiting some period of time after starting. e.g. 5sec, after 5 sec start to run command
 - periodSeconds: in a period of time, run command. 
+
+Go to the Scenario: [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
     
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  labels:
-    test: liveness
-  name: liveness-exec
-spec:
-  containers:
-  - name: liveness
-    image: k8s.gcr.io/busybox
-    args:
-    - /bin/sh
-    - -c
-    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
-    livenessProbe:
-      exec:
-        command:
-        - cat
-        - /tmp/healthy
-      initialDelaySeconds: 5
-      periodSeconds: 5
-```
-Go to the Scenario: [App: K8s Liveness Probe]()   
 #### Readiness Probe
 
+Go to the Scenario: [App: K8s Readiness Probe]()     
+    
+    
 ### Resource Limit, Environment Variable <a name="environmentvariable"></a>
 
 ### Volume <a name="volume"></a>
