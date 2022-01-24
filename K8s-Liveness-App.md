@@ -1,25 +1,21 @@
 ## App: K8s Liveness Probe
 
-This scenario shows how to create Services (ClusterIp, NodePort and LoadBalancer). It goes following:
-- Create Deployments for frontend and backend.
-- Create ClusterIP Service to reach backend pods.
-- Create NodePort Service to reach frontend pods from Internet.
-- Create Loadbalancer Service on the cloud K8s cluster to reach frontend pods from Internet.
+This scenario shows how the liveness probe works.
 
 ### Steps
 
 - Create 3 Pods with following YAML file (pods.yaml):
-  -  In the first pod (e.g. web app), it sends HTTP Get Request to "http://localhost/healthz:8080" (port 8080)
+  - In the first pod (e.g. web app), it sends HTTP Get Request to "http://localhost/healthz:8080" (port 8080)
     - If returns 400 > HTTP Code > 200, this Pod works correctly.
     - If returns HTTP Code > = 400, this Pod does not work properly.
     - initialDelaySeconds:3 => after 3 seconds, start liveness probe. 
     - periodSecond: 3 => Wait 3 seconds between each request.
-  -  In the second pod (e.g. console app), it controls whether a file ("healty") exists or not under specific directory ("/tmp/") with "cat" app. 
+  - In the second pod (e.g. console app), it controls whether a file ("healty") exists or not under specific directory ("/tmp/") with "cat" app. 
     - If returns 0 code, this Pod works correctly.
     - If returns different code except for 0 code, this Pod does not work properly.
     - initialDelaySeconds: 5 => after 5 seconds, start liveness probe. 
     - periodSecond: 5 => Wait 5 seconds between each request.
-  -  In the third pod (e.g. database app: mysql), it sends request over TCP Socket. 
+  - In the third pod (e.g. database app: mysql), it sends request over TCP Socket. 
     - If returns positive response, this Pod works correctly.
     - If returns negative response (e.g. connection refuse), this Pod does not work properly.
     - initialDelaySeconds: 15 => after 15 seconds, start liveness probe. 
