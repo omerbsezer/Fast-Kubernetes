@@ -84,9 +84,11 @@ spec:
       periodSeconds: 20
  ```
  
-- Run: "kubectl apply -f pods.yaml"
-- On another terminal run: "kubectl get pods -w"
+- Run on terminal: kubectl apply -f pods.yaml
+- Run on another terminal: kubectl get pods -w
+
  ![image](https://user-images.githubusercontent.com/10358317/150846081-7e9142d1-b833-431f-82bc-a7385c73a875.png)
  
-- Run to see details of liveness-http pod: "kubectl describe pod liveness-http"
+- Run to see details of liveness-http pod: kubectl describe pod liveness-http
+
 ![image](https://user-images.githubusercontent.com/10358317/150846456-5273b1f8-7043-4fa1-804c-77da74aca8de.png)
