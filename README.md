@@ -10,6 +10,8 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 - [App: Creating First Pod Image Declerative Way (With File)]()
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
+- [App: K8s Liveness Probe]()   
+- [App: K8s Readiness Probe]()   
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -568,9 +570,44 @@ spec:
       port: 80
       targetPort: 9376
 ```    
-For more information, please go to the Service Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
+Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
+#### Liveness Probe
+- "The kubelet uses liveness probes to know when to restart a container. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress."
+- There are different ways of controlling Pods:
+    - httpGet,
+    - exec command,
+    - tcpSocket,
+    - grpc, etc.
+- initialDelaySeconds: waiting some period of time after starting. e.g. 5sec, after 5 sec start to run command
+- periodSeconds: in a period of time, run command. 
+    
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    test: liveness
+  name: liveness-exec
+spec:
+  containers:
+  - name: liveness
+    image: k8s.gcr.io/busybox
+    args:
+    - /bin/sh
+    - -c
+    - touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600
+    livenessProbe:
+      exec:
+        command:
+        - cat
+        - /tmp/healthy
+      initialDelaySeconds: 5
+      periodSeconds: 5
+```
+Go to the Scenario: [App: K8s Liveness Probe]()   
+#### Readiness Probe
 
 ### Resource Limit, Environment Variable <a name="environmentvariable"></a>
 
