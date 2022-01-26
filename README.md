@@ -593,6 +593,22 @@ Go to the Scenario: [App: K8s Readiness Probe]()
     
     
 ### Resource Limit, Environment Variable <a name="environmentvariable"></a>
+    
+#### Resource Limit 
+- Pods can consume resources (cpu, memory) up to physical resource limits, if there was not any limitation. 
+- Pods' resources can be limited.
+- use 1 cpu core => cpu = "1" = "1000" = "1000m"    
+
+ ```    
+resources:
+    requests:
+        memory: "64M"
+        cpu: "250m"
+    limit:
+        memory: "256M"
+        cpu: "0.5" 
+```  
+#### Environment Variable
 
 ### Volume <a name="volume"></a>
 
