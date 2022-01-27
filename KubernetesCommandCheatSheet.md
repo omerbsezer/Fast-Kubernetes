@@ -156,7 +156,7 @@ kubectl logs -f multicontainer -c sidecarcontainer
 #### port-forward to pod
 ```
 kubectl port-forward pod/multicontainer 80:80   ## host:container port, if command is not run, port is not opened
-kubectl port-forward pod/multicontainer 8080:80
+kubectl port-forward pod/multicontainer 8080:80  # when browsing 127.0.0.1:8080, host:8080 goes to pod:80 and directs traffic.
 ```
 
 #### label ve selector
