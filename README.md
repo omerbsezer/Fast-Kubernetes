@@ -582,8 +582,6 @@ Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and L
     - grpc, etc.
 - initialDelaySeconds: waiting some period of time after starting. e.g. 5sec, after 5 sec start to run command
 - periodSeconds: in a period of time, run command. 
-
-Go to the Scenario: [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
     
 #### Readiness Probe
 - "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services." (Ref: Kubernetes.io)
@@ -596,20 +594,48 @@ Go to the Scenario: [App: K8s Readiness Probe]()
     
 #### Resource Limit 
 - Pods can consume resources (cpu, memory) up to physical resource limits, if there was not any limitation. 
-- Pods' resources can be limited.
-- use 1 cpu core => cpu = "1" = "1000" = "1000m"    
-
- ```    
-resources:
-    requests:
-        memory: "64M"
-        cpu: "250m"
-    limit:
-        memory: "256M"
-        cpu: "0.5" 
+- Pods' used resources can be limited.
+    - use 1 cpu core => cpu = "1" = "1000" = "1000m"    
+    - use 10% of 1 cpu core => cpu = "0.1" = "100" = "100m"    
+    - use 64 MB => memory: "64M"
+- CPU resources are exactly limited when it defines. 
+- When pod requests memory resource more than limitation, pod changes its status to "OOMKilled" and restarts itself to limit memory usage.
+- Example (below), pod requests 64MB memory and 0.25 CPU core, uses maximum 256MB memory and 0.5 CPU core.
+```
+spec: 
+    containers:
+        - name: requestLimit
+          image: dockerUsername/imageName #from DockerHub
+          resources:
+            requests:
+                memory: "64M"
+                cpu: "250m"
+            limit:
+                memory: "256M"
+                cpu: "0.5" 
 ```  
 #### Environment Variable
-
+- Environment Variables can be defined for each pods in the YAML file.
+    
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: environment-pod
+  labels:
+    app: frontend
+spec: 
+containers:
+    - name: environmentPod
+      image: dockerUsername/imageName #from DockerHub
+      ports:
+        - containerPort: 80
+      env:
+      - name: USER
+        value: "username"
+      - name: database
+        value: "testdb.test.com"
+```      
 ### Volume <a name="volume"></a>
 
 ### Secret <a name="secret"></a>
