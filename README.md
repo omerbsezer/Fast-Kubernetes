@@ -625,18 +625,25 @@ metadata:
   labels:
     app: frontend
 spec: 
-containers:
-    - name: environmentPod
-      image: dockerUsername/imageName #from DockerHub
-      ports:
-        - containerPort: 80
-      env:
-      - name: USER
-        value: "username"
-      - name: database
-        value: "testdb.test.com"
+  containers:
+  - name: environmentPod
+    image: dockerUsername/imageName #from DockerHub
+    ports:
+      - containerPort: 80
+    env:
+    - name: USER
+      value: "username"
+    - name: database
+      value: "testdb.test.com"
 ```      
 ### Volume <a name="volume"></a>
+- Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted.
+- There are 2 types of ephemeral volumes:
+    - Emptydir: The directory is created in the node, it will be mounted in the container.
+    - Hostpath: 
+        - Directory
+        - DirectoryOrCreate
+        - FileOrCreate
 
 ### Secret <a name="secret"></a>
 
