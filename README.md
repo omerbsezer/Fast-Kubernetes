@@ -618,6 +618,7 @@ spec:
 - Environment Variables can be defined for each pods in the YAML file.
     
 ```
+# environment variables are defined under "env".
 apiVersion: v1
 kind: Pod
 metadata:
@@ -636,15 +637,32 @@ spec:
     - name: database
       value: "testdb.test.com"
 ```      
+    
 ### Volume <a name="volume"></a>
-- Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted.
+- Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted. But when container is restarted, volume is still available because pod still runs.
 - There are 2 types of ephemeral volumes:
-    - Emptydir: The directory is created in the node, it will be mounted in the container.
-    - Hostpath: 
+    - Emptydir: At the beginning of time,  empty directory is created randomly in the cluster. Multiple containers in the pod can reach this volume (read/write)
+    - Hostpath: It provides that the directory/file on the node 
         - Directory
         - DirectoryOrCreate
         - FileOrCreate
 
+#### Emptydir Volume
+```  
+spec: 
+  containers:
+  - name: sidecar
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "sleep 3600"]
+    volumeMounts:                # volume is mounted under "volumeMounts" 
+    - name: cache-vol            # "name" of the volume type
+      mountPath: /tmp/log        # "mountPath" is the path in the container.
+  volumes:
+  - name: cache-vol              
+    emptyDir: {}                 # "volume" type "emptydir"
+```  
+    
 ### Secret <a name="secret"></a>
 
 ### ConfigMap <a name="configmap"></a>
