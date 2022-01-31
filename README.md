@@ -641,13 +641,15 @@ spec:
 ### Volume <a name="volume"></a>
 - Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted. But when container is restarted, volume is still available because pod still runs.
 - There are 2 types of ephemeral volumes:
-    - Emptydir: At the beginning of time,  empty directory is created randomly in the cluster. Multiple containers in the pod can reach this volume (read/write)
-    - Hostpath: It provides that the directory/file on the node 
+    - Emptydir 
+    - Hostpath
         - Directory
         - DirectoryOrCreate
         - FileOrCreate
 
 #### Emptydir Volume
+- Emptydir (empty directory on the node) is created on which node the pod is created on and it is mounted on the container using "volumeMounts". Multiple containers in the pod can reach this volume (read/write).   
+- Emptydir volume is dependent of Pod Lifecycle. If the pod is deleted, emptydir is also deleted.    
 ```  
 spec: 
   containers:
@@ -662,6 +664,38 @@ spec:
   - name: cache-vol              
     emptyDir: {}                 # "volume" type "emptydir"
 ```  
+#### Hostpath Volume
+- It is similar to emtpydir, hostpath is also created on which node the pod is created on. In addition, the hostpath is specifically defined path on the node.
+```  
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hostpath
+spec:
+  containers:
+  - name: hostpathcontainer
+    image: ImageName                  # e.g. nginx
+    volumeMounts:
+    - name: directory-vol             # container connects "volume" name    
+      mountPath: /dir1                # on the container which path this volume is mounted
+    - name: dircreate-vol
+      mountPath: /cache               # on the container which path this volume is mounted
+    - name: file-vol
+      mountPath: /cache/config.json   # on the container which file this volume is mounted     
+  volumes:
+  - name: directory-vol               # "volume" name
+    hostPath:                         # "volume" type "hostpath"
+      path: /tmp                      # "path" on the node, "/tmp" is defined volume
+      type: Directory                 # "hostpath" type "Directory", existed directory
+  - name: dircreate-vol
+    hostPath:                         # "volume" type "hostpath"
+      path: /cache                    # "path" on the node
+      type: DirectoryOrCreate         # "hostpath" type "DirectoryOrCreate", if it is not existed, create directory
+  - name: file-vol
+    hostPath:                         # "volume" type "hostpath"
+      path: /cache/config.json        # "path" on the node
+      type: FileOrCreate              # "hostpath" type "FileOrCreate",  if it is not existed, create file
+```   
     
 ### Secret <a name="secret"></a>
 
