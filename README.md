@@ -843,6 +843,90 @@ spec:
         name: myconfigmap
 ``` 
 ### Node – Pod Affinity <a name="node-pod-affinity"></a>
+- Affinity means closeness, proximity, familarity.
+    
+#### Node Affinity
+- With node affinity, specific pods can enable to run on the desired node (Node selector also supports that feature, but node affinity is more flexible).
+- If node is labelled with key-value, we can run some of the pods on that specific node.
+    - Labelling node "kubectl label node minikube app=production"
+- "requiredDuringSchedulingIgnoredDuringExecution" means: Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, do not run this pod until finding specific node "matchExpression". 
+- In addition,"IgnoredDuringExecution" means: after scheduling, if the node label is removed/deleted from node, ignore it while executing.   
+- "matchExpression" has "key", "values" and "operator". 4 "operator"s:
+    - "In" means: find a node which is labelled "key=value", e.g. run pod on node which is labelled with "app=production".
+    - "NotIn" means: find a node which is NOT labelled "key=value", e.g. run pod on node which is not labelled with "app=production".
+    - "Exists" means: find a node which is labelled with "key", e.g. run pod on node which contains "app" key
+    - "DoesNotExist" means:  find a node which is NOT labelled with "key", e.g. run pod on node which does NOT contain "app" key.
+```     
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeaffinitypod1
+spec:
+  containers:
+  - name: nodeaffinity1
+    image: nginx:latest                                # ImageName and version
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app
+            operator: In                               #In, NotIn, Exists, DoesNotExist
+            values:
+            - production    
+```
+
+- "preferredDuringSchedulingIgnoredDuringExecution" means: Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, run this pod wherever it finds. 
+- "weight" = preference weight. If weight is more than other weights, this weight is higher priority than others. 
+    
+``` 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeaffinitypod2
+spec:
+  containers:
+  - name: nodeaffinity2
+    image: nginx:latest
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1                 # if there is a pod with "app=production", run on that pod
+        preference:               # if there is NOT a pod with "app=production" and there is NOT any other preference, 
+          matchExpressions:       # run this pod wherever scheduler finds a node. 
+          - key: app
+            operator: In
+            values:
+            - production
+      - weight: 2                 # this is highest prior, weight:2 > weight:1
+        preference:               # if there is a pod with "app=test", run on that pod
+          matchExpressions:       # if there is NOT a pod with "app=test", goto weight:1 preference
+          - key: app
+            operator: In
+            values:
+            - test
+```
+- With "Exists", run pods on a node which is labelled with only key (e.g. "app")
+    
+```    
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodeaffinitypod3
+spec:
+  containers:
+  - name: nodeaffinity3
+    image: nginx:latest
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: app
+            operator: Exists 
+```
+    
+#### Pod Affinity      
 
 ### Taint and Toleration <a name="taint-tolereation"></a>
 
