@@ -124,6 +124,10 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/152176550-73e8c06c-0f5a-42ed-ab06-171e545ee078.png)
 
+- Enter into the pod and see the path that the volume is mounted ("kubectl exec -it <PodName> -- bash"):
+
+![image](https://user-images.githubusercontent.com/10358317/152181824-96dfbc72-ee0f-45c0-b896-b6fea7b9f7a5.png)
+
 - If the new node is added into the cluster and this running pod is stopped running on the main minikube node, the pod will start on the another node.
 - With this scenario, we can see the followings:
    - Deployment always run pod on the cluster.
@@ -139,7 +143,11 @@ spec:
 - Second pod also is connected to the same volume again.
 
 ![image](https://user-images.githubusercontent.com/10358317/152179192-d6030535-8a54-451a-b97a-319ba2549870.png)
-
+   
+- Enter into the 2nd pod and see the path that the volume is mounted ("kubectl exec -it <PodName> -- bash"). When you see the files at the same path on the 2nd pod, volume files are same:
+   
+![image](https://user-images.githubusercontent.com/10358317/152182472-e67f7162-a4cf-4034-aa98-375860fbd38d.png)
+  
 - Delete minikube, docker container, volume, network:
 
 ![image](https://user-images.githubusercontent.com/10358317/152180006-911adcbc-0d5a-4d6d-9364-eb7fe1bca0d2.png)
