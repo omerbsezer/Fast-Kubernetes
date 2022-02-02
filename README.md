@@ -1049,7 +1049,40 @@ spec:
 ### Stateful Set <a name="statefulset"></a>
 
 ### Job, CronJob <a name="job"></a>
+    
+### Dashboard <a name="dashboard"></a>
+- You can view followings using default K8s dashboard:
+    - All Workloads on Cluster: Memory and CPU usages, update time, image name, node name, status
+    - Cron Jobs and Jobs
+    - Daeamon Sets
+    - Deployments, Replicasets
+    - Pods, Stateful Sets
+    - Services, Endpoints, IPs, Ports,
+    - Persistent Volume Claims, Persisten Volumes
+    - Config Maps,
+    - Secrets, Storage Classes
+    - Cluster Roles and Role Binding
+    - Namespaces
+    - Network Policies
+    - Nodes
+    - Roles and Role Bindings
+    - Service Accounts
+     
+``` 
+# if working on minikube
+minikube addons enable dashboard
+minikube addons enable metrics-server
+minikube dashboard
+# if running on WSL/WSL2 to open browser
+sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+```     
+    
+![image](https://user-images.githubusercontent.com/10358317/152139985-38a0fd99-e0fd-4fc2-b734-2b3352ebe4e0.png)
+    
+![image](https://user-images.githubusercontent.com/10358317/152140937-979a291e-16cc-4868-b0ce-28530461282e.png)
+    
 
+    
 ### Ingress <a name="ingress"></a>
 - Ingress is not a Service type, but it acts as the entry point for your cluster.
     
