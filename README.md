@@ -1153,7 +1153,11 @@ spec:
 ### Stateful Set <a name="statefulset"></a>
 
 ### Job, CronJob <a name="job"></a>
-        
+    
+### Role Based Access Control <a name="rbac"></a>  
+    
+### Authentication <a name="authentication"></a>  
+    
 ### Ingress <a name="ingress"></a>
 - Ingress is not a Service type, but it acts as the entry point for your cluster.    
     
@@ -1193,7 +1197,9 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     
 ![image](https://user-images.githubusercontent.com/10358317/152142655-39dbdddc-eddc-490a-a181-6a90c17e3704.png)
 
-
+## Helm <a name="helm"></a>
+    
+## Service Mesh <a name="servicemesh"></a>    
     
 ## Play With Kubernetes <a name="playWithKubernetes"></a>
 
