@@ -1049,7 +1049,63 @@ spec:
 Goto the scenario: [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)
     
 ### Persistent Volume and Persistent Volume Claim <a name="pvc"></a>
+- Volumes are ephemeral/temporary area that stores data. Emptydir and hostpath create volume on node which runs related pod.
+- In the scenario of creating Mysql pod on cluster, we can not use emptydir and hostpath for long term. Because they don't provide the long term/persistent volume. 
+- Persistent volume provides long term storage area that runs out of the cluster.
+- There are many storage solutions that can be enabled on the cluster: nfs, iscsi, azure disk, aws ebs, google pd, cephfs. 
+- Container Storage Interface (CSI) provides the connection of K8s cluster and different storage solution. 
 
+#### Persistent Volume 
+- "accessModes" types:
+    - "ReadWriteOnce": read/write for only 1 node.
+    - "ReadOnlyMany" : only read for many nodes.
+    - "ReadWriteOnce": read/write for many nodes.
+- "persistentVolumeReclaimPolicy" types: it defines the behaviour of volume after the end of using volume.
+    - "Retain" : volume remains with all data after using it.
+    - "Recycle": volume is not deleted but all data in the volume is deleted. We get empty volume if it is chosen.
+    - "Delete" : volume is delete after using it.
+
+```
+# Creating Persistent Volume on NFS Server on the network    
+apiVersion: v1                               
+kind: PersistentVolume
+metadata:
+   name: mysqlpv
+   labels:
+     app: mysql                                # labelled PV with "mysql"
+spec:
+  capacity:
+    storage: 5Gi                               # 5Gibibyte = power of 2; 5GB= power of 10
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle       # volume is not deleted, all data in the volume will be deleted.
+  nfs:
+    path: /tmp                                 # binds the path on the NFS Server
+    server: 10.255.255.10                      # IP of NFS Server
+``` 
+    
+#### Persistent Volume Claim (PVC)  
+- We should create PVC to use volume. With PVC, existed PVs can be chosen.
+- The reason why K8s manage volume with 2 files (PVC and PV) is to seperate the management of K8s Cluster (PV) and using of volume (PVC).
+- If there is seperate role of system management of K8s cluster, system manager creates PV (to connect different storage vendors), developers only use existed PVs with PVCs.    
+```    
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysqlclaim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  volumeMode: Filesystem                    # VolumeMode
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: ""
+  selector:
+    matchLabels:                          
+      app: mysql                            # chose/select "mysql" PV that is defined above.
+ ```
+    
 ### Storage Class <a name="storageclass"></a>
 
 ### Stateful Set <a name="statefulset"></a>
