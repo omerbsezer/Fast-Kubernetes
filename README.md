@@ -1,10 +1,12 @@
 # Fast-Kubernetes
-This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, PV, PVC, Secret, Kubeadm, etc.) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
+This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, PV, PVC, Secret, Kubeadm, etc.) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
+
 
 ## Prerequisite
-- Have a knowledge of Container Technology. You can learn it from here => [Fast-Docker](https://github.com/omerbsezer/Fast-Docker)
+- Have a knowledge of Container Technology (Docker). You can learn it from here => [Fast-Docker](https://github.com/omerbsezer/Fast-Docker)
 
 **Keywords:** Containerization, Kubernetes, Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, Volume, Cheatsheet.
+**Note:** K8s objects and objects feature can be updated/changed in time. While creating this repo, the version of K8s is v1.22.3.
 
 # Quick Look (HowTo): Application Scenarios
 - [App: Creating First Pod Image Declerative Way (With File)]()
