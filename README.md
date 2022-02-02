@@ -1151,7 +1151,15 @@ spec:
 - When deployment/pod request PVC (claim), storage class provides volume on the infrastructure automatically. 
     
 ### Stateful Set <a name="statefulset"></a>
+- Pods/Deployments are stateless objects. Stateful set provides to run stateful apps.
+- Differences between Deployment and Statefulset:
+    - Name of the pods in the statefulset are not assigned randomly. It gives name statefulsetName_0,1,2,3.
+    - Pods in the statefulset are not created at the same time. Pods are created in order (new pod creation waits until previous pod's running status).
+    - When scaling down of statefulset, pods are deleted in random. Pods are deleted in order.
+    - If PVC is defined in the statefulset, each pod in the statefulset has own PV
 
+Goto the scenario: [App: K8s Stateful Sets - Cassandra Installation]()  
+    
 ### Job, CronJob <a name="job"></a>
     
 ### Role Based Access Control <a name="rbac"></a>  
