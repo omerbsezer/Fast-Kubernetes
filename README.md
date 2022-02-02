@@ -12,6 +12,7 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
+- [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)  
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -1105,6 +1106,8 @@ spec:
     matchLabels:                          
       app: mysql                            # chose/select "mysql" PV that is defined above.
  ```
+
+Goto the scenario: [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
     
 ### Storage Class <a name="storageclass"></a>
 
@@ -1141,6 +1144,7 @@ minikube dashboard
 # if running on WSL/WSL2 to open browser
 sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
 ```     
+- to see better resolution, click on it
     
 ![image](https://user-images.githubusercontent.com/10358317/152148024-6ec65b33-9fd0-42eb-89c3-927e453553a2.png)
     
