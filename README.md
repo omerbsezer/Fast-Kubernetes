@@ -43,6 +43,7 @@ This repo covers Kubernetes details (Kubectl, Pod, Deployment, Service, ConfigMa
     - [Stateful Set](#statefulset)
     - [Job, CronJob](#job)
     - [Ingress](#ingress)
+    - [Dashboard](#dashboard)
 - [Play With Kubernetes](#playWithKubernetes)
 - [Kuberbetes Package Manager: Helm](#helm)
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
@@ -1041,6 +1042,7 @@ spec:
     effect: "NoSchedule"    
 ```    
 ### Deamon Set <a name="daemon-set"></a>
+- It provides to run pods on EACH nodes. It can be configured to run only specific nodes    
 
 ### Persistent Volume and Persistent Volume Claim <a name="pvc"></a>
 
@@ -1049,6 +1051,9 @@ spec:
 ### Stateful Set <a name="statefulset"></a>
 
 ### Job, CronJob <a name="job"></a>
+        
+### Ingress <a name="ingress"></a>
+- Ingress is not a Service type, but it acts as the entry point for your cluster.    
     
 ### Dashboard <a name="dashboard"></a>
 - You can view followings using default K8s dashboard:
@@ -1081,10 +1086,9 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     
 ![image](https://user-images.githubusercontent.com/10358317/152140937-979a291e-16cc-4868-b0ce-28530461282e.png)
     
+![image](https://user-images.githubusercontent.com/10358317/152142655-39dbdddc-eddc-490a-a181-6a90c17e3704.png)
 
-    
-### Ingress <a name="ingress"></a>
-- Ingress is not a Service type, but it acts as the entry point for your cluster.
+
     
 ## Play With Kubernetes <a name="playWithKubernetes"></a>
 
