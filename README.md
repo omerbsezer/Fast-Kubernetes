@@ -1086,7 +1086,7 @@ minikube dashboard
 sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
 ```     
     
-![image](https://user-images.githubusercontent.com/10358317/152139985-38a0fd99-e0fd-4fc2-b734-2b3352ebe4e0.png)
+![image](https://user-images.githubusercontent.com/10358317/152148024-6ec65b33-9fd0-42eb-89c3-927e453553a2.png)
     
 ![image](https://user-images.githubusercontent.com/10358317/152147538-80b77b6f-6ae1-4bca-90ef-1cf2049d56fa.png)
     
