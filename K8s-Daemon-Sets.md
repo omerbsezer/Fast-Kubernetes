@@ -66,10 +66,6 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/152147031-b934d393-8caf-49c3-ac4c-3b704f2d646a.png)
 
-- See the pods on dashboard:
-
-![image](https://user-images.githubusercontent.com/10358317/152147538-80b77b6f-6ae1-4bca-90ef-1cf2049d56fa.png)
-
 - Add new node (3rd):
 
 ![image](https://user-images.githubusercontent.com/10358317/152151984-ac8fd54c-676d-4be4-b2f1-4356613a8fed.png)
