@@ -157,6 +157,12 @@ kubectl logs -f multicontainer -c sidecarcontainer
 ```
 kubectl port-forward pod/multicontainer 80:80   ## host:container port, if command is not run, port is not opened
 kubectl port-forward pod/multicontainer 8080:80  # when browsing 127.0.0.1:8080, host:8080 goes to pod:80 and directs traffic.
+kubectl port-forward <pod-name> <locahost-port>:<pod-port>
+kubectl port-forward deployment/mydeployment 5000 6000  # Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the deployment
+kubectl port-forward service/myservice 5000 6000 # Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in a pod selected by the service
+kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000 # Listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
+kubectl port-forward pod/mypod :5000 # Listen on a random port locally, forwarding to 5000 in the pod
+kubectl port-forward --address 0.0.0.0 pod/mypod 8888:5000  # Listen on port 8888 on all addresses, forwarding to 5000 in the pod
 ```
 
 #### label ve selector
