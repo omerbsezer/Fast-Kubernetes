@@ -10,23 +10,23 @@ This scenario shows how K8s statefulset object works on minikube
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: nginx                                     # create a service with "nginx" name
   labels:
     app: nginx
 spec:
   ports:
   - port: 80
-    name: web
-  clusterIP: None                                 # create headless service if clusterIP:None
-  selector:                                       # when requesting service name, service returns one of the IP of pods
-    app: nginx                                    # headless service provides to reach pod with podName.serviceName
+    name: web                                     # create headless service if clusterIP:None
+  clusterIP: None                                 # when requesting service name, service returns one of the IP of pods
+  selector:                                       # headless service provides to reach pod with podName.serviceName
+    app: nginx                                    # selects/binds to app:nginx (defined in: spec > template > metadata > labels > app:nginx)
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: web                                        # statefulset name
+  name: web                                       # statefulset name: web
 spec:
-  serviceName: nginx
+  serviceName: nginx                              # binds/selects service (defined in metadata > name: nginx)            
   replicas: 3
   selector:
     matchLabels:
@@ -34,7 +34,7 @@ spec:
   template:
     metadata:
       labels:
-        app: nginx
+        app: nginx                            
     spec:
       containers:
       - name: nginx
