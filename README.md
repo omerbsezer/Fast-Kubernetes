@@ -1162,7 +1162,23 @@ spec:
 Goto the scenario: [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
     
 ### Job, CronJob <a name="job"></a>
+#### Job Object 
+- "A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate". If the container is not successfully completed, it will recreated again.  
+- "When a specified number of successful completions is reached, the task (ie, Job) is complete."
+- After finishing job, pods are not deleted. Logs in the pods can be viewed.
+- Job is used for the task that runs once (e.g. maintanence scripts, scripts that are used for creating DB)
+- Job is also used for processing tasks that are stored in queue or bucket. 
+
+```  
+spec:
+  parallelism: 2               # each step how many pods start in parallel at a time
+  completions: 10              # number of pods that run and complete job at the end of the time
+  backoffLimit: 5              #
+  activeDeadlineSeconds: 100
+```  
+Goto the scenario: [App: K8s Job]()
     
+#### Cron Job Object     
 ### Role Based Access Control <a name="rbac"></a>  
     
 ### Authentication <a name="authentication"></a>  
