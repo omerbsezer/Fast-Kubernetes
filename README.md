@@ -1173,8 +1173,8 @@ Goto the scenario: [App: K8s Stateful Sets - Nginx](https://github.com/omerbseze
 spec:
   parallelism: 2               # each step how many pods start in parallel at a time
   completions: 10              # number of pods that run and complete job at the end of the time
-  backoffLimit: 5              #
-  activeDeadlineSeconds: 100
+  backoffLimit: 5              # to tolerate fail number of job, after 5 times of failure, not try to continue job, fail the job
+  activeDeadlineSeconds: 100   # if this job is not completed in 100 seconds, fail the job
 ```  
 Goto the scenario: [App: K8s Job]()
     
