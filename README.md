@@ -1222,10 +1222,72 @@ spec:
 ``` 
 
 Goto the scenario: [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
-    
-### Role Based Access Control <a name="rbac"></a>  
-    
+
 ### Authentication <a name="authentication"></a>  
+- It is related to authenticate user to use specific cluster. 
+- Theory of the creating authentication is explained in short:
+    - user creates .key (key file) and .csr (certificate signing request file includes username and roles) with openssl application
+    - user sends .csr file to the K8s admin
+    - K8s admin creates a K8s object with this .csr file and creates .crt file (certification file) to give user
+    - user gets this .crt file (certification file) and creates credential (set-credentials) in user's pc with certification. 
+    - user creates context (set-context) with cluster and credential, and uses this context.
+    - now it requires to get/create authorization for the user.
+
+### Role Based Access Control (Authorization) <a name="rbac"></a>  
+- It provides to give authorization (role) to the specific user. 
+- "Role", "RoleBinding" K8s objects are used to bind users for specific "namespace". 
+- "ClusterRole", "ClusterRoleBinding" K8s objects are used to bind users for specific "namespace". 
+
+``` 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods"] # "services", "endpoints", "pods", "pods/log" etc.
+  verbs: ["get", "watch", "list"] # "get", "list", "watch", "create", "update", "patch", "delete"  
+``` 
+```     
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+- kind: User
+  name: username@hostname.net               # "name" is case sensitive, this name was defined while creating .csr file
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role #this must be Role or ClusterRole
+  name: pod-reader                         # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io    
+```       
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secret-reader
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get", "watch", "list"]    
+```  
+```    
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: read-secrets-global
+subjects:
+- kind: Group
+  name: DevTeam # Name is case sensitive
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io 
+```
     
 ### Ingress <a name="ingress"></a>
 - Ingress is not a Service type, but it acts as the entry point for your cluster.    
