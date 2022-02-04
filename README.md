@@ -1179,7 +1179,49 @@ spec:
 ```  
 Goto the scenario: [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
-#### Cron Job Object     
+#### Cron Job Object
+- Crob job is a scheduled job that can be started in scheduled time.
+
+```    
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                   7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *
+#
+# https://crontab.guru/ 
+# Examples: 
+#   5 * * * *   : (means) For every day start at minute 5: 00:05 - Second day 00:05 ....
+#   */5 * * * * : (means) At every 5th minute: 00:05 - 00:10 - 00:15 ... 
+#   0 */2 * * * : (means) At minute 0 pass every 2d hour: 00:00 - 02:00 - 04:00 ... 
+#  "*" means "every"
+#  "/" means "repetitive"
+``` 
+  
+``` 
+spec:
+  schedule: "*/1 * * * *"                        # At every 1st minute: 00:01 - 00:02 ...
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            imagePullPolicy: IfNotPresent
+            command:                             # start shell and echo  
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster 
+          restartPolicy: OnFailure
+``` 
+
+Goto the scenario: [App: K8s Cron Job]()
+    
 ### Role Based Access Control <a name="rbac"></a>  
     
 ### Authentication <a name="authentication"></a>  
