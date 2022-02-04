@@ -1245,9 +1245,9 @@ metadata:
   namespace: default
   name: pod-reader
 rules:
-- apiGroups: [""] # "" indicates the core API group
-  resources: ["pods"] # "services", "endpoints", "pods", "pods/log" etc.
-  verbs: ["get", "watch", "list"] # "get", "list", "watch", "create", "update", "patch", "delete"  
+- apiGroups: [""]                            # "" indicates the core API group
+  resources: ["pods"]                        # "services", "endpoints", "pods", "pods/log" etc.
+  verbs: ["get", "watch", "list"]            # "get", "list", "watch", "create", "update", "patch", "delete"  
 ``` 
 ```     
 apiVersion: rbac.authorization.k8s.io/v1
@@ -1257,11 +1257,11 @@ metadata:
   namespace: default
 subjects:
 - kind: User
-  name: username@hostname.net               # "name" is case sensitive, this name was defined while creating .csr file
+  name: username@hostname.net                 # "name" is case sensitive, this name was defined while creating .csr file
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: Role #this must be Role or ClusterRole
-  name: pod-reader                         # this must match the name of the Role or ClusterRole you wish to bind to
+  name: pod-reader                            # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io    
 ```       
 ```
@@ -1281,7 +1281,7 @@ metadata:
   name: read-secrets-global
 subjects:
 - kind: Group
-  name: DevTeam # Name is case sensitive
+  name: DevTeam                              # Name is case sensitive
   apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
