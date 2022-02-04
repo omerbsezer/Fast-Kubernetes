@@ -1297,7 +1297,33 @@ roleRef:
     
     
 ### Ingress <a name="ingress"></a>
-- Ingress is not a Service type, but it acts as the entry point for your cluster.    
+- "An API object that manages external access to the services in a cluster, typically HTTP." (ref: Kubernetes.io)
+- "Ingress may provide load balancing, SSL termination and name-based virtual hosting" (ref: Kubernetes.io)
+- Ingress is not a Service type, but it acts as the entry point for your cluster.  
+- Ingress resource only supports rules for directing HTTP(S) (L7) traffic.    
+
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+```
+    
+Goto the scenario: [App: K8s Ingress]()    
     
 ### Dashboard <a name="dashboard"></a>
 - You can view followings using default K8s dashboard:
