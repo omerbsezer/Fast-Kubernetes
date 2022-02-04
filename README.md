@@ -18,6 +18,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
 - [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
+- [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -1220,7 +1221,7 @@ spec:
           restartPolicy: OnFailure
 ``` 
 
-Goto the scenario: [App: K8s Cron Job]()
+Goto the scenario: [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
     
 ### Role Based Access Control <a name="rbac"></a>  
     
