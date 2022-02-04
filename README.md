@@ -17,6 +17,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
+- [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -1176,7 +1177,7 @@ spec:
   backoffLimit: 5              # to tolerate fail number of job, after 5 times of failure, not try to continue job, fail the job
   activeDeadlineSeconds: 100   # if this job is not completed in 100 seconds, fail the job
 ```  
-Goto the scenario: [App: K8s Job]()
+Goto the scenario: [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
 #### Cron Job Object     
 ### Role Based Access Control <a name="rbac"></a>  
