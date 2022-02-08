@@ -228,6 +228,11 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/152983854-c35588c1-170a-4d02-9573-0e712876bad2.png)
 
 - Hence, we can open services running on the cluster with one IP to the out of the cluster. 
+
+- Delete all yaml file and minikube.
+
+![image](https://user-images.githubusercontent.com/10358317/152985795-d69c713e-b6ae-417e-bf88-0f397ebdaaee.png)
+
  
 ### References
 
