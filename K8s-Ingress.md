@@ -1,6 +1,6 @@
 ## App: K8s Ingress
 
-This scenario shows how K8s ingress works on minikube
+This scenario shows how K8s ingress works on minikube. When browsing urls, ingress controller (nginx) directs traffic to the related services. 
 
 ### Steps
 
@@ -212,11 +212,11 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/152983054-66993f34-0d4b-4381-8ae6-ec8441cb6366.png)
 
-- When running on browser, "webapp.com/blue":
+- When running on browser the url "webapp.com/blue", one of the blue app containers return response.
 
 ![image](https://user-images.githubusercontent.com/10358317/152982739-c86fac86-c0d6-465b-bc4e-391d4e56eb9f.png)
 
-- When running on browser, "webapp.com/green":
+- When running on browser the url "webapp.com/green", one of the green app containers return response.
 
 ![image](https://user-images.githubusercontent.com/10358317/152983147-057503d0-d2f1-45a2-bc35-0117676a2abb.png)
 
@@ -224,7 +224,8 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/152983854-c35588c1-170a-4d02-9573-0e712876bad2.png)
 
-
+- Hence, we can open services running on the cluster with one IP to the out of the cluster. 
+ 
 ### References
 
 https://github.com/aytitech/k8sfundamentals/tree/main/ingress
