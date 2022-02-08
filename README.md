@@ -1301,9 +1301,15 @@ roleRef:
 - "An API object that manages external access to the services in a cluster, typically HTTP." (ref: Kubernetes.io)
 - "Ingress may provide load balancing, SSL termination and name-based virtual hosting" (ref: Kubernetes.io)
 - Ingress is not a Service type, but it acts as the entry point for your cluster.  
-- Ingress resource only supports rules for directing HTTP(S) (L7) traffic.    
+- Ingress resource only supports rules for directing HTTP(S) (L7) traffic.
+- "Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource." (ref: Kubernetes.io)
+- Ingress controller is a L7 Application Loadbalancer that works in K8s according to K8s specification. 
+    - Ingress Controllers: Nginx, HAproxy, Traefik      
+ 
+![image](https://user-images.githubusercontent.com/10358317/152972146-a1c3eee3-83c6-4c6a-ba7f-1c70e2189f3d.png) (ref: Kubernetes.io)
 
 ```
+# Simple Ingress Object Definition    
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
