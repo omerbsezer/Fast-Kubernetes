@@ -1306,7 +1306,9 @@ roleRef:
 - Ingress controller is a L7 Application Loadbalancer that works in K8s according to K8s specification. 
     - Ingress Controllers: Nginx, HAproxy, Traefik      
  
-![image](https://user-images.githubusercontent.com/10358317/152972146-a1c3eee3-83c6-4c6a-ba7f-1c70e2189f3d.png) (ref: Kubernetes.io)
+![image](https://user-images.githubusercontent.com/10358317/152972146-a1c3eee3-83c6-4c6a-ba7f-1c70e2189f3d.png) 
+    
+(ref: Kubernetes.io)
 
 ```
 # Simple Ingress Object Definition    
