@@ -2,6 +2,9 @@
 
 This scenario shows how K8s ingress works on minikube. When browsing urls, ingress controller (nginx) directs traffic to the related services. 
 
+![image](https://user-images.githubusercontent.com/10358317/152985194-76a3cb57-70c4-438a-a714-eae7ef287d83.png)  (ref: Kubernetes.io)
+
+
 ### Steps
 
 - Run minikube on Windows Hyperv or Virtualbox. In this scenario:
