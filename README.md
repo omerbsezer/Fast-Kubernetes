@@ -19,7 +19,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
 - [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
 - [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
-- [App: K8s Ingress]()
+- [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)   
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
@@ -1330,7 +1330,7 @@ spec:
               number: 80
 ```
     
-Goto the scenario: [App: K8s Ingress]()    
+Goto the scenario: [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)    
     
 ### Dashboard <a name="dashboard"></a>
 - You can view followings using default K8s dashboard:
