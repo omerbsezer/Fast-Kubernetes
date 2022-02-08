@@ -51,6 +51,17 @@ spec:
                 name: greensvc
                 port:
                   number: 80
+```
+
+- Copy and save (below) as file on your PC (todoingress.yaml). 
+
+```     
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todoingress
+spec:
+  rules:
     - host: todoapp.com
       http:
         paths:
@@ -195,7 +206,7 @@ spec:
 
 - Run "deploy.yaml" and "appingress.yaml" to create deployments and services
 
-![image](https://user-images.githubusercontent.com/10358317/152981672-06a18f3a-4d9c-4960-8c2e-1fd931d8ad11.png)
+![image](https://user-images.githubusercontent.com/10358317/152984112-aa3b03db-9e8f-4fb2-acf0-4b1150982f29.png)
 
 - Add url-ip on Windows/System32/Drivers/etc/hosts file: 
 
@@ -215,3 +226,5 @@ spec:
 
 
 ### References
+
+https://github.com/aytitech/k8sfundamentals/tree/main/ingress
