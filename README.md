@@ -10,6 +10,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 **Note:** K8s objects and objects feature can be updated/changed in time. While creating this repo, the version of K8s is v1.22.3.
 
 # Quick Look (HowTo): Application Scenarios
+- [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
 - [App: Creating First Pod Image Declerative Way (With File)]()
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
@@ -185,7 +186,10 @@ kubectl exec -it firstpod -- /bin/sh
 ```
 kubectl delete pods firstpod
 ```
+Goto the Scenario: [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
+
 #### Pod: YAML File
+- - Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
 - Declerative way (with file), Imperative way (with command)
 - Template:
 ```
