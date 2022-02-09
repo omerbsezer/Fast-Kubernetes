@@ -34,7 +34,7 @@ This scenario shows:
   
  - Run command on pod ("kubectl exec <podName> -- <command>"):
   
-  ![image](https://user-images.githubusercontent.com/10358317/153185867-fbe27ddb-619d-4d3e-bbce-3f021c073ad8.png)
+   ![image](https://user-images.githubusercontent.com/10358317/153185867-fbe27ddb-619d-4d3e-bbce-3f021c073ad8.png)
   
   - Entering into the pod and running bash or sh on pod:
     - "kubectl exec -it <podName> -- bash"
@@ -43,7 +43,7 @@ This scenario shows:
       - "exit" command
       - "CTRL+P+Q"
  
-   ![image](https://user-images.githubusercontent.com/10358317/153186349-4dff117c-66ca-46a9-8030-2bdf27e6e0bb.png)
+    ![image](https://user-images.githubusercontent.com/10358317/153186349-4dff117c-66ca-46a9-8030-2bdf27e6e0bb.png)
   
 - Delete pod:
   
