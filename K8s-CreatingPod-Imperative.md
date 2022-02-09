@@ -32,7 +32,7 @@ This scenario shows:
   
   ![image](https://user-images.githubusercontent.com/10358317/153185353-1969fe8c-e166-492e-b55d-2d96cedf3709.png)
   
- - Run command on pod ("kubectl exec <podName> -- <command>"):
+ - Run command on pod ("kubectl exec **podName** -- **command**"):
   
    ![image](https://user-images.githubusercontent.com/10358317/153185867-fbe27ddb-619d-4d3e-bbce-3f021c073ad8.png)
   
