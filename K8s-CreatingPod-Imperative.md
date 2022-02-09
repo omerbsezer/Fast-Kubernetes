@@ -15,7 +15,7 @@ This scenario shows:
   ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
 
 - Run pod in imperative way
-  - "kubectl run <podName> --image=<imageName>"
+  - "kubectl run **podName** --image=**imageName**"
   - "kubectl get pods -o wide" : get info about pods
 
   ![image](https://user-images.githubusercontent.com/10358317/153183932-f8cd1547-3b10-47af-be3a-a1aedbfcf4ad.png)
@@ -37,8 +37,8 @@ This scenario shows:
    ![image](https://user-images.githubusercontent.com/10358317/153185867-fbe27ddb-619d-4d3e-bbce-3f021c073ad8.png)
   
   - Entering into the pod and running bash or sh on pod:
-    - "kubectl exec -it <podName> -- bash"
-    - "kubectl exec -it <podName> -- /bins/sh"
+    - "kubectl exec -it **podName** -- bash"
+    - "kubectl exec -it **podName** -- /bins/sh"
     - exit from pods 2 ways:
       - "exit" command
       - "CTRL+P+Q"
