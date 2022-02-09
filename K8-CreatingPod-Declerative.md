@@ -7,7 +7,7 @@ This scenario shows:
 
 ### Steps
 
-- Run minikube  (in this scenario, K8s runs on WSL2- Ubuntu 20.04)
+- Run minikube  (in this scenario, K8s runs on WSL2- Ubuntu 20.04) ("minikube start")
 
   ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
   
@@ -35,15 +35,15 @@ spec:
    
    ![image](https://user-images.githubusercontent.com/10358317/153198471-55d92940-1141-4e04-a701-6356daaf0181.png)
   
-- Describe firstpod:
+- Describe firstpod ("kubectl describe pods firstpod"):
 
   ![image](https://user-images.githubusercontent.com/10358317/153199893-95bfbef0-61b4-4c41-bd89-481d976c272c.png)
 
-- Delete pod and get all pods in the default namepace:
+- Delete pod and get all pods in the default namepace  ("kubectl delete -f pod1.yaml"):
 
   ![image](https://user-images.githubusercontent.com/10358317/153200081-3f7823a8-e5d0-4143-aac4-157948fe2a61.png)
   
- - If you want to delete minikube:
+ - If you want to delete minikube  ("minikube delete"):
    
    ![image](https://user-images.githubusercontent.com/10358317/153200584-01971754-0739-4c8f-8446-d2d3ab5bed31.png)
 
