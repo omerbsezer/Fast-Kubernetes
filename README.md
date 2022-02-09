@@ -170,38 +170,18 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 **Goto the Scenario:** [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
 
 #### Pod: YAML File
-- - Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
+- Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
 - Declerative way (with file), Imperative way (with command)
-- Template:
+- Template of Yaml File:
 ```
 apiVersion:
 kind:
 metadata:
 spec:
 ```
-- First pod (nginx) with file (filename: pod1.yaml):
-```
-apiVersion: v1      
-kind: Pod
-metadata:
-  name: firstpod
-  labels:
-    app: frontend
-spec:
-  containers:
-  - name: nginx
-    image: nginx:latest
-    ports:
-    - containerPort: 80
-    env:
-      - name: USER
-    command: ['sh', '-c', 'echo "Hello, Kubernetes!" && sleep 20']  
-```
-- Run file (first goto pod1.yaml path):
-```
-kubectl apply -f pod1.yaml
-```
-![image](https://user-images.githubusercontent.com/10358317/148652119-59556685-be97-4b39-a5aa-fd5c075425bf.png)
+- Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information about the pod's kubectl commands.
+
+**Goto the Scenario:** [App: K8s Creating Pod - Declerative Way]() 
 
 #### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
