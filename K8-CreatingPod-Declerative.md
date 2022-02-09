@@ -32,8 +32,8 @@ spec:
 ```
 
  - Apply/run the file to create pod in declerative way ("kubectl apply -f pod1.yaml"):
-  
-  ![image](https://user-images.githubusercontent.com/10358317/153198471-55d92940-1141-4e04-a701-6356daaf0181.png)
+   
+   ![image](https://user-images.githubusercontent.com/10358317/153198471-55d92940-1141-4e04-a701-6356daaf0181.png)
   
 - Describe firstpod:
 
