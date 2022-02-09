@@ -12,7 +12,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 # Quick Look (HowTo): Application Scenarios
 - [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
 - [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
-- [App: Multicontainer in a Pod: Sidecar and Volume Application]()
+- [App: K8s Multicontainer in a Pod: Sidecar and Volume Application]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
@@ -231,6 +231,9 @@ spec:
     image: busybox
     command: ['sh', '-c', "until nslookup myservice; do echo waiting for myservice; sleep 2; done"]
 ```
+- Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
+
+**Goto the Scenario:** [App: K8s Multicontainer in a Pod: Sidecar and Volume Application]() 
 
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
 #### Label
@@ -413,6 +416,10 @@ spec:
 - spec>selector>matchLabels: select the pods' labels which are controlled by the deployment
 - template>metadata>labels: the labels of the Pods.
 - **Important:** spec>selector>matchLabels and template>metadata>labels should be same to run by deployment.
+ 
+- Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
+
+**Goto the Scenario:** [App: K8s Deployment]() 
     
 ### Replicaset <a name="replicaset"></a>
 - Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
