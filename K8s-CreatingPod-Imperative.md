@@ -1,10 +1,10 @@
 ## App: K8s Creating Pod - Imperative Way
 
 This scenario shows:
-- how to create basic K8s pod, 
-- getting more information about pod,
-- entering into pod,
-- deleting pod.
+- how to create basic K8s pod using imperative commands,
+- how to get more information about pod (to solve troubleshooting),
+- how to run commands in pod,
+- how to delete pod. 
 
 
 
