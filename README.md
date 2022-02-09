@@ -162,6 +162,10 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 - Containers in the same Pod run on the same Node (computer), and these containers can communicate with each other on the localhost. 
 - Creation of the first pod, IMPERATIVE WAY (with command):
 - Please have a look Scenario (**Creating Pod - Imperative way**, below link) to learn more information about the pod's kubectl commands.
+    - how to create basic K8s pod using imperative commands,
+    - how to get more information about pod (to solve troubleshooting),
+    - how to run commands in pod,
+    - how to delete pod. 
 
 **Goto the Scenario:** [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
 
