@@ -161,9 +161,9 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 - Each pod has unique IP address.
 - Containers in the same Pod run on the same Node (computer), and these containers can communicate with each other on the localhost. 
 - Creation of the first pod, IMPERATIVE WAY (with command):
-- Please have a look Scenario (Creating Pod - Imperative way, below link) to learn more information about the pod's kubectl commands.
+- Please have a look Scenario (**Creating Pod - Imperative way**, below link) to learn more information about the pod's kubectl commands.
 
-Goto the Scenario: [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
+**Goto the Scenario:** [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
 
 #### Pod: YAML File
 - - Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
