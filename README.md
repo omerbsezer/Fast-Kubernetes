@@ -11,7 +11,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 
 # Quick Look (HowTo): Application Scenarios
 - [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
-- [App: Creating First Pod Image Declerative Way (With File)]()
+- [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [App: Multicontainer in a Pod: Sidecar and Volume Application]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
@@ -181,7 +181,7 @@ spec:
 ```
 - Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information about the pod's kubectl commands.
 
-**Goto the Scenario:** [App: K8s Creating Pod - Declerative Way]() 
+**Goto the Scenario:** [App: K8s Creating Pod - Declerative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 
 #### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
