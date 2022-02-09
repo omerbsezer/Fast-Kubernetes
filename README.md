@@ -545,7 +545,7 @@ spec:
       port: 80
       targetPort: 9376
 ```    
-Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
+**Goto the Scenario:** [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 #### Liveness Probe
@@ -558,12 +558,12 @@ Go to the Scenario: [App: K8s Service Implementations (ClusterIp, NodePort and L
 - initialDelaySeconds: waiting some period of time after starting. e.g. 5sec, after 5 sec start to run command
 - periodSeconds: in a period of time, run command. 
     
+**Goto the Scenario:** [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
+    
 #### Readiness Probe
 - "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services." (Ref: Kubernetes.io)
 - Readiness probe is similar to liveness pod. Only difference is to define "readinessProbe" instead of "livenessProbe".
 
-Go to the Scenario: [App: K8s Readiness Probe]()     
-    
     
 ### Resource Limit, Environment Variable <a name="environmentvariable"></a>
     
@@ -1020,7 +1020,7 @@ spec:
 - For example, you can run log application that runs on each node in the cluster and app sends these logs to the main log server. Manual configuration of each nodes could be headache in this sceneario, so using deamon sets would be beneficial to save time and effort.
 - If the new nodes are added on the cluster and running deamon sets on the cluster at that time period, default pods which are defined on deamon sets also run on the new nodes without any action. 
     
-Goto the scenario: [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)
+**Goto the scenario:** [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)
     
 ### Persistent Volume and Persistent Volume Claim <a name="pvc"></a>
 - Volumes are ephemeral/temporary area that stores data. Emptydir and hostpath create volume on node which runs related pod.
@@ -1080,7 +1080,7 @@ spec:
       app: mysql                            # chose/select "mysql" PV that is defined above.
  ```
 
-Goto the scenario: [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
+**Goto the scenario:** [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
     
 ### Storage Class <a name="storageclass"></a>
 - Creating volume with PV is manual way of creating volume. With storage classes, it can be automated. 
@@ -1128,7 +1128,7 @@ spec:
     - When scaling down of statefulset, pods are deleted in random. Pods are deleted in order.
     - If PVC is defined in the statefulset, each pod in the statefulset has own PV
 
-Goto the scenario: [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
+**Goto the scenario:** [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
     
 ### Job, CronJob <a name="job"></a>
 #### Job Object 
@@ -1145,7 +1145,7 @@ spec:
   backoffLimit: 5              # to tolerate fail number of job, after 5 times of failure, not try to continue job, fail the job
   activeDeadlineSeconds: 100   # if this job is not completed in 100 seconds, fail the job
 ```  
-Goto the scenario: [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
+**Goto the scenario:** [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
 #### Cron Job Object
 - Crob job is a scheduled job that can be started in scheduled time.
@@ -1188,7 +1188,7 @@ spec:
           restartPolicy: OnFailure
 ``` 
 
-Goto the scenario: [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
+**Goto the scenario:** [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 
 ### Authentication, Role Based Access Control, Service Account <a name="authentication"></a>
     
@@ -1295,7 +1295,7 @@ spec:
               number: 80
 ```
     
-Goto the scenario: [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)    
+**Goto the scenario:** [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)    
     
 ### Dashboard <a name="dashboard"></a>
 - You can view followings using default K8s dashboard:
@@ -1344,7 +1344,7 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     
 ## Kubernetes Commands Cheatsheet <a name="cheatsheet"></a>
 
-Goto: [Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
+**Goto:** [Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
