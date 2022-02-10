@@ -9,7 +9,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 
 **Note:** K8s objects and objects feature can be updated/changed in time. While creating this repo, the version of K8s is v1.22.3.
 
-# Quick Look (HowTo): Application Scenarios
+# Quick Look (HowTo): Application Scenarios - LABs
 - [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
 - [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
