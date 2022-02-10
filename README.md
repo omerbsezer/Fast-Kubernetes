@@ -14,6 +14,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
 - [App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
+- [App: K8s Rollout/Rollback]()
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
@@ -492,6 +493,8 @@ kubectl rollout status deployment rolldeployment -w     #show live status of the
 kubectl rollout pause deployment rolldeployment         #pause the rollout while updating pods 
 kubectl rollout resume deployment rolldeployment        #resume the rollout if rollout paused
 ```
+
+**Goto the Scenario:** [App: K8s Rollout/Rollback]()
     
 ### Network, Service <a name="network-service"></a>
 #### K8s Networking Requirements
