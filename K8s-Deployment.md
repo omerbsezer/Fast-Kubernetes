@@ -1,8 +1,12 @@
-## App: K8s Multicontainer - Sidecar - Volume - Port-Forward 
+## App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding
 
 This scenario shows:
-- how to create deployment
-
+- how to create deployment,
+- how to get detail information of deployment and pods,
+- how to scale up and down of deployment,
+- how to connect to the one of the pods with bash,
+- how to show ethernet interfaces of the pod and ping other pods,
+- how to forward ports to see nginx server page using browser.
 
 ### Steps
 
