@@ -9,20 +9,20 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 
 **Note:** K8s objects and objects feature can be updated/changed in time. While creating this repo, the version of K8s is v1.22.3.
 
-# Quick Look (HowTo): Application Scenarios - LABs
-- [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
-- [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
-- [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
-- [App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
-- [App: K8s Rollout/Rollback]()
-- [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
-- [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
-- [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
-- [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
-- [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
-- [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
-- [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
-- [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)   
+# Quick Look (HowTo): Scenarios - LABs
+- [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
+- [LAB: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+- [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
+- [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
+- [LAB: K8s Rollout/Rollback]()
+- [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
+- [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
+- [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
+- [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
+- [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
+- [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
+- [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
+- [LAB: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)   
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 
 # Table of Contents
