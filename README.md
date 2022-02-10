@@ -13,7 +13,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
 - [App: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
-- [App: K8s Deployment]()  
+- [App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
 - [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
@@ -400,39 +400,9 @@ kubectl delete pods <oneofthepodname> #we can see another terminal, new pod will
 kubectl scale deployments firstdeployment --replicas=5
 kubectl delete deployments firstdeployment
 ```
+- Please have a look Scenario (below link) to learn more about the deployment and declerative way of creating deployment.
 
-- Declerative way:    
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: firstdeployment
-  labels:
-    team: development
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
-        app: frontend
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80    
-```
-- Template: pod definition
-- spec>selector>matchLabels: select the pods' labels which are controlled by the deployment
-- template>metadata>labels: the labels of the Pods.
-- **Important:** spec>selector>matchLabels and template>metadata>labels should be same to run by deployment.
- 
-- Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
-
-**Goto the Scenario:** [App: K8s Deployment]() 
+**Goto the Scenario:** [App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md) 
     
 ### Replicaset <a name="replicaset"></a>
 - Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
