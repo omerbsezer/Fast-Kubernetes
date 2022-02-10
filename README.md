@@ -223,12 +223,12 @@ metadata:
   name: initcontainerpod
 spec:
   containers:
-  - name: appcontainer
+  - name: appcontainer            # after initcontainer closed successfully, appcontainer starts.
     image: busybox
     command: ['sh', '-c', 'echo The app is running! && sleep 3600']
   initContainers:
   - name: initcontainer
-    image: busybox
+    image: busybox                # init container starts firstly and look up myservice is up or not in every 2 seconds, if there is myservice available, initcontainer closes. 
     command: ['sh', '-c', "until nslookup myservice; do echo waiting for myservice; sleep 2; done"]
 ```
 - Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
