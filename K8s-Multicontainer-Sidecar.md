@@ -66,7 +66,7 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/153412851-3f9763b8-9cfe-4822-b869-b2333f580e77.png)
 
-- We can forward the port of the pod to the host PC port:
+- We can forward the port of the pod to the host PC port (hostPort:containerPort, e.g: 8080:80):
 
 ![image](https://user-images.githubusercontent.com/10358317/153413173-55554d77-2531-4fbe-88e2-1e84ded64be7.png)
 
