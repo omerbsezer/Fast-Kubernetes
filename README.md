@@ -231,6 +231,18 @@ spec:
     image: busybox                # init container starts firstly and look up myservice is up or not in every 2 seconds, if there is myservice available, initcontainer closes. 
     command: ['sh', '-c', "until nslookup myservice; do echo waiting for myservice; sleep 2; done"]
 ```
+```
+# save as service.yaml and run after pod creation
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 9376
+```    
 - Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
 
 **Goto the Scenario:** [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
