@@ -1,9 +1,10 @@
-## App: K8s Muticontainer - Sidecar App
+## App: K8s Multicontainer - Sidecar - Volume - Port-Forward 
 
 This scenario shows:
-- how to create basic K8s pod using yaml file,
-- how to get more information about pod (to solve troubleshooting),
-
+- how to create multicontainer in one pod,
+- how the multicontainers in the same pod have same ethernet interface (IPs),
+- how the multicontainers in the same pod can reach the shared volume area,
+- how to make port-forwarding to host PC ports
 
 ### Steps
 
@@ -20,23 +21,23 @@ metadata:
   name: multicontainer
 spec:
   containers:
-  - name: webcontainer
-    image: nginx
-    ports:
+  - name: webcontainer                           # container name: webcontainer
+    image: nginx                                 # image from nginx
+    ports:                                       # opening-port: 80
       - containerPort: 80
     volumeMounts:
-    - name: sharedvolume
-      mountPath: /usr/share/nginx/html
+    - name: sharedvolume                          
+      mountPath: /usr/share/nginx/html          # path in the container
   - name: sidecarcontainer
-    image: busybox
-    command: ["/bin/sh"]
+    image: busybox                              # sidecar, second container image is busybox
+    command: ["/bin/sh"]                        # it pulls index.html file from github every 15 seconds
     args: ["-c", "while true; do wget -O /var/log/index.html https://raw.githubusercontent.com/omerbsezer/Fast-Kubernetes/main/index.html; sleep 15; done"]
     volumeMounts:
     - name: sharedvolume
       mountPath: /var/log
-  volumes:
-  - name: sharedvolume
-    emptyDir: {}
+  volumes:                                      # define emptydir temporary volume, when the pod is deleted, volume also deleted
+  - name: sharedvolume                          # name of volume 
+    emptyDir: {}                                # volume type emtpydir: creates empty directory where the pod is runnning
 ```
 
 - Create multicontainer on the pod (webcontainer and sidecarcontainer):
