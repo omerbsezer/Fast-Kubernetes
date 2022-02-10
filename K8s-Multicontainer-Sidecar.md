@@ -79,3 +79,6 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/153414407-3caf71b0-1286-42e8-87e4-d7d1ba47c356.png)
 
+- Exit from the container shell and delete multicontainer in a one pod:
+
+![image](https://user-images.githubusercontent.com/10358317/153416457-65d792fb-62f2-4015-aefd-8f7305379f23.png)
