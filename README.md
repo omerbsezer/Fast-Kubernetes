@@ -281,16 +281,9 @@ kubectl get pods -l "app in (firstapp,secondapp)" --show-labels # it means or =>
 ```
 #### Node Selector
 - With Node Selector, we can choose which pod run on which Node. 
-```
-spec:
-  containers:
-  - name: nginx
-    image: nginx:latest
-    ports:
-    - containerPort: 80
-  nodeSelector:
-    hddtype: ssd
-```
+ 
+ ![image](https://user-images.githubusercontent.com/10358317/153676102-03b2137b-ecc8-4802-9a9f-41694e1ce6fa.png)
+
 - It is also possible to label nodes with imperative way. 
 ```
 kubectl apply -f podnode.yaml
