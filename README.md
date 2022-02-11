@@ -16,7 +16,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
 - [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
-- [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
+- [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)
+- [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)    
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
@@ -612,101 +613,25 @@ spec:
 - Secret objects store the sensitive and secure information like username, password, ssh-tokens, certificates.     
 - Secrets (that you defined) and pods (that you defined) should be in the same namespace (e.g. if defined secret is in the "default" namespace, pod should be also in the "default" namepace). 
 - There are 8 different secret types (basic-auth, tls, ssh-auth, token, service-account-token, dockercfg, dockerconfigjson, opaque). Opaque type is the default one and mostly used.
-- Imperative way, run on the terminal: 
+- Imperative way, run on the terminal (geneneric in the command = opaque): 
 
 ``` 
-kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!" # (geneneric = opaque)
+kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!
 ```     
       
 - Imperative way with file to hide pass in the command history
+    
 ```     
 kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt
 ``` 
+    
 - Imperative way with json file to hide pass in the command history
+
 ``` 
 kubectl create secret generic mysecret4 --from-file=config.json
 ``` 
-- Declerative way: create file like below 
-``` 
-kubectl apply -f secret.yaml
-``` 
-
-``` 
-# Secret Object Creation    
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysecret
-type: Opaque
-stringData:
-  db_server: db.example.com
-  db_username: admin
-  db_password: P@ssw0rd!
-```
     
-- 2 options to use secrets in the pod: Volume and Environment Variable.     
-    
-``` 
-# Secret Object Usage with Secret Volume   
-apiVersion: v1
-kind: Pod
-metadata:
-  name: secretpodvolume
-spec:
-  containers:
-  - name: secretcontainer
-    image: ImageName
-    volumeMounts:                  # assign these objects into the container with files
-    - name: secret-vol             # enter into pod "kubectl exec -it secretpodvolume -- bash"
-      mountPath: /secret           # goto the path "cd secret" and read that file "cat db_password"       
-  volumes:
-  - name: secret-vol
-    secret:
-      secretName: mysecret3        # which secret object  
-``` 
-    
-``` 
-# Secret Object Usage with Environment variable  
-apiVersion: v1
-kind: Pod
-metadata:
-  name: secretpodenv
-spec:
-  containers:
-  - name: secretcontainer
-    image: nginx
-    env:
-      - name: username
-        valueFrom:
-          secretKeyRef:           # run "printenv" in the pod to see ev: "kubectl exec secretpodenv -- printenv"           
-            name: mysecret3       # "username" environment variable uses "db_username" from "mysecret3"  
-            key: db_username           
-      - name: password
-        valueFrom:
-          secretKeyRef:
-            name: mysecret3
-            key: db_password      # "password" environment variable uses "db_password" from "mysecret3"
-      - name: server
-        valueFrom:
-          secretKeyRef:
-            name: mysecret3
-            key: db_server        # "server" environment variable uses "db_server" from "mysecret3"
-```        
-
-``` 
-# Secret Object Usage with Environment Variable   
-apiVersion: v1
-kind: Pod
-metadata:
-  name: secretpodenvall
-spec:
-  containers:
-  - name: secretcontainer     # run "printenv" in the pod to see ev: "kubectl exec secretpodenvall -- printenv"   
-    image: nginx
-    envFrom:
-    - secretRef:
-        name: mysecret3
-``` 
+**Goto the Scenario:** [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)     
     
 ### ConfigMap <a name="configmap"></a>
 - It is same as "secrets". The difference is that configmap does not save sensitive information. It stores config variables.
