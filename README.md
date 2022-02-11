@@ -452,35 +452,13 @@ spec:
 - CPU resources are exactly limited when it defines. 
 - When pod requests memory resource more than limitation, pod changes its status to "OOMKilled" and restarts itself to limit memory usage.
 - Example (below), pod requests 64MB memory and 0.25 CPU core, uses maximum 256MB memory and 0.5 CPU core.
-```
-spec: 
-  containers:
-  - name: requestLimit
-    image: nginx
-    resources:
-      requests:
-        memory: "64M"
-        cpu: "250m"
-      limit:
-        memory: "256M"
-        cpu: "0.5" 
-```  
+
+![image](https://user-images.githubusercontent.com/10358317/153676383-eb783491-79da-4886-9728-55977b6bbd88.png)
+
 #### Environment Variable
 - Environment Variables can be defined for each pods in the YAML file.
     
-```
-spec: 
-  containers:
-  - name: environmentPod
-    image: nginx
-    ports:
-      - containerPort: 80
-    env:
-    - name: USER
-      value: "username"
-    - name: database
-      value: "testdb.test.com"
-``` 
+![image](https://user-images.githubusercontent.com/10358317/153676628-d103de1d-e223-451b-8337-cdfe1cebee66.png)
     
 **Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
     
