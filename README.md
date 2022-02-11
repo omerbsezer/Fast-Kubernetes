@@ -14,7 +14,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
 - [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
-- [LAB: K8s Rollout/Rollback]()
+- [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
@@ -169,7 +169,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
     - how to run commands in pod,
     - how to delete pod. 
 
-**Goto the Scenario:** [App: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
+**Goto the Scenario:** [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
 
 #### Pod: YAML File
 - Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
@@ -183,7 +183,7 @@ spec:
 ```
 - Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information about the pod's kubectl commands.
 
-**Goto the Scenario:** [App: K8s Creating Pod - Declerative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 
 #### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
@@ -247,7 +247,7 @@ spec:
 ```    
 - Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
 
-**Goto the Scenario:** [App: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
+**Goto the Scenario:** [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
 
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
 #### Label
@@ -403,7 +403,7 @@ kubectl delete deployments firstdeployment
 ```
 - Please have a look Scenario (below link) to learn more about the deployment and declerative way of creating deployment.
 
-**Goto the Scenario:** [App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md) 
+**Goto the Scenario:** [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md) 
     
 ### Replicaset <a name="replicaset"></a>
 - Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
@@ -416,85 +416,22 @@ kubectl delete deployments firstdeployment
 ### Rollout and Rollback <a name="rollout-rollback"></a>
 - Rollout and Rollback enable to update and return back containers that run under the deployment.
 - 2 strategy for rollout and rollback: Recreate and Rolling.
-- **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used:     
-```    
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: rcdeployment
-  labels:
-    team: development
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: recreate
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: recreate
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80
-``` 
-```    
-kubectl apply -f deployrecreate.yaml
-kubectl set image deployment rcdeployment nginx=httpd   #all old pods are deleted, and created newly. In a short time period, it can not be reached any sw service.  
-```        
-    
+- **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used:         
 - **Rolling Strategy (default)**: It updates pods step by step. Pods are updated step by step, all pods are not deleted at the same time.
-- maxUnavailable: At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
-- maxSurge: At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)    
-```
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: rolldeployment
-  labels:
-    team: development
-spec:
-  replicas: 10
-  selector:
-    matchLabels:
-      app: rolling
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 2   # Percentage also possible, e.g. 25%
-      maxSurge: 2         # Percentage also possible, e.g. 20%
-  template:
-    metadata:
-      labels:
-        app: rolling
-    spec:
-      containers:
-      - name: nginx
-        image: nginx
-        ports:
-        - containerPort: 80    
+    - **maxUnavailable:** At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
+    - **maxSurge:** At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)     
 ```    
-```    
-kubectl apply -f deployrolling.yaml --record
-kubectl set image deployment rolldeployment nginx=httpd:alpine --record     #  8<=nums of containers<=12
-kubectl rollout history deployment rolldeployment                  #shows record/history revisions 
-kubectl rollout history deployment rolldeployment --revision=2     #select the details of the one of the revisions
-kubectl rollout undo deployment rolldeployment                     #returns back to previous deployment revision
-kubectl rollout undo deployment rolldeployment --to-revision=1     #returns back to the selected revision=1
-kubectl rollout undo deployment rolldeployment --to-revision=3     #returns back to the selected revision=3
+kubectl set image deployment rolldeployment nginx=httpd:alpine --record     # change image of deployment
+kubectl rollout history deployment rolldeployment                           #shows record/history revisions 
+kubectl rollout history deployment rolldeployment --revision=2              #select the details of the one of the revisions
+kubectl rollout undo deployment rolldeployment                              #returns back to previous deployment revision
+kubectl rollout undo deployment rolldeployment --to-revision=1              #returns back to the selected revision=1
+kubectl rollout status deployment rolldeployment -w                         #show live status of the rollout deployment
+kubectl rollout pause deployment rolldeployment                             #pause the rollout while updating pods 
+kubectl rollout resume deployment rolldeployment                            #resume the rollout if rollout paused
 ```
-    
-```
-kubectl rollout status deployment rolldeployment -w     #show live status of the rollout deployment
-kubectl rollout pause deployment rolldeployment         #pause the rollout while updating pods 
-kubectl rollout resume deployment rolldeployment        #resume the rollout if rollout paused
-```
-
-**Goto the Scenario:** [App: K8s Rollout/Rollback]()
+  
+**Goto the Scenario:** [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
     
 ### Network, Service <a name="network-service"></a>
 #### K8s Networking Requirements
@@ -538,7 +475,7 @@ spec:
       port: 80
       targetPort: 9376
 ```    
-**Goto the Scenario:** [App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
+**Goto the Scenario:** [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
     
 ### Liveness and Readiness Probe <a name="liveness-readiness"></a>
 #### Liveness Probe
@@ -551,7 +488,7 @@ spec:
 - initialDelaySeconds: waiting some period of time after starting. e.g. 5sec, after 5 sec start to run command
 - periodSeconds: in a period of time, run command. 
     
-**Goto the Scenario:** [App: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
+**Goto the Scenario:** [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)   
     
 #### Readiness Probe
 - "Sometimes, applications are temporarily unable to serve traffic. For example, an application might need to load large data or configuration files during startup, or depend on external services after startup. In such cases, you don't want to kill the application, but you don't want to send it requests either. Kubernetes provides readiness probes to detect and mitigate these situations. A pod with containers reporting that they are not ready does not receive traffic through Kubernetes Services." (Ref: Kubernetes.io)
@@ -1013,7 +950,7 @@ spec:
 - For example, you can run log application that runs on each node in the cluster and app sends these logs to the main log server. Manual configuration of each nodes could be headache in this sceneario, so using deamon sets would be beneficial to save time and effort.
 - If the new nodes are added on the cluster and running deamon sets on the cluster at that time period, default pods which are defined on deamon sets also run on the new nodes without any action. 
     
-**Goto the scenario:** [App: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)
+**Goto the scenario:** [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)
     
 ### Persistent Volume and Persistent Volume Claim <a name="pvc"></a>
 - Volumes are ephemeral/temporary area that stores data. Emptydir and hostpath create volume on node which runs related pod.
@@ -1073,7 +1010,7 @@ spec:
       app: mysql                            # chose/select "mysql" PV that is defined above.
  ```
 
-**Goto the scenario:** [App: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
+**Goto the scenario:** [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
     
 ### Storage Class <a name="storageclass"></a>
 - Creating volume with PV is manual way of creating volume. With storage classes, it can be automated. 
@@ -1121,7 +1058,7 @@ spec:
     - When scaling down of statefulset, pods are deleted in random. Pods are deleted in order.
     - If PVC is defined in the statefulset, each pod in the statefulset has own PV
 
-**Goto the scenario:** [App: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
+**Goto the scenario:** [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
     
 ### Job, CronJob <a name="job"></a>
 #### Job Object 
@@ -1138,7 +1075,7 @@ spec:
   backoffLimit: 5              # to tolerate fail number of job, after 5 times of failure, not try to continue job, fail the job
   activeDeadlineSeconds: 100   # if this job is not completed in 100 seconds, fail the job
 ```  
-**Goto the scenario:** [App: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
+**Goto the scenario:** [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
 #### Cron Job Object
 - Crob job is a scheduled job that can be started in scheduled time.
@@ -1181,7 +1118,7 @@ spec:
           restartPolicy: OnFailure
 ``` 
 
-**Goto the scenario:** [App: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
+**Goto the scenario:** [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 
 ### Authentication, Role Based Access Control, Service Account <a name="authentication"></a>
     
@@ -1288,7 +1225,7 @@ spec:
               number: 80
 ```
     
-**Goto the scenario:** [App: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)    
+**Goto the scenario:** [LAB: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)    
     
 ### Dashboard <a name="dashboard"></a>
 - You can view followings using default K8s dashboard:
