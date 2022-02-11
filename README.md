@@ -613,13 +613,23 @@ spec:
 - Secrets (that you defined) and pods (that you defined) should be in the same namespace (e.g. if defined secret is in the "default" namespace, pod should be also in the "default" namepace). 
 - There are 8 different secret types (basic-auth, tls, ssh-auth, token, service-account-token, dockercfg, dockerconfigjson, opaque). Opaque type is the default one and mostly used.
 - Imperative way, run on the terminal: 
-    - "kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!"  (geneneric = opaque)
+
+``` 
+kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!" # (geneneric = opaque)
+```     
+      
 - Imperative way with file to hide pass in the command history
-    - "kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt"     
+```     
+kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt
+``` 
 - Imperative way with json file to hide pass in the command history
-    - "kubectl create secret generic mysecret4 --from-file=config.json"    
+``` 
+kubectl create secret generic mysecret4 --from-file=config.json
+``` 
 - Declerative way: create file like below 
-    - "kubectl apply -f secret.yaml"    
+``` 
+kubectl apply -f secret.yaml
+``` 
 
 ``` 
 # Secret Object Creation    
