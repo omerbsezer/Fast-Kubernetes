@@ -1,4 +1,4 @@
-## App: K8s Creating Pod - Imperative Way
+## LAB: K8s Creating Pod - Imperative Way
 
 This scenario shows:
 - how to create basic K8s pod using imperative commands,
