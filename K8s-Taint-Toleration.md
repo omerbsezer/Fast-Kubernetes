@@ -3,7 +3,7 @@
 This scenario shows:
 - how to taint/untaint the node,
 - how to see the node details,
-- the pod that does not tolerate the taint is not running the node,
+- the pod that does not tolerate the taint is not running the node.
 
 
 ### Steps
