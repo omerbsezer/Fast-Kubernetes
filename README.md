@@ -20,7 +20,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
 - [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)
 - [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)
-- [LAB: K8s Taint Toleration]()       
+- [LAB: K8s Taint-Toleration](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Taint-Toleration.md)      
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
@@ -729,48 +729,14 @@ spec:
     - To delete taint to the node with commmand: "kubectl taint node minikube app-"
 - If pod has not any toleration for related taint, it can not be started on the tainted node (status of pod remains pending)
 - Taint Types:
-    - "kubectl taint nodes node1 key1=value1:NoSchedule"
-    - "kubectl taint nodes node1 key1=value1:NoExecute"
-    - "kubectl taint nodes node1 key2=value2:NoSchedule"
+    - **key1=value1:effect**: (e.g."kubectl taint node minikube app=production:NoSchedule")
 - Taint "effect" types:
-    - "NoSchedule": If pod is not tolerated with this effect, it can not run on the related node (status will be pending, until toleration/untaint)
-    - "PreferNoSchedule": If pod is not tolerated with this effect and if there is not any untainted node, it can run on the related node. 
-    - "NoExecute": If pod is not tolerated with this effect, it can not run on the related node. If there are pods running on the node before assigning "NoExecute" taint, after tainting "NoExecute", untolerated pods stopped on this node. 
-
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: toleratedpod1
-  labels:
-    env: test
-spec:
-  containers:
-  - name: toleratedcontainer1
-    image: nginx:latest
-  tolerations:                    # pod tolerates "app=production:NoSchedule"
-  - key: "app"
-    operator: "Equal"
-    value: "production"
-    effect: "NoSchedule"
----
-apiVersion: v1
-kind: Pod
-metadata:
-  name: toleratedpod2
-  labels:
-    env: test
-spec:
-  containers:
-  - name: toleratedcontainer2
-    image: nginx:latest
-  tolerations:
-  - key: "app"                     # pod tolerates "app:NoSchedule", value is not important in this pod
-    operator: "Exists"             # pod can run on the nodes which has "app=test:NoSchedule" or "app=production:NoSchedule"
-    effect: "NoSchedule"    
-```    
+    - **NoSchedule:** If pod is not tolerated with this effect, it can not run on the related node (status will be pending, until toleration/untaint)
+    - **PreferNoSchedule:** If pod is not tolerated with this effect and if there is not any untainted node, it can run on the related node. 
+    - **NoExecute:** If pod is not tolerated with this effect, it can not run on the related node. If there are pods running on the node before assigning "NoExecute" taint, after tainting "NoExecute", untolerated pods stopped on this node. 
+- For clarification, please have a look [LAB: K8s Taint Toleration](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Taint-Toleration.md)   
     
-**Goto the Scenario:** [LAB: K8s Taint Toleration]()    
+**Goto the Scenario:** [LAB: K8s Taint-Toleration](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Taint-Toleration.md)    
     
 ### Deamon Set <a name="daemon-set"></a>
 - It provides to run pods on EACH nodes. It can be configured to run only specific nodes.
