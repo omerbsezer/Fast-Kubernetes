@@ -256,15 +256,9 @@ spec:
 - key:value is used for labels. E.g. tier:frontend, stage:test, name:app1, team:development
 - prefix may also be used for optional with key:value. E.g. example.com/tier:front-end, kubernetes.io/ , k8s.io/
 - In the file (declerative way), labels are added under metadata. It is possible to add multiple labels. 
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod1
-  labels:
-    app: firstapp
-    tier: frontend
-```
+
+![image](https://user-images.githubusercontent.com/10358317/153675164-62265978-60c3-4167-ad0c-4bfbbf1f704b.png)
+
 - In the command (imperative way), we can also add label to the pods.
 ```
 kubectl label pods pod1 team=development  #adding label team=development on pod1
@@ -340,24 +334,7 @@ kubectl get pods -n development  # get pods from all namespace
 ```
 - In declerative way, it is possible to create namespaces and run pod on the related namespace.
 
-```
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: development
----
-apiVersion: v1
-kind: Pod
-metadata:
-  namespace: development
-  name: namespacepod
-spec:
-  containers:
-  - name: namespacecontainer
-    image: nginx:latest
-    ports:
-    - containerPort: 80
-```
+![image](https://user-images.githubusercontent.com/10358317/153675331-ee6ccfb6-b186-4e29-8e85-55adee465a53.png)
 
 ```
 kubectl apply -f namespace.yaml
