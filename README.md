@@ -1,5 +1,5 @@
 # Fast-Kubernetes
-This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Deployment, Service, ConfigMap, ReplicaSet, PV, PVC, Secret, Kubeadm, etc.) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
+This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Deployment, Service, ConfigMap, Volume, PV, PVC, Daemonset, Secret, Affinity, Taint-Toleration, etc.) fastly, and possible example usage scenarios (HowTo: Applications) in a nutshell. Possible usage scenarios are aimed to update over time.
 
 
 ## Prerequisite
