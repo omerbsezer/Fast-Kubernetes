@@ -249,7 +249,7 @@ spec:
     port: 80
     targetPort: 9376
 ```    
-- Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
+- Please have a look Scenario (below link) to learn more information.
 
 **Goto the Scenario:** [LAB: K8s Multicontainer - Sidecar - Emptydir Volume - Port-Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
 
