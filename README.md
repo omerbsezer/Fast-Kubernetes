@@ -12,7 +12,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 # Quick Look (HowTo): Scenarios - LABs
 - [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
 - [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
-- [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
+- [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
 - [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
 - [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
@@ -247,7 +247,7 @@ spec:
 ```    
 - Please have a look Scenario (below link) to learn more information about the pod's kubectl commands.
 
-**Goto the Scenario:** [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
+**Goto the Scenario:** [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md) 
 
 ### Label and Selector, Annotation, Namespace <a name="labelselector"></a>
 #### Label
@@ -572,6 +572,9 @@ spec:
   - name: cache-vol              
     emptyDir: {}                 # "volume" type "emptydir"
 ```  
+    
+**Goto the Scenario:** [LAB: K8s Multicontainer - Sidecar - Emptydir Volume - Port-Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)  
+    
 #### Hostpath Volume
 - It is similar to emtpydir, hostpath is also created on which node the pod is created on. In addition, the hostpath is specifically defined path on the node.
 ```  
