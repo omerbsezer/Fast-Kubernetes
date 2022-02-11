@@ -386,8 +386,6 @@ kubectl rollout resume deployment rolldeployment                            #res
 - All NODEs can communicate with all pods without NAT.
 - The IP of the POD is same throughout the cluster.
 
- ![image](https://user-images.githubusercontent.com/10358317/149517766-4c0ab7e7-9e20-48a9-a540-e0b4a99390d8.png) (Ref: Udemy Course: Kubernetes-Temelleri)
-
 #### CNI (Container Network Interface)
 - Networking of container and nodes with different vendors and devices is difficult to handle. So K8s give this responsibility to CNI plugins to handle networking requirements. 
 - "CNI (Container Network Interface), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins." => https://github.com/containernetworking/cni 
