@@ -1,4 +1,4 @@
-## App: K8s Secret
+## LAB: K8s Secret
 
 This scenario shows:
 - how to create secrets with file,
