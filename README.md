@@ -300,17 +300,7 @@ kubectl label nodes minikube hddtype=ssd #after labelling node, pod11 configurat
 #### Annotation
 - It is similar to label, but it is used for the detailed information (e.g. owner, notification-email, releasedate, etc.) that are not used for linking objects. 
 
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: annotationpod
-  annotations:
-    owner: "owner-name"
-    notification-email: "owner@email.com"
-    releasedate: "01.01.2022"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-```
+![image](https://user-images.githubusercontent.com/10358317/153675516-4b71b55a-f7ec-40a4-9e32-0b794208e6ae.png)
 
 ```
 kubectl apply -f podannotation.yaml
