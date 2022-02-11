@@ -2,16 +2,16 @@
 
 This scenario shows:
 - how to roll out deployments with 2 different strategy: recreate and rollingUpdate,
-- how to save/record deployments' revision while rolling out with "--record" (e.g. changing image)
-  - imperative:             "kubectl set image deployment rcdeployment nginx=httpd --record" 
-  - declerative, edit file: "kubectl edit deployment rolldeployment --record" 
+- how to save/record deployments' revision while rolling out with "--record" (e.g. changing image):
+  - imperative:             "kubectl set image deployment rcdeployment nginx=httpd --record",
+  - declerative, edit file: "kubectl edit deployment rolldeployment --record", 
 - how to rollback (rollout undo) the desired deployment revisions: 
-  - "kubectl rollout undo deployment rolldeployment --to-revision=2"
-- how to pause/resume rollout
-  - pause:  "kubectl rollout pause deployment rolldeployment"
-  - resume: "kubectl rollout resume deployment rolldeployment"
-- how to see the status of rollout deployment
-  - "kubectl rollout status deployment rolldeployment -w" 
+  - "kubectl rollout undo deployment rolldeployment --to-revision=2",
+- how to pause/resume rollout:
+  - pause:  "kubectl rollout pause deployment rolldeployment",
+  - resume: "kubectl rollout resume deployment rolldeployment",
+- how to see the status of rollout deployment:
+  - "kubectl rollout status deployment rolldeployment -w". 
 
 ### Steps
 
