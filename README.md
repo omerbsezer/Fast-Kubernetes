@@ -512,7 +512,7 @@ spec:
 spec: 
   containers:
   - name: requestLimit
-    image: dockerUsername/imageName #from DockerHub
+    image: nginx
     resources:
       requests:
         memory: "64M"
@@ -525,17 +525,10 @@ spec:
 - Environment Variables can be defined for each pods in the YAML file.
     
 ```
-# environment variables are defined under "env".
-apiVersion: v1
-kind: Pod
-metadata:
-  name: environment-pod
-  labels:
-    app: frontend
 spec: 
   containers:
   - name: environmentPod
-    image: dockerUsername/imageName #from DockerHub
+    image: nginx
     ports:
       - containerPort: 80
     env:
@@ -688,6 +681,9 @@ spec:
       configMap:
         name: myconfigmap
 ``` 
+    
+**Goto the Scenario:** [LAB: K8s Config Map]()
+    
 ### Node – Pod Affinity <a name="node-pod-affinity"></a>
 - Affinity means closeness, proximity, familarity.
     
