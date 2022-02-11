@@ -1,7 +1,10 @@
 ## App: K8s Secret
 
 This scenario shows:
-- how to roll out deployments with 2 different strategy: recreate and rollingUpdate,
+- how to create secrets with file,
+- how to use secrets: volume and environment variable,
+- how to create secrets with command,
+- how to get/delete secrets
 
 
 ### Steps
@@ -110,6 +113,10 @@ spec:
 
 - Create new secret with imperative way:
 
+``` 
+kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!
+```   
+
 ![image](https://user-images.githubusercontent.com/10358317/153638556-50874231-7be3-4801-90d0-ae84f66c28e9.png)
 
 - Create new secret using files (avoid to see in the history command list).
@@ -117,6 +124,10 @@ spec:
   - server.txt    => put into "db.example.com" with "cat" command
   - password.txt  => put into "password" with "cat" command
   - username.txt  => put into "admin" with "cat" command
+
+```     
+kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt
+``` 
 
 ![image](https://user-images.githubusercontent.com/10358317/153639595-4f8e5c95-151c-4990-93ac-6e8b98776fbd.png)
 
@@ -126,6 +137,11 @@ spec:
     "apiKey": "7ac4108d4b2212f2c30c71dfa279e1f77dd12356",
 }
 ```
+
+``` 
+kubectl create secret generic mysecret4 --from-file=config.json
+``` 
+
 ![image](https://user-images.githubusercontent.com/10358317/153640684-cb16dac0-cddd-40b0-a90f-9f42b28e3373.png)
 
 - Delete mysecret4:
