@@ -17,7 +17,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)
-- [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)    
+- [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
+- [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)    
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
@@ -606,6 +607,7 @@ spec:
 - Secret objects store the sensitive and secure information like username, password, ssh-tokens, certificates.     
 - Secrets (that you defined) and pods (that you defined) should be in the same namespace (e.g. if defined secret is in the "default" namespace, pod should be also in the "default" namepace). 
 - There are 8 different secret types (basic-auth, tls, ssh-auth, token, service-account-token, dockercfg, dockerconfigjson, opaque). Opaque type is the default one and mostly used.
+- Secrets are called by the pod in 2 different ways: volume and environment variable   
 - Imperative way, run on the terminal (geneneric in the command = opaque): 
 
 ``` 
@@ -628,61 +630,11 @@ kubectl create secret generic mysecret4 --from-file=config.json
     
 ### ConfigMap <a name="configmap"></a>
 - It is same as "secrets". The difference is that configmap does not save sensitive information. It stores config variables.
-- Imperative: 
-    - create and add ev: "touch a.txt", "echo 'theme=dark' >>a.txt"
-    - "kubectl create configmap myconfigmap --from-literal=background=blue --from-file=a.txt"
-    - "kubectl get configs", for delete: "kubectl delete configmaps myconfigmap"
+- Configmap stores data with key-value pairs.
+- Configmaps are called by the pod in 2 different ways: volume and environment variable    
+- Scenario shows the usage of configmaps.
     
-- Declerative:  
-    - create file and run "kubectl apply -f myconfigmap.yaml"
-```
-# Configmap Object Creation     
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: myconfigmap
-data:                                # under "data", list all variables with key-value
-  db_server: "db.example.com"
-  database: "mydatabase"
-  site.settings: |                   # multiple variables under one key 
-    color=blue
-    padding:25px 
-``` 
-
-- 2 options to use Configmap object in the pod: Volume and Environment Variable.  
-    
-```
-# Configmap Object Usage  
-apiVersion: v1
-kind: Pod
-metadata:
-  name: configmappod
-spec:
-  containers:
-  - name: configmapcontainer
-    image: nginx
-    env:
-      - name: DB_SERVER           # use "configmap" parameters with ev
-        valueFrom:
-          configMapKeyRef:        # with "configMapKeyRef" 
-            name: myconfigmap
-            key: db_server
-      - name: DATABASE
-        valueFrom:
-          configMapKeyRef:
-            name: myconfigmap
-            key: database
-    volumeMounts:                 # bind into the volumeMounts           
-      - name: config-vol
-        mountPath: "/config"
-        readOnly: true
-  volumes:                        # create volume for configmap object
-    - name: config-vol
-      configMap:
-        name: myconfigmap
-``` 
-    
-**Goto the Scenario:** [LAB: K8s Config Map]()
+**Goto the Scenario:** [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)
     
 ### Node – Pod Affinity <a name="node-pod-affinity"></a>
 - Affinity means closeness, proximity, familarity.
