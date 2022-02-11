@@ -1,4 +1,4 @@
-## App: K8s Rollout - Rollback 
+## LAB: K8s Rollout - Rollback 
 
 This scenario shows:
 - how to roll out deployments with 2 different strategy: recreate and rollingUpdate,
