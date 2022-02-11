@@ -1,10 +1,8 @@
 ## LAB: K8s Node Affinity
 
 This scenario shows:
-- how to create config map (declerative way),
-- how to use configmap: volume and environment variable,
-- how to create configmap with command (imperative way),
-- how to get/delete configmap
+- how to label the node,
+- when node is not labelled and pods' nodeAffinity are defined, pods always wait pending 
 
 
 ### Steps
