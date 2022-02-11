@@ -1,4 +1,4 @@
-## App: K8s Creating Pod - Declerative Way (With Yaml File)
+## LAB: K8s Creating Pod - Declerative Way (With Yaml File)
 
 This scenario shows:
 - how to create basic K8s pod using yaml file,
