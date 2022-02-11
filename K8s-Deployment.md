@@ -1,4 +1,4 @@
-## App: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding
+## LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding
 
 This scenario shows:
 - how to create deployment,
