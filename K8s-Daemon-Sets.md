@@ -1,4 +1,4 @@
-## App: K8s Daemon Sets
+## LAB: K8s Daemon Sets
 
 This scenario shows how K8s Daemonsets work on minikube by adding new nodes
 
