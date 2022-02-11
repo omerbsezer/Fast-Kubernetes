@@ -1,4 +1,4 @@
-## App: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)
+## LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)
 
 This scenario shows how to create Services (ClusterIp, NodePort and LoadBalancer). It goes following:
 - Create Deployments for frontend and backend.
