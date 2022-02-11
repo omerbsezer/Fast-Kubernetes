@@ -267,12 +267,6 @@ metadata:
   labels:
     app: firstapp
     tier: frontend
-spec:
-  containers:
-  - name: nginx
-    image: nginx:latest
-    ports:
-    - containerPort: 80
 ```
 - In the command (imperative way), we can also add label to the pods.
 ```
@@ -297,10 +291,6 @@ kubectl get pods -l "app in (firstapp,secondapp)" --show-labels # it means or =>
 #### Node Selector
 - With Node Selector, we can choose which pod run on which Node. 
 ```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: pod11
 spec:
   containers:
   - name: nginx
@@ -329,12 +319,6 @@ metadata:
     notification-email: "owner@email.com"
     releasedate: "01.01.2022"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-spec:
-  containers:
-  - name: annotationcontainer
-    image: nginx
-    ports:
-    - containerPort: 80
 ```
 
 ```
