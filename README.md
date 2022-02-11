@@ -654,7 +654,8 @@ kubectl create secret generic mysecret4 --from-file=config.json
 **Goto the Scenario:** [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
     
 #### Pod Affinity 
-- Some of the pods should run with other pods on same node or same availability zone (e.g. frontend pods run with cache pod) 
+- Some of the pods should run with other pods on same node or same availability zone (e.g. frontend pods run with cache pod on the same availability zone) 
+- If pod affinity is defined for one pod, that pod runs with the related pod on same node or same availability zone.     
 - Each node in the cluster is labelled with default labels.
     - "kubernetes.io/hostname": e.g "kubernetes.io/hostname=minikube"
     - "kubernetes.io/arch": e.g "kubernetes.io/arch=amd64"
