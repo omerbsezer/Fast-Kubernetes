@@ -30,6 +30,8 @@ spec:
       - name: USER
         value: "username"
 ```
+![image](https://user-images.githubusercontent.com/10358317/153674646-8997eb99-12b9-4394-91f2-2de4032ee3db.png)
+
 
  - Apply/run the file to create pod in declerative way ("kubectl apply -f pod1.yaml"):
    
