@@ -1,8 +1,9 @@
 ## LAB: K8s Taint Toleration
 
 This scenario shows:
-- how to label the node,
-- when node is not labelled and pods' nodeAffinity are defined, pods always wait pending 
+- how to taint/untaint the node,
+- how to see the node details,
+- the pod that does not tolerate the taint is not running the node,
 
 
 ### Steps
