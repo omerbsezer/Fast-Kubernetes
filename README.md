@@ -18,7 +18,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)
 - [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
-- [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)    
+- [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)
+- [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)       
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
@@ -642,83 +643,15 @@ kubectl create secret generic mysecret4 --from-file=config.json
 #### Node Affinity
 - With node affinity, specific pods can enable to run on the desired node (Node selector also supports that feature, but node affinity is more flexible).
 - If node is labelled with key-value, we can run some of the pods on that specific node.
-    - Labelling node "kubectl label node minikube app=production"
-- "requiredDuringSchedulingIgnoredDuringExecution" means: Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, do not run this pod until finding specific node "matchExpression". 
-- In addition,"IgnoredDuringExecution" means: after scheduling, if the node label is removed/deleted from node, ignore it while executing.   
-- "matchExpression" has "key", "values" and "operator". 4 "operator"s:
-    - "In" means: find a node which is labelled "key=value", e.g. run pod on node which is labelled with "app=production".
-    - "NotIn" means: find a node which is NOT labelled "key=value", e.g. run pod on node which is not labelled with "app=production".
-    - "Exists" means: find a node which is labelled with "key", e.g. run pod on node which contains "app" key
-    - "DoesNotExist" means:  find a node which is NOT labelled with "key", e.g. run pod on node which does NOT contain "app" key.
-```     
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nodeaffinitypod1
-spec:
-  containers:
-  - name: nodeaffinity1
-    image: nginx:latest                                # ImageName and version
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: app
-            operator: In                               #In, NotIn, Exists, DoesNotExist
-            values:
-            - production    
-```
+- **Terms for Node Affinity:**
+    - **requiredDuringSchedulingIgnoredDuringExecution:**  Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, do not run this pod until finding specific node "matchExpression". 
+    - **IgnoredDuringExecution:** After scheduling, if the node label is removed/deleted from node, ignore it while executing.
+    - **preferredDuringSchedulingIgnoredDuringExecution:** Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, run this pod wherever it finds. 
+        - **weight:** Preference weight. If weight is more than other weights, this weight is higher priority than others. 
 
-- "preferredDuringSchedulingIgnoredDuringExecution" means: Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, run this pod wherever it finds. 
-- "weight" = preference weight. If weight is more than other weights, this weight is higher priority than others. 
+- To understand better, please have a look [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
     
-``` 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nodeaffinitypod2
-spec:
-  containers:
-  - name: nodeaffinity2
-    image: nginx:latest
-  affinity:
-    nodeAffinity:
-      preferredDuringSchedulingIgnoredDuringExecution:
-      - weight: 1                 # if there is a pod with "app=production", run on that pod
-        preference:               # if there is NOT a pod with "app=production" and there is NOT any other preference, 
-          matchExpressions:       # run this pod wherever scheduler finds a node. 
-          - key: app
-            operator: In
-            values:
-            - production
-      - weight: 2                 # this is highest prior, weight:2 > weight:1
-        preference:               # if there is a pod with "app=test", run on that pod
-          matchExpressions:       # if there is NOT a pod with "app=test", goto weight:1 preference
-          - key: app
-            operator: In
-            values:
-            - test
-```
-- With "Exists", run pods on a node which is labelled with only key (e.g. "app")
-    
-```    
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nodeaffinitypod3
-spec:
-  containers:
-  - name: nodeaffinity3
-    image: nginx:latest
-  affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: app
-            operator: Exists 
-```
+**Goto the Scenario:** [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
     
 #### Pod Affinity 
 - Some of the pods should run with other pods on same node or same availability zone (e.g. frontend pods run with cache pod) 
