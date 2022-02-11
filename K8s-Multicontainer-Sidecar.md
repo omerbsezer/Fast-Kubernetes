@@ -1,4 +1,4 @@
-## App: K8s Multicontainer - Sidecar - Volume - Port-Forward 
+## App: K8s Multicontainer - Sidecar - Emptydir Volume - Port-Forwarding 
 
 This scenario shows:
 - how to create multicontainer in one pod,
