@@ -1,4 +1,4 @@
-## App: K8s Liveness Probe
+## LAB: K8s Liveness Probe
 
 This scenario shows how the liveness probe works.
 
