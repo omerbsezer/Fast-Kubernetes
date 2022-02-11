@@ -1,4 +1,4 @@
-## App: K8s Job
+## LAB: K8s Job
 
 This scenario shows how K8s job object works on minikube
 
