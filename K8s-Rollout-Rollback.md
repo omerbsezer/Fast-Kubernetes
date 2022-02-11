@@ -192,3 +192,7 @@ spec:
 
 - It is also possible to see the logs of rollout with:
   - "kubectl rollout status deployment rolldeployment -w"
+
+- Delete deployment:
+
+![image](https://user-images.githubusercontent.com/10358317/153620662-bbd8d7e4-572b-4261-b300-f350ee655711.png)
