@@ -1,4 +1,4 @@
-## App: K8s Persistant Volume and Persistant Volume Claim
+## LAB: K8s Persistant Volume and Persistant Volume Claim
 
 This scenario shows how K8s PVC and PV work on minikube
 
