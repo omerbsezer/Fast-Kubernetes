@@ -19,7 +19,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)
 - [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
 - [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)
-- [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)       
+- [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)
+- [LAB: K8s Taint Toleration]()       
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
 - [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
@@ -768,6 +769,9 @@ spec:
     operator: "Exists"             # pod can run on the nodes which has "app=test:NoSchedule" or "app=production:NoSchedule"
     effect: "NoSchedule"    
 ```    
+    
+**Goto the Scenario:** [LAB: K8s Taint Toleration]()    
+    
 ### Deamon Set <a name="daemon-set"></a>
 - It provides to run pods on EACH nodes. It can be configured to run only specific nodes.
 - For example, you can run log application that runs on each node in the cluster and app sends these logs to the main log server. Manual configuration of each nodes could be headache in this sceneario, so using deamon sets would be beneficial to save time and effort.
@@ -1079,12 +1083,10 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 - to see better resolution, click on it
     
 ![image](https://user-images.githubusercontent.com/10358317/152148024-6ec65b33-9fd0-42eb-89c3-927e453553a2.png)
-    
-![image](https://user-images.githubusercontent.com/10358317/152147538-80b77b6f-6ae1-4bca-90ef-1cf2049d56fa.png)
-    
+       
 ![image](https://user-images.githubusercontent.com/10358317/152147845-017c6c10-a687-4ee3-b868-a08d96f6d884.png)
     
-![image](https://user-images.githubusercontent.com/10358317/152142655-39dbdddc-eddc-490a-a181-6a90c17e3704.png)
+
 
 
 ## Play With Kubernetes <a name="playWithKubernetes"></a>
