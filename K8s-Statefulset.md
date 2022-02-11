@@ -1,4 +1,4 @@
-## App: K8s Stateful Set - Nginx
+## LAB: K8s Stateful Set - Nginx
 
 This scenario shows how K8s statefulset object works on minikube
 
