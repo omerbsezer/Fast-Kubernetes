@@ -1,4 +1,4 @@
-## App: K8s Cron Job
+## LAB: K8s Cron Job
 
 This scenario shows how K8s Cron job object works on minikube
 
