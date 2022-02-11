@@ -1,4 +1,4 @@
-## App: K8s Ingress
+## LAB: K8s Ingress
 
 This scenario shows how K8s ingress works on minikube. When browsing urls, ingress controller (nginx) directs traffic to the related services. 
 
