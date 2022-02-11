@@ -178,14 +178,11 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 #### Pod: YAML File
 - Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
 - Declerative way (with file), Imperative way (with command)
-- Template of Yaml File:
-```
-apiVersion:
-kind:
-metadata:
-spec:
-```
-- Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information about the pod's kubectl commands.
+- Sample Yaml File:
+
+![image](https://user-images.githubusercontent.com/10358317/153674712-426a262d-d13e-489d-9c86-63ac22114d75.png)
+
+- Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information.
 
 **Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 
