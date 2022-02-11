@@ -11,7 +11,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 
 # Quick Look (HowTo): Scenarios - LABs
 - [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
-- [LAB: K8s Creating Pod - Declerative Way (With File)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+- [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [LAB: K8s Multicontainer - Sidecar - Volume - Port-Forward](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
 - [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
 - [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
@@ -183,7 +183,7 @@ spec:
 ```
 - Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information about the pod's kubectl commands.
 
-**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 
 #### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
@@ -509,16 +509,16 @@ spec:
 - Example (below), pod requests 64MB memory and 0.25 CPU core, uses maximum 256MB memory and 0.5 CPU core.
 ```
 spec: 
-    containers:
-        - name: requestLimit
-          image: dockerUsername/imageName #from DockerHub
-          resources:
-            requests:
-                memory: "64M"
-                cpu: "250m"
-            limit:
-                memory: "256M"
-                cpu: "0.5" 
+  containers:
+  - name: requestLimit
+    image: dockerUsername/imageName #from DockerHub
+    resources:
+      requests:
+        memory: "64M"
+        cpu: "250m"
+      limit:
+        memory: "256M"
+        cpu: "0.5" 
 ```  
 #### Environment Variable
 - Environment Variables can be defined for each pods in the YAML file.
@@ -542,7 +542,9 @@ spec:
       value: "username"
     - name: database
       value: "testdb.test.com"
-```      
+``` 
+    
+**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
     
 ### Volume <a name="volume"></a>
 - Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted. But when container is restarted, volume is still available because pod still runs.
