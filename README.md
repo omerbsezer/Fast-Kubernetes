@@ -415,11 +415,12 @@ kubectl delete deployments firstdeployment
 
 ### Rollout and Rollback <a name="rollout-rollback"></a>
 - Rollout and Rollback enable to update and return back containers that run under the deployment.
-- 2 strategy for rollout and rollback: Recreate and Rolling.
-- **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used:         
-- **Rolling Strategy (default)**: It updates pods step by step. Pods are updated step by step, all pods are not deleted at the same time.
-    - **maxUnavailable:** At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
-    - **maxSurge:** At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)     
+- 2 strategy for rollout:
+    - **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used.     
+    - **RollingUpdate Strategy (default)**: It updates pods step by step. Pods are updated step by step, all pods are not deleted at the same time.
+        - **maxUnavailable:** At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
+        - **maxSurge:** At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)
+    
 ```    
 kubectl set image deployment rolldeployment nginx=httpd:alpine --record     # change image of deployment
 kubectl rollout history deployment rolldeployment                           #shows record/history revisions 
