@@ -1,6 +1,6 @@
 ## Helm Commands Cheatsheet
 
-### Help, Version
+### 1. Help, Version
 
 #### See the general help for Helm
 ```
@@ -15,7 +15,7 @@ helm [command] --help
 helm version
 ```
 
-### Repo Add, Remove, Update
+### 2. Repo Add, Remove, Update
 
 #### Add a repository from the internet
 ```
@@ -30,7 +30,7 @@ helm repo remove [name]
 helm repo update
 ```
 
-### Repo List, Search
+### 3. Repo List, Search
 
 #### List chart repositories
 ```
@@ -49,7 +49,7 @@ helm search repo [keyword]
 helm search hub [keyword]
 ```
 
-### Install/Uninstall
+### 4. Install/Uninstall
 
 #### Install an app
 ```
@@ -76,7 +76,7 @@ helm install [name] --dry-run --debug
 helm uninstall [release name]
 ```
 
-### Chart Management
+### 5. Chart Management
 
 #### Create a directory containing the common chart files and directories
 ```
@@ -117,7 +117,7 @@ helm pull [chart] --untar --untardir [directory]
 helm dependency list [chart]
 ```
 
-### Release Monitoring
+### 6. Release Monitoring
 
 #### List all the available releases in the current namespace
 ```
@@ -148,7 +148,7 @@ helm history [release]
 helm env
 ```
 
-### Upgrade/Rollback
+### 7. Upgrade/Rollback
 
 #### Upgrade an app
 ```
@@ -175,7 +175,7 @@ helm upgrade [release] [chart] --version [version-number]
 helm rollback [release] [revision]
 ```
 
-### GET Information
+### 8. GET Information
 
 #### Download all the release information
 ```
@@ -202,10 +202,7 @@ helm get all [release]
 helm history [release]
 ```
 
-
-
-
-### Plugin
+### 9. Plugin
 
 #### Install plugins
 ```
