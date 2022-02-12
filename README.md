@@ -65,7 +65,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
     - [Ingress](#ingress)
     - [Dashboard](#dashboard)
 - [Play With Kubernetes](#playWithKubernetes)
-- [Kuberbetes Package Manager: Helm](#helm)
+- [HELM: Kuberbetes Package Manager](#helm)
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
