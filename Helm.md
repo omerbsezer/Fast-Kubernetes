@@ -40,11 +40,25 @@ helm repo list                                                      # list all r
 helm pull [chart]
 helm pull jenkins/jenkins
 helm pull bitnami/jenkins                                           # pull and download chart to the current directory
+tar zxvf jenkins-3.11.4.tgz                                         # extract downloaded chart
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/153730338-0f00f81b-b2e8-4fd9-be3c-3a8acd9e2d2a.png)
 
 ![image](https://user-images.githubusercontent.com/10358317/153730367-6ef92437-49bd-47df-8ca2-009301872614.png)
+
+- Downloaded chart file structure and files:
+ - **values.yaml**: includes values, variables, configs, replicaCount, imageName, etc. These values are injected into the template yaml files (e.g. replicas: {{ .Values.replicaCount }} in the deployment yaml file)
+ - **charts.yaml**: includes chart information (annotations, maintainers, appVersion, apiVersion, description, sources, etc.)
+ - **template**: directory that includes all K8s yaml template files (deployment,secret,configmap, etc.)
+ - **values-summary**: includes the configurable parameters about application, K8s (parameter, description and value) 
+
+```
+tree jenkins
+```
+
+![image](https://user-images.githubusercontent.com/10358317/153730633-6e4b4d24-e4c0-4b4b-bab8-a8f06eb2c074.png)
+
 
 - Install chart on K8s with application/release name
  
@@ -56,7 +70,10 @@ helm install my-release \                                           # possible t
   --set wordpressPassword=password \
   --set mariadb.auth.rootPassword=secretpassword \
     bitnami/wordpress
-helm install wordpress-release bitnami/wordpress -f ./values.yaml   # values.yaml includes import values (e.g. username,pass,..), if it is updated and using this file, it is possible to install with these values.     
+helm install wordpress-release bitnami/wordpress -f ./values.yaml   # values.yaml includes import values (e.g. username,pass,..), if it is updated and using this file, it is possible to install with these values. 
+echo '{mariadb.auth.database: user0db, mariadb.auth.username: user0}' > values.yaml
+helm install -f values.yaml bitnami/wordpress --generate-name       # with using "-f values.yaml", updated values are used 
+helm install j1 jenkins                                             # jenkins is downloaded and extracted directory. After values.yaml updated, also possible to install with this updated app config
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/153709179-d36c5c8a-39d9-4ba4-ab30-243706caa6ae.png)
@@ -112,3 +129,17 @@ minikube service helm-release-wordpress --url
 - Uninstall helm release:
 
 ![image](https://user-images.githubusercontent.com/10358317/153711396-c6b4e973-22a3-4246-99a0-026ff4c7c14c.png)
+
+- Upgrade, rollback, history:
+```
+helm install j1 jenkins                                    # create j1 release with jenkins chart
+helm upgrade -f [filename.yaml] [RELEASE] [CHART]
+helm upgrade -f values.yaml j1 jenkins/jenkins
+helm rollback [RELEASE] [REVISION]
+helm rollback j1 1
+helm history [RELEASE]
+helm rollback j1
+```
+![image](https://user-images.githubusercontent.com/10358317/153731806-95b20cd9-f3fd-4ea8-9fed-d8b37993d3d6.png)
+
+
