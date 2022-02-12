@@ -23,14 +23,32 @@ sudo apt-get install helm
 ```
 helm search hub wordpress        # searches package on the Hub
 helm search repo wordpress       # searches package on the local machine repository list
+helm search repo bitnami         # searches bitnami in the repo list   
+
 ```
 ![image](https://user-images.githubusercontent.com/10358317/153708687-c2542aa5-e763-4967-b8a9-0f4b82ab7af0.png)
+
+
+
 
 - **Repo:** the list on the local machine, repo item includes the package's download page (e.g. https://charts.bitnami.com/bitnami) 
 
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami            # adds link into my repo list
 helm search repo wordpress                                          # searches package on the local machine repository list
+helm repo list                                                      # list all repo
+helm pull [chart]
+helm pull jenkins/jenkins
+helm pull bitnami/jenkins                                           # pull and download chart to the current directory
+```
+
+![image](https://user-images.githubusercontent.com/10358317/153730338-0f00f81b-b2e8-4fd9-be3c-3a8acd9e2d2a.png)
+
+![image](https://user-images.githubusercontent.com/10358317/153730367-6ef92437-49bd-47df-8ca2-009301872614.png)
+
+- Install chart on K8s with application/release name
+ 
+```
 helm install helm-release-wordpress bitnami/wordpress               # install bitnami/wordpress chart with helm-release-wordpress name on default namespace
 helm install release bitnami/wordpress --namespace production       # install release on production namespace
 helm install my-release \                                           # possible to set username/password while creating pods
