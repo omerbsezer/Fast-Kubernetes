@@ -977,6 +977,16 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 - https://labs.play-with-k8s.com/
 
 ## Helm <a name="helm"></a>
+- Helm is the package manager of K8s (https://helm.sh/). 
+- "Helm installs charts into Kubernetes, creating a new release for each installation. And to find new charts, you can search Helm chart repositories." (Ref: Helm.sh)    
+- With Helm, it is easy to install best-practice K8s designs and products. Search K8s packages => https://artifacthub.io/   
+- Detailed Tutorial => https://helm.sh/docs/intro/quickstart/
+- **Important Terms:** (Ref: Helm.sh)
+    - **Chart:** "A Chart is a Helm package. It contains all of the resource definitions necessary to run an application, tool, or service inside of a Kubernetes cluster. Think of it like the Kubernetes equivalent of a Homebrew formula, an Apt dpkg, or a Yum RPM file." 
+    - **Repository:** "A Repository is the place where charts can be collected and shared"
+    - **Release:** "A Release is an instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new release is created. Consider a MySQL chart. If you want two databases running in your cluster, you can install that chart twice. Each one will have its own release, which will in turn have its own release name."
+    
+**Goto the scenario:** [LAB: HELM Install & Usage]() 
     
 ## Service Mesh <a name="servicemesh"></a>    
     
@@ -993,3 +1003,4 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 - [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
 - [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
+- [Helm.sh](https://helm.sh/)
