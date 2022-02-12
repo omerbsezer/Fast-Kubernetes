@@ -31,7 +31,8 @@ helm search repo wordpress       # searches package on the local machine reposit
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami            # adds link into my repo list
 helm search repo wordpress                                          # searches package on the local machine repository list
-helm install helm-release-wordpress bitnami/wordpress               # install bitnami/wordpress chart with helm-release-wordpress name
+helm install helm-release-wordpress bitnami/wordpress               # install bitnami/wordpress chart with helm-release-wordpress name on default namespace
+helm install release bitnami/wordpress --namespace production       # install release on production namespace
 helm install my-release \                                           # possible to set username/password while creating pods
   --set wordpressUsername=admin \
   --set wordpressPassword=password \
@@ -41,6 +42,20 @@ helm install wordpress-release bitnami/wordpress -f ./values.yaml   # values.yam
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/153709179-d36c5c8a-39d9-4ba4-ab30-243706caa6ae.png)
+
+- To see the status of the release:
+
+```
+helm status helm-release-wordpress
+```
+![image](https://user-images.githubusercontent.com/10358317/153711226-1d058594-9ba9-402d-a422-4f2c95e19070.png)
+
+- We can change/show the values that are the variables (e.g.username,password): 
+```
+helm show values bitnami/wordpress
+```
+![image](https://user-images.githubusercontent.com/10358317/153711295-2a25ea75-6ce1-434f-9138-54b262c100f1.png)
+
 
 - You can see the all K8s objects that are automatically created by Helm
 
@@ -75,3 +90,7 @@ minikube service helm-release-wordpress --url
 
 ![image](https://user-images.githubusercontent.com/10358317/153710100-cc29ac32-4f7d-4c69-a466-31dac86c1f06.png)
 ![image](https://user-images.githubusercontent.com/10358317/153710112-697852b5-e3c9-4166-9038-f9494b99488f.png)
+
+- Uninstall helm release:
+
+![image](https://user-images.githubusercontent.com/10358317/153711396-c6b4e973-22a3-4246-99a0-026ff4c7c14c.png)
