@@ -142,6 +142,7 @@ helm rollback j1
 ```
 ![image](https://user-images.githubusercontent.com/10358317/153731806-95b20cd9-f3fd-4ea8-9fed-d8b37993d3d6.png)
 
+- To learn more Helm commands:
 
 **Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
