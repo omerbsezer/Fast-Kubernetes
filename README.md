@@ -11,18 +11,18 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 
 # Quick Look (HowTo): Scenarios - Hands-on LAB
 - [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md)
-- [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+- [LAB: K8s Creating Pod - Declarative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 - [LAB: K8s Multicontainer - Sidecar - Emptydir Volume - Port-Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Multicontainer-Sidecar.md)
 - [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md)
 - [LAB: K8s Rollout - Rollback](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Rollout-Rollback.md)
 - [LAB: K8s Service Implementations (ClusterIp, NodePort and LoadBalancer)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Service-App.md)
 - [LAB: K8s Liveness Probe](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Liveness-App.md)
-- [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
+- [LAB: K8s Secret (Declarative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)
 - [LAB: K8s Config Map](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Configmap.md)
 - [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)
 - [LAB: K8s Taint-Toleration](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Taint-Toleration.md)      
 - [LAB: K8s Daemonset - Creating 3 nodes on Minikube](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Daemon-Sets.md)   
-- [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
+- [LAB: K8s Persistent Volume and Persistent Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)
 - [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
 - [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
 - [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
@@ -36,7 +36,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
     - [What is Containerization? What is Container Orchestration?](#containerization)
     - [Features](#features)
 - [What is Kubernetes?](#whatIsKubernetes)
-    - [Kubertenes Architecture](#architecture)
+    - [Kubernetes Architecture](#architecture)
     - [Kubernetes Components](#components)
     - [Installation](#installation)
     - [Kubectl Config – Usage](#kubectl)
@@ -179,15 +179,15 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
 **Goto the Scenario:** [LAB: K8s Creating Pod - Imperative Way](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CreatingPod-Imperative.md) 
 
 #### Pod: YAML File
-- Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declerative Way".
-- Declerative way (with file), Imperative way (with command)
+- Imperative way could be difficult to store and manage process. Every time we have to enter commands. To prevent this, we can use YAML file to define pods and pods' feature. This way is called "Declarative Way".
+- Declarative way (with file), Imperative way (with command)
 - Sample Yaml File:
 
 ![image](https://user-images.githubusercontent.com/10358317/153674712-426a262d-d13e-489d-9c86-63ac22114d75.png)
 
-- Please have a look Scenario (**Creating Pod - Declerative way**, below link) to learn more information.
+- Please have a look Scenario (**Creating Pod - Declarative way**, below link) to learn more information.
 
-**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+**Goto the Scenario:** [LAB: K8s Creating Pod - Declarative Way (With File) - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
 
 #### Pod: Life Cycle
 - **Pending:** API->etcd, pod created, pod id created, but not running on the node.
@@ -461,7 +461,7 @@ spec:
     
 ![image](https://user-images.githubusercontent.com/10358317/153676628-d103de1d-e223-451b-8337-cdfe1cebee66.png)
     
-**Goto the Scenario:** [LAB: K8s Creating Pod - Declerative Way - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
+**Goto the Scenario:** [LAB: K8s Creating Pod - Declarative Way - Environment Variable](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8-CreatingPod-Declerative.md) 
     
 ### Volume <a name="volume"></a>
 - Ephemeral volume (Temporary volume): Multiple containers reach ephemeral volume in the pod. When the pod is deleted/killed, volume is also deleted. But when container is restarted, volume is still available because pod still runs.
@@ -548,7 +548,7 @@ kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-
 kubectl create secret generic mysecret4 --from-file=config.json
 ``` 
     
-**Goto the Scenario:** [LAB: K8s Secret (Declerative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)     
+**Goto the Scenario:** [LAB: K8s Secret (Declarative and Imperative Way)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Secret.md)     
     
 ### ConfigMap <a name="configmap"></a>
 - It is same as "secrets". The difference is that configmap does not save sensitive information. It stores config variables.
