@@ -31,8 +31,6 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
-
-
 # Table of Contents
 - [Motivation](#motivation)
     - [What is Containerization? What is Container Orchestration?](#containerization)
@@ -67,6 +65,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Play With Kubernetes](#playWithKubernetes)
 - [Helm: Kuberbetes Package Manager](#helm)
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
+- [Helm Commands Cheatsheet](#helm_cheatsheet)
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
 
@@ -993,16 +992,17 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 **Goto the scenario:** [LAB: HELM Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md) 
     
 **Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
-    
-## Service Mesh <a name="servicemesh"></a>    
-    
+       
 ## Kubernetes Commands Cheatsheet <a name="cheatsheet"></a>
 
 **Goto:** [Kubernetes Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
+    
+## Helm Commands Cheatsheet <a name="helm_cheatsheet"></a>
+
+**Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
-
 - Docker and Kubernetes Tutorial | Full Course [2021] - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
 
 ## References  <a name="references"></a>
