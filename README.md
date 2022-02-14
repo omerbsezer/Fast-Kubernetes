@@ -1003,7 +1003,7 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
-- Docker and Kubernetes Tutorial | Full Course [2021] - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
+- Docker and Kubernetes Tutorial - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
 
 ## References  <a name="references"></a>
 - [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
