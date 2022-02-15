@@ -40,6 +40,9 @@ spec:
         - containerPort: 80        # open following ports
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154119883-5ffcaaaa-572e-427e-b6d6-65e3a8723121.png)
+
+
 - Create deployment and list the deployment's pods:
 
 ![image](https://user-images.githubusercontent.com/10358317/153439583-c445b070-ac27-4838-8943-466261abf635.png)
