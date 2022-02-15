@@ -676,7 +676,7 @@ spec:
 - "accessModes" types:
     - "ReadWriteOnce": read/write for only 1 node.
     - "ReadOnlyMany" : only read for many nodes.
-    - "ReadWriteOnce": read/write for many nodes.
+    - "ReadWriteMany": read/write for many nodes.
 - "persistentVolumeReclaimPolicy" types: it defines the behaviour of volume after the end of using volume.
     - "Retain" : volume remains with all data after using it.
     - "Recycle": volume is not deleted but all data in the volume is deleted. We get empty volume if it is chosen.
