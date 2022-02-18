@@ -50,6 +50,8 @@ spec:
           path: /var/lib/docker/containers    
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154733287-2c65a70a-2d9f-4b69-969e-8e2938ce425d.png)
+
 - Create daemonset on minikube:
 
 ![image](https://user-images.githubusercontent.com/10358317/152146006-265e0595-cdf5-43c7-aea2-5437700323fd.png)
