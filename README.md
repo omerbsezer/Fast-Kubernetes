@@ -731,8 +731,8 @@ spec:
       app: mysql                            # chose/select "mysql" PV that is defined above.
  ```
 
-
-    
+![image](https://user-images.githubusercontent.com/10358317/154735404-80221355-1493-4043-ba7a-8c7a4ddc8df0.png)
+ 
 **Goto the scenario:** [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
     
 ### Storage Class <a name="storageclass"></a>
