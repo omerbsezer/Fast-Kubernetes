@@ -84,6 +84,12 @@ spec:
       periodSeconds: 20
  ```
  
+![image](https://user-images.githubusercontent.com/10358317/154686744-fa7bd4bd-6cf4-460f-bbe8-93f827eeb1de.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154686826-0828adb8-7581-4d56-987f-7858bd0711b4.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154686913-4d5cc891-b3cc-497d-b8be-568faccf4bc0.png)
+
 - Run on terminal: kubectl apply -f pods.yaml
 - Run on another terminal: kubectl get pods -w
 
