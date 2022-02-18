@@ -40,6 +40,8 @@ spec:
     emptyDir: {}                                # volume type emtpydir: creates empty directory where the pod is runnning
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154714091-7355eb36-20d1-4002-a46e-dce56bba5570.png)
+
 - Create multicontainer on the pod (webcontainer and sidecarcontainer):
 
 ![image](https://user-images.githubusercontent.com/10358317/153407239-c74aa02d-dc51-4ce3-a680-ec777db8477b.png)
