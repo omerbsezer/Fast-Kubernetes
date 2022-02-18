@@ -116,6 +116,8 @@ spec:
             claimName: mysqlclaim                   # chose/select "mysqlclaim" PVC that is defined above.
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154735894-bb807908-5378-487c-bb67-8e68ab26cc00.png)
+
 - Run deployment on our cluster:
 
 ![image](https://user-images.githubusercontent.com/10358317/152175581-ccaafe14-e41d-4a14-8e4f-cde96e9bf31b.png)
