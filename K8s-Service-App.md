@@ -56,7 +56,10 @@ spec:
         image: ozgurozturknet/k8s:backend
         ports:
         - containerPort: 5000
-```        
+```
+
+![image](https://user-images.githubusercontent.com/10358317/154670356-f3bcda44-60d3-4d85-a620-920345c5e026.png)
+
 - Run on the terminal: "kubectl get pods -w" (on Linux/WSL2: "watch kubectl get pods")
 
 
@@ -78,6 +81,10 @@ spec:
       port: 5000
       targetPort: 5000
 ``` 
+
+![image](https://user-images.githubusercontent.com/10358317/154670246-fe3466b9-e0d2-42f2-a6e2-37be9e0410bb.png)
+
+
 - ClusterIP Service created. If any resource in the cluster sends a request to the ClusterIP and Port 5000, this request will reach to one of the pod behind the ClusterIP Service.
 - We can show it from frontend pods. 
 - Connect one of the front-end pods (list: "kubectl get pods",  connect: "kubectl exec -it frontend-5966c698b4-b664t -- bash")
