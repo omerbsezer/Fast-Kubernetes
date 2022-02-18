@@ -686,7 +686,7 @@ spec:
 - "persistentVolumeReclaimPolicy" types: it defines the behaviour of volume after the end of using volume.
     - "Retain" : volume remains with all data after using it.
     - "Recycle": volume is not deleted but all data in the volume is deleted. We get empty volume if it is chosen.
-    - "Delete" : volume is delete after using it.
+    - "Delete" : volume is deleted after using it.
 
 ```
 # Creating Persistent Volume on NFS Server on the network    
