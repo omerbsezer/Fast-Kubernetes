@@ -75,6 +75,12 @@ spec:
             operator: Exists                                # In, NotIn, Exists, DoesNotExist
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154728538-90ae7179-1fcb-4e96-9376-b089cffc5adf.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154728650-3f622711-dc2b-4e2c-8fce-966c8e892824.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154728769-784f3fb5-59b5-48bb-adc5-8bce0bf57acc.png)
+
 - Create pods:
   - 1st pod waits pending: Because it controls labelled "app:production" node, but it does not find, so it waits until finding labelled "app:production" node.
   - 2nd pod started: Because it controls the labels first, but "preferredDuringScheduling", even if it does not find, run anywhere.
