@@ -643,6 +643,10 @@ spec:
     image: redis:6-alpine
 ```
     
+![image](https://user-images.githubusercontent.com/10358317/154729871-1294d423-1429-4a00-9d2b-78cfcdace18a.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154730052-19e96985-1452-4d93-9fc3-d70ea06ceb8a.png)
+    
 ### Taint and Toleration <a name="taint-tolereation"></a>
 - Node affinity is a property of Pods that attracts/accepts them to a set of nodes. Taints are the opposite, they allow a node to repel/reject a set of pods.
 - TAINTs are assigned to the NODEs. TOLERATIONs assigned to the PODs
