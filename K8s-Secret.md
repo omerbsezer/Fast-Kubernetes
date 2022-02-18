@@ -28,10 +28,13 @@ stringData:
   db_password: P@ssw0rd!
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154717259-629e529e-4178-489e-8d20-bad22faeb782.png)
+
 - Create Yaml file (secret-pods.yaml) in your directory and copy the below definition into the file:
 - 3 Pods:
   - secret binding using volume
   - secret binding environment variable: 1. explicitly, 2. implicitly
+  
 ```
 apiVersion: v1
 kind: Pod
@@ -86,6 +89,12 @@ spec:
     - secretRef:
         name: mysecret
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154717520-554ae3b6-cb55-4ad6-a2f3-7669c0788f77.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154717625-d688251f-8bb6-44b4-843e-eca7b6496b29.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154717703-49d3e207-15c7-4f3e-afb6-ba712c4dea67.png)
 
 - Create secret object:
 
