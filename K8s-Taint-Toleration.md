@@ -47,6 +47,10 @@ spec:
     effect: "NoSchedule" 
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154731410-8f2da14f-b98f-4958-8335-6488cb00e89f.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154731465-9d15d24d-089a-4f93-8b3d-0a9f637c0b1f.png)
+
 - When we look at the node details, there is not any taint on the node (minikube):
 ```
 kubectl describe node minikube
