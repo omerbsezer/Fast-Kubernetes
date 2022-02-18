@@ -47,6 +47,9 @@ spec:
         - containerPort: 80
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154661824-0e6db25e-cf67-4789-97be-acd8d90f7c07.png)
+
+
 - Create Yaml file (rolling-deployment.yaml) in your directory and copy the below definition into the file:
 
 ```
@@ -77,6 +80,8 @@ spec:
         ports:
         - containerPort: 80
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154661909-087ac83a-d5ee-4268-805c-c4a7179dfafd.png)
 
 - Run deployment: 
 
