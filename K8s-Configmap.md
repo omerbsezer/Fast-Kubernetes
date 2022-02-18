@@ -56,6 +56,8 @@ spec:
         name: myconfigmap
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154719668-bcd3bdb2-c102-489e-8049-747fd97126f3.png)
+
 - Create configmap and the pod:
 
 ![image](https://user-images.githubusercontent.com/10358317/153645965-84f8fe93-e73e-4468-bce4-4d2c3f49546f.png)
