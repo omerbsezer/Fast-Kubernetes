@@ -524,7 +524,9 @@ spec:
       path: /cache/config.json        # "path" on the node
       type: FileOrCreate              # "hostpath" type "FileOrCreate",  if it is not existed, create file
 ```   
-    
+
+![image](https://user-images.githubusercontent.com/10358317/154715083-f5972de0-d95e-47f2-bc6d-92cf7b8a182a.png)
+
 ### Secret <a name="secret"></a>
 - Secret objects store the sensitive and secure information like username, password, ssh-tokens, certificates.     
 - Secrets (that you defined) and pods (that you defined) should be in the same namespace (e.g. if defined secret is in the "default" namespace, pod should be also in the "default" namepace). 
