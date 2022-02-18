@@ -35,6 +35,8 @@ spec:
     server: 10.255.255.10                      # IP of NFS Server
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154735518-3bde3e54-518b-4fba-bdf5-bd57eabd2546.png)
+
 - Create PV object on our cluster:
 
 ![image](https://user-images.githubusercontent.com/10358317/152173879-837bb03a-fd9f-44ba-becc-fa3ab7ae748f.png)
@@ -58,6 +60,8 @@ spec:
     matchLabels:
       app: mysql                     # chose/select "mysql" PV that is defined above.
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154735540-3026d9de-92bd-4e9d-a00a-3f0cf597db34.png)
 
 - Create PVC object on our cluster. After creation, PVC's status shows to bind to PV ("Bound"):
 
