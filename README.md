@@ -706,6 +706,8 @@ spec:
     path: /tmp                                 # binds the path on the NFS Server
     server: 10.255.255.10                      # IP of NFS Server
 ``` 
+
+![image](https://user-images.githubusercontent.com/10358317/154734368-323af0cc-e745-4aa0-b844-65b4a410426d.png)
     
 #### Persistent Volume Claim (PVC)  
 - We should create PVC to use volume. With PVC, existed PVs can be chosen.
@@ -729,6 +731,8 @@ spec:
       app: mysql                            # chose/select "mysql" PV that is defined above.
  ```
 
+
+    
 **Goto the scenario:** [LAB: K8s Persistant Volume and Persistant Volume Claim](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-PersistantVolume.md)    
     
 ### Storage Class <a name="storageclass"></a>
