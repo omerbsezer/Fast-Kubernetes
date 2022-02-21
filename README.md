@@ -876,6 +876,9 @@ rules:
   resources: ["pods"]                        # "services", "endpoints", "pods", "pods/log" etc.
   verbs: ["get", "watch", "list"]            # "get", "list", "watch", "create", "update", "patch", "delete"  
 ``` 
+
+![image](https://user-images.githubusercontent.com/10358317/154953311-84f616cf-3a25-486f-beb9-e2d6a3a2e01a.png)
+    
 ```     
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -890,7 +893,10 @@ roleRef:
   kind: Role #this must be Role or ClusterRole
   name: pod-reader                            # this must match the name of the Role or ClusterRole you wish to bind to
   apiGroup: rbac.authorization.k8s.io    
-```       
+```
+    
+![image](https://user-images.githubusercontent.com/10358317/154953439-1dd52309-611b-48bf-8f7b-51433b678f8c.png)
+    
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -901,6 +907,9 @@ rules:
   resources: ["secrets"]
   verbs: ["get", "watch", "list"]    
 ```  
+    
+![image](https://user-images.githubusercontent.com/10358317/154953542-3723d691-632e-41d6-908f-5b15080ffa7b.png)
+    
 ```    
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
@@ -915,6 +924,9 @@ roleRef:
   name: secret-reader
   apiGroup: rbac.authorization.k8s.io 
 ```
+    
+![image](https://user-images.githubusercontent.com/10358317/154953630-dcd71073-6de6-4194-955e-9b50a0f9c978.png)
+    
 #### Service Account
 - RBACs are used for real people. 
 - Service accounts are used for pods/apps that can connect K8s API to create K8s objects.
