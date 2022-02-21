@@ -844,6 +844,8 @@ spec:
           restartPolicy: OnFailure
 ``` 
 
+![image](https://user-images.githubusercontent.com/10358317/154948618-8b71bf38-62a7-44de-bdd2-ac40a1709eb4.png)
+    
 **Goto the scenario:** [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 
 ### Authentication, Role Based Access Control, Service Account <a name="authentication"></a>
