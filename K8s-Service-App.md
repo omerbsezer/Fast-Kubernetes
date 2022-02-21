@@ -137,6 +137,9 @@ spec:
       port: 80
       targetPort: 80
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154983532-a14b0046-e3a0-48a2-9784-965b80de4f72.png)
+
 - If you run on the cloud, you'll see the external-ip of the loadbalancer service. 
 
 ![image](https://user-images.githubusercontent.com/10358317/149772479-a6262368-ab70-4c79-9897-a8162d5dc767.png)
