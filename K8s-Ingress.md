@@ -56,6 +56,8 @@ spec:
                   number: 80
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154954648-e730fbcd-4eb0-4a4c-a189-f1e9e118cdd0.png)
+
 - Copy and save (below) as file on your PC (todoingress.yaml). 
 
 ```     
@@ -76,6 +78,8 @@ spec:
                 port:
                   number: 80
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154954757-4e873d67-855b-4123-85ce-48b6acfc839e.png)
 
 - Copy and save (below) as file on your PC (deploy.yaml). 
 
@@ -206,6 +210,12 @@ spec:
       port: 80
       targetPort: 80
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154954983-850acd87-b475-48d4-8d37-d1fa081b8159.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154955115-0e23d6b7-4aa9-4409-8ec7-b658edfda34c.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154955180-ec54ee41-6b40-4d5d-a4e1-3c6ce885a57b.png)
 
 - Run "deploy.yaml" and "appingress.yaml" to create deployments and services
 
