@@ -25,6 +25,8 @@ spec:
       restartPolicy: Never   
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154946885-80e87f3c-5120-4c09-bde2-a35cd09a7383.png)
+
 - Create job:
 
 ![image](https://user-images.githubusercontent.com/10358317/152507949-922134f4-28cb-4d4f-8ccf-d5c5657b79c3.png)
