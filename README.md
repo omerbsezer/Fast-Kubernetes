@@ -804,7 +804,7 @@ spec:
 **Goto the scenario:** [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
 #### Cron Job Object
-- Crob job is a scheduled job that can be started in scheduled time.
+- Cron job is a scheduled job that can be started in scheduled time.
 
 ```    
 # ┌───────────── minute (0 - 59)
