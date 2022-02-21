@@ -798,6 +798,9 @@ spec:
   backoffLimit: 5              # to tolerate fail number of job, after 5 times of failure, not try to continue job, fail the job
   activeDeadlineSeconds: 100   # if this job is not completed in 100 seconds, fail the job
 ```  
+    
+![image](https://user-images.githubusercontent.com/10358317/154946885-80e87f3c-5120-4c09-bde2-a35cd09a7383.png)    
+    
 **Goto the scenario:** [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
     
 #### Cron Job Object
