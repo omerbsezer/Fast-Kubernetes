@@ -109,6 +109,9 @@ spec:
       port: 80
       targetPort: 80
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154983087-ed031df1-ed5f-4910-b8bd-3bf7197954b2.png)
+
 - With NodePort Service (you can see the image below), frontend pods can be reachable from the opening port (32098). In other words, someone can reach frontend pods via WorkerNodeIP:32098. NodePort service listens all of the worker nodes' port (in this example: port 32098).     
 - While working with minikube, it is only possible with minikube tunnelling. Minikube simulates the reaching of the NodeIP:Port with tunneling feature. 
 
