@@ -28,6 +28,9 @@ spec:
           restartPolicy: OnFailure
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/154947805-0c1db85f-fd52-4e3e-8e86-5afca73359ca.png)
+
+
 - Create Cron Job:
 
 ![image](https://user-images.githubusercontent.com/10358317/152511636-b68caefa-1d1a-48a4-bc2b-a773e0ba5eef.png)
