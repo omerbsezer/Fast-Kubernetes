@@ -54,6 +54,11 @@ spec:
         requests:
           storage: 512Mi
 ```
+
+![image](https://user-images.githubusercontent.com/10358317/154945153-d9b61958-94d2-44f0-a900-14494aeb41f7.png)
+
+![image](https://user-images.githubusercontent.com/10358317/154945314-974de8ae-4456-4711-b499-8aad664b847a.png)
+
 - Create statefulset and pvc:
 
 ![image](https://user-images.githubusercontent.com/10358317/152322911-47e14c25-9f86-49ff-bdcf-df74e38e5939.png)
