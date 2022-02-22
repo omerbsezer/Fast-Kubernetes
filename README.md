@@ -198,7 +198,7 @@ For learning K8s and running on a computer, Kubectl and Minikube are enough to i
         1. App completes the mission and closes automatically without giving error,
         2. Use or System sends close signal and closes automatically without giving error,
         3. Giving error, collapsed and closes with giving error code. 
-    - Rastart Policies (it can defined in the pod definition): 
+    - Restart Policies (it can defined in the pod definition): 
         1. Always: Default value, kubelet starts always when closing with or without error, 
         2. On-failure: It starts again when it gets only error, 
         3. Never: It never restarts in any case.
