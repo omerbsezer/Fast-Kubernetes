@@ -385,4 +385,13 @@ kubectl taint node minikube platform=production:NoSchedule  #taint add
 kubectl taint node minikube platform-   # taint delete
 ```
 
+#### connect pod with bash and apt install
+```
+kubectl exec -it PodName -- bash
+apt update
+apt install net-tools
+apt install iputils-ping
+ifconfig
+ping x.x.x.x
+```
 
