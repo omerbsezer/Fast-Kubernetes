@@ -27,7 +27,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Job.md)
 - [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 - [LAB: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)
-- [LAB: Helm Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md)    
+- [LAB: Helm Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md)
+- [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)    
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
@@ -66,6 +67,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Helm: Kuberbetes Package Manager](#helm)
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
 - [Helm Commands Cheatsheet](#helm_cheatsheet)
+- [Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass](#cluster_setup)
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
 
@@ -1028,6 +1030,10 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 
 **Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
+## Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass <a name="cluster_setup"></a>
+    
+**Goto:** [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md) 
+    
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
 - Docker and Kubernetes Tutorial - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
