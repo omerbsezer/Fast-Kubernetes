@@ -18,8 +18,6 @@ sudo apt-get update
 sudo apt-get install helm
 helm version
 ```
-![image](https://user-images.githubusercontent.com/10358317/153708424-d875f4bc-1af5-4169-85af-c87044e64f17.png)
-
 
 ### Jenkins Install
 
