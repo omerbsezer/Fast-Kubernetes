@@ -148,7 +148,7 @@ Download:
 
 from here=> https://kubernetes.io/docs/tasks/tools/ 
 
-For learning K8s and running on a computer, Kubectl and Minikube are enough to install.
+For learning K8s and running on a computer, **Kubectl and Minikube** are enough to install. 
 
 **PS:** Cloud providers (Azure, Google Cloud, AWS) offer managed K8s (control plane is managed by cloud provides). You can easily create your cluster (number of computer and details) and make connection with Kubectl (using CLI get-credentials of cluster on the cloud)
 
