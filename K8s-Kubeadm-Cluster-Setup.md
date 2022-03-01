@@ -1,4 +1,4 @@
-## K8s Kubeadm Cluster Setup 
+## LAB: K8s Kubeadm Cluster Setup 
 
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd) 
 
