@@ -68,7 +68,6 @@ EOF
 ```
 
 - Run on both nodes: 
-- 
 ``` 
 sudo modprobe overlay
 sudo modprobe br_netfilter
