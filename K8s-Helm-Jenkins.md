@@ -3,9 +3,9 @@
 - "Whenever you trigger a Jenkins job, the Jenkins Kubernetes plugin will make an API call to create a Kubernetes agent pod. Then, the Jenkins agent pod gets deployed in the kubernetes with few environment variables containing the Jenkins server details and secrets."
 - "When the agent pod comes up, it used the details in its environment variables and talks back to Jenkins using the JNLP method" (Ref: DevopsCube)
 
-![image](https://user-images.githubusercontent.com/10358317/156229667-df4cbcb3-0776-4d9f-8cbf-21428924155c.png)
-
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/10358317/156229862-7046f57b-29eb-4c47-b8cd-fbe4376eac89.png">
+</p>
 
 ### K8s Cluster (2 Node Multipass VM)
 - K8s cluster was created before:
