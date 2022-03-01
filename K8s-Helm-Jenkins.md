@@ -2,7 +2,7 @@
 
 ### K8s Cluster (2 Node Multipass VM)
 - K8s cluster was created before:
-   - **Goto:** [K8s Kubeadm Cluster Setup] (https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
+   - **Goto:** [K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
 
 - On that cluster, helm was installed on master node.
 
