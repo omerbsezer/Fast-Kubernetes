@@ -32,12 +32,14 @@ multipass shell worker1
 
 #### 2. IP-Tables Bridged Traffic Configuration
 
+- Run on both nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
 EOF
 ``` 
 
+- Run on both nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -49,6 +51,7 @@ EOF
 
 ![image](https://user-images.githubusercontent.com/10358317/156151447-e4685bef-6437-46ba-9460-2cdd0f1dbe12.png)
 
+- Run on both nodes: 
 ``` 
 sudo sysctl --system
 ```
@@ -56,7 +59,7 @@ sudo sysctl --system
 ![image](https://user-images.githubusercontent.com/10358317/156158062-01f3edc8-df31-4a83-9dcc-d173c3cc921b.png)
 
 #### 3. Install Containerd
-
+- Run on both nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
 overlay
@@ -64,11 +67,14 @@ br_netfilter
 EOF
 ```
 
+- Run on both nodes: 
+- 
 ``` 
 sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
 
+- Run on both nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 net.bridge.bridge-nf-call-iptables  = 1
@@ -77,6 +83,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 EOF
 ```
 
+- Run on both nodes: 
 ``` 
 sudo sysctl --system
 ```
@@ -85,7 +92,7 @@ sudo sysctl --system
 
 ![image](https://user-images.githubusercontent.com/10358317/156159208-dfc96be6-62b6-4b6d-8e12-1a48541e89cb.png)
 
-
+- Run on both nodes: 
 ``` 
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -108,7 +115,7 @@ sudo systemctl restart containerd
 ![image](https://user-images.githubusercontent.com/10358317/156160102-ce0437a8-1054-46ab-b79d-47527d4462e3.png)
 
 #### 4. Install KubeAdm
-
+- Run on both nodes: 
 ``` 
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -130,6 +137,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 #### 5. Install Kubernetes Cluster
 
+- Run on both nodes: 
 ``` 
 sudo kubeadm config images pull
 ```
@@ -142,6 +150,7 @@ ping master
 ```
 ![image](https://user-images.githubusercontent.com/10358317/156161683-63d2d56a-e5b1-4826-9665-e872a333d520.png)
 
+- Run on master: 
 ``` 
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip> --control-plane-endpoint=<ip>
 # sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.45.74 --control-plane-endpoint=172.31.45.74
