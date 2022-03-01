@@ -1,4 +1,4 @@
-## Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)
+## LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)
 
 - "Whenever you trigger a Jenkins job, the Jenkins Kubernetes plugin will make an API call to create a Kubernetes agent pod. Then, the Jenkins agent pod gets deployed in the kubernetes with few environment variables containing the Jenkins server details and secrets."
 - "When the agent pod comes up, it used the details in its environment variables and talks back to Jenkins using the JNLP method" (Ref: DevopsCube)
