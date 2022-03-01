@@ -170,6 +170,14 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
         --discovery-token-ca-cert-hash sha256:1f03886e5a28fb9716e01794b4a01144f362bf431220f15ca98bed2f5a44e91b
 ```
 
+- If it is required to create another master node, copy the control plane line (tokens are different in your case, please look at the kubeadm init respond):
+
+```
+sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
+        --discovery-token-ca-cert-hash sha256:1f03886e5a28fb9716e01794b4a01144f362bf431220f15ca98bed2f5a44e91b \
+        --control-plane
+```
+
 ![image](https://user-images.githubusercontent.com/10358317/156163626-ae2baf3f-43e8-4747-8fdc-80738603adbe.png)
 
 - On Master node: 
