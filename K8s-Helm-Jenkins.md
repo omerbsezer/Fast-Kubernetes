@@ -4,11 +4,11 @@
 - K8s cluster was created before:
    - **Goto:** [K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
 
-- On that cluster, helm was installed on master node.
+- On that cluster, helm was installed on the master node.
 
 ### Helm Install
 
-- Installed on Ubuntu 20.04 (for other platforms: https://helm.sh/docs/intro/install/)
+- Install on Ubuntu 20.04 (for other platforms: https://helm.sh/docs/intro/install/)
 
 ```
 curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
