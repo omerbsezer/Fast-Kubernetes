@@ -28,7 +28,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Cron Job](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-CronJob.md)
 - [LAB: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)
 - [LAB: Helm Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md)
-- [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)    
+- [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
+- [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)    
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
@@ -1019,8 +1020,10 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     - **Release:** "A Release is an instance of a chart running in a Kubernetes cluster. One chart can often be installed many times into the same cluster. And each time it is installed, a new release is created. Consider a MySQL chart. If you want two databases running in your cluster, you can install that chart twice. Each one will have its own release, which will in turn have its own release name."
     
 **Goto the scenario:** [LAB: HELM Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md) 
-    
+
+**Goto the scenario:** [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)    
 **Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
+    
        
 ## Kubernetes Commands Cheatsheet <a name="cheatsheet"></a>
 
