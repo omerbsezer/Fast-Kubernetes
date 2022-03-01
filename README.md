@@ -1021,7 +1021,8 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     
 **Goto the scenario:** [LAB: HELM Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md) 
 
-**Goto the scenario:** [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)    
+**Goto the scenario:** [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)   
+    
 **Goto:** [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
     
        
