@@ -196,6 +196,11 @@ kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 ![image](https://user-images.githubusercontent.com/10358317/156164572-5525bda3-6ff5-49a2-9a2f-392a804b4da2.png)
 
 
+![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
+
+![image](https://user-images.githubusercontent.com/10358317/156170478-cfe953ca-d263-47e1-b96c-9f2df33d0d76.png)
+
+
 ### Reference
  
  - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
