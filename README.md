@@ -29,7 +29,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Ingress](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Ingress.md)
 - [LAB: Helm Install & Usage](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/Helm.md)
 - [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
-- [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)    
+- [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)
+- [LAB: Enable Dashboard on Real Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)    
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
@@ -1002,8 +1003,7 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
        
 ![image](https://user-images.githubusercontent.com/10358317/152147845-017c6c10-a687-4ee3-b868-a08d96f6d884.png)
     
-
-
+**Goto the scenario:** [LAB: Enable Dashboard on Real Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
 
 ## Play With Kubernetes <a name="playWithKubernetes"></a>
 
