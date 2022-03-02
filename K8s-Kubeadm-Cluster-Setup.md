@@ -214,8 +214,60 @@ kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
+
+### Join New K8s Worker Node to Existing Cluster
+
+- We are adding new node to existing cluster above. We need to get join token, discovery token CA cert hash, API server advertise address. After getting info, we'll create join command for each nodes. 
+- Run on Master to get certificate and token information:
+
+```
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //'
+kubeadm token list
+kubectl cluster-info
+```
+
+![image](https://user-images.githubusercontent.com/10358317/156349584-9fe2f41e-4368-43ef-9674-c78512230938.png)
+
+- In this example, token TTL has 3 hours left (normally, token expires in 24 hours). So we don't need to create new token.  
+- If the token is expired, generate a new one with the command:
+
+```
+sudo kubeadm token create
+kubeadm token list
+```
+
+- Create join command for worker nodes:
+
+```
+kubeadm join \
+  <control-plane-host>:<control-plane-port> \
+  --token <token> \
+  --discovery-token-ca-cert-hash sha256:<hash>
+```
+
+- In our case, we run the following command on both workers (worker2, worker3):
+
+```
+sudo kubeadm join 172.31.32.27:6443 --token 39g7sx.v589tv38nxhus74k --discovery-token-ca-cert-hash sha256:1db5d45337803e35e438cdcdd9ff77449fef3272381ee43784626f19c873d356
+```
+
+![image](https://user-images.githubusercontent.com/10358317/156350767-b14335d0-1d63-4ab1-a939-6eb47fadac9d.png)
+
+![image](https://user-images.githubusercontent.com/10358317/156350852-d1df7b93-13aa-462d-8cce-51f3b9b6e553.png)
+
+- Then, we get nodes ready, run on master:
+
+```
+kubectl get nodes
+```
+
+![image](https://user-images.githubusercontent.com/10358317/156351061-7c1af34b-63cd-49dc-a8a1-74679c765516.png)
+
+- Ref: https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
+
 ### Reference
  
  - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
  - https://github.com/aytitech/k8sfundamentals/tree/main/setup
  - https://multipass.run/
+ - https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
