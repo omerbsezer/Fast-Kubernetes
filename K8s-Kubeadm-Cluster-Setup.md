@@ -3,8 +3,13 @@
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd) 
 
 
+# Table of Contents
+- [Creating Cluster With Kubeadm](#creating)
+- [Joining New K8s Worker Node to Existing Cluster](#joining)
+- [IP address changes in Kubernetes Master Node] (#master_ip_changed)
+- [Removing the Worker Node from Cluster] (#removing)
 
-## 1. Creating Cluster With Kubeadm
+## 1. Creating Cluster With Kubeadm <a name="creating"></a>
 
 #### 1.1 Multipass Installation - Creating VM
 
@@ -215,8 +220,9 @@ kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
 
-## 2. Joining New K8s Worker Node to Existing Cluster
+## 2. Joining New K8s Worker Node to Existing Cluster <a name="joining"></a>
 
+- If we lose the token and token CA cert dash and API server address, wé need to learn them to join a new node into the cluster.
 - We are adding new node to existing cluster above. We need to get join token, discovery token CA cert hash, API server advertise address. After getting info, we'll create join command for each nodes. 
 - Run on Master to get certificate and token information:
 
@@ -265,7 +271,7 @@ kubectl get nodes
 
 - Ref: https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
 
-##  3. IP address changes in Kubernetes Master Node
+##  3. IP address changes in Kubernetes Master Node <a name="master_ip_changed"></a>
 - After restarting Master Node, it could be possible that the IP of master node is updated. Your K8s cluster API's IP is still old IP of the node. So you should configure the K8s cluster with new IP.
 
 - You cannot reach API when using kubectl commands:
@@ -326,7 +332,7 @@ kubectl get nodes
 
 ![image](https://user-images.githubusercontent.com/10358317/156805995-49e8a6f5-5293-46b8-9684-59f18d6f5ab2.png)
 
-##  4. Removing the Worker Node from Cluster: 
+##  4. Removing the Worker Node from Cluster <a name="removing"></a>
 
 - Run commandd on Master Node to remove specific worker node:
 
