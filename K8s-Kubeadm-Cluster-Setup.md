@@ -8,6 +8,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 - [Joining New K8s Worker Node to Existing Cluster](#joining)
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
 - [Removing the Worker Node from Cluster](#removing)
+- [Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image](#docker_registry)
 
 ## 1. Creating Cluster With Kubeadm <a name="creating"></a>
 
@@ -354,6 +355,8 @@ sudo kubeadm reset
 
 ##  5. Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image <a name="docker_registry"></a>
 
+#### 5.1 Installing Docker
+
 - Run commands on Master Node to install docker on Master node:
 
 ```
@@ -385,6 +388,34 @@ kubectl get nodes
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/157028638-6931e150-65b0-4361-8d37-ab2f0c9a8461.png)
+
+#### 5.2 Running Docker Registry
+
+Run on Master to pull registry:
+
+```
+sudo docker image pull registry
+```
+
+- Run container using 'Registry' image: (-p: port binding [hostPort]:[containerPort], -d: detach mode (running background), -e: change environment variables status)
+```
+sudo docker container run -d -p 5000:5000 --restart always --name localregistry -e REGISTRY_STORAGE_DELETE_ENABLED=true registry
+```
+
+- Run registry container with binding mount (-v) and without getting error 500 (REGISTRY_VALIDATION_DISABLED=true):
+```
+sudo docker run -d -p 5000:5000 --restart=always --name registry -v /home/docker_registry:/var/lib/registry -e REGISTRY_STORAGE_DELETE_ENABLED=true -e REGISTRY_VALIDATION_DISABLED=true -e REGISTRY_HTTP_ADDR=0.0.0.0:5000 registry
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157030622-69ab3019-6cff-43ee-8a3d-fe277d7632b5.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157030738-be8eb8c3-0f87-4d39-969b-bd94cb8b0f9f.png)
+
+- Open with browser or run curl command:
+```
+curl http://127.0.0.1:5000/v2/_catalog
+```
+![image](https://user-images.githubusercontent.com/10358317/157031139-edf0162d-d753-4d75-a39a-127583bb47fe.png)
 
 
 ### Reference
