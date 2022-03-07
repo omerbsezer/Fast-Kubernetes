@@ -424,3 +424,4 @@ curl http://127.0.0.1:5000/v2/_catalog
  - https://github.com/aytitech/k8sfundamentals/tree/main/setup
  - https://multipass.run/
  - https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
+ - https://docs.docker.com/engine/install/ubuntu/
