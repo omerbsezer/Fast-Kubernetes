@@ -326,9 +326,25 @@ kubectl get nodes
 
 ![image](https://user-images.githubusercontent.com/10358317/156805995-49e8a6f5-5293-46b8-9684-59f18d6f5ab2.png)
 
-##  4. Dismissing the One of the Node from Cluster: 
+##  4. Removing the Worker Node from Cluster: 
 
+- Run commandd on Master Node to remove specific worker node:
 
+```
+kubectl get nodes
+kubectl drain worker2
+kubectl delete node worker2
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157018826-8cbae29e-b5e4-4a6d-bf8e-72d3006ce33e.png)
+
+Run on the specific deleted node (worker2)
+
+```
+sudo kubeadm reset
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157018963-422b1b72-667c-4375-b9ee-8035823396d7.png)
 
 ### Reference
  
