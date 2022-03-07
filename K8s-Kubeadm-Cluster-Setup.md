@@ -334,7 +334,7 @@ kubectl get nodes
 
 ##  4. Removing the Worker Node from Cluster <a name="removing"></a>
 
-- Run commandd on Master Node to remove specific worker node:
+- Run commands on Master Node to remove specific worker node:
 
 ```
 kubectl get nodes
@@ -351,6 +351,41 @@ sudo kubeadm reset
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/157018963-422b1b72-667c-4375-b9ee-8035823396d7.png)
+
+##  5. Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image <a name="docker_registry"></a>
+
+- Run commands on Master Node to install docker on Master node:
+
+```
+ sudo apt-get update
+ sudo apt-get install ca-certificates curl gnupg lsb-release
+ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo docker run hello-world
+```
+
+**Goto for more information:** https://docs.docker.com/engine/install/ubuntu/
+
+![image](https://user-images.githubusercontent.com/10358317/157026833-fcd829fd-a5dd-4701-b71a-89327445483d.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157027173-8be0d193-4ac9-4a82-ac3b-33fbd68ba42d.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157027863-787bf3cb-3e0c-4888-8de6-80e2145a383c.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157028189-2585365e-51e5-4dfa-9d60-5ac9d73c258a.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157028470-e09a783d-1413-4d87-bbaf-463741871a68.png)
+
+```
+sudo docker image ls
+kubectl get nodes
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157028638-6931e150-65b0-4361-8d37-ab2f0c9a8461.png)
+
 
 ### Reference
  
