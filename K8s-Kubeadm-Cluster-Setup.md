@@ -3,7 +3,7 @@
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd) 
 
 
-# Table of Contents
+### Table of Contents
 - [Creating Cluster With Kubeadm](#creating)
 - [Joining New K8s Worker Node to Existing Cluster](#joining)
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
