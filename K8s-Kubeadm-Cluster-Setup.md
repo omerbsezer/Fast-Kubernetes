@@ -4,9 +4,9 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 
 
 
-### Steps
+## 1. Creating Cluster With Kubeadm
 
-#### 1. Multipass Installation - Creating VM
+#### 1.1 Multipass Installation - Creating VM
 
 - "Multipass is a mini-cloud on your workstation using native hypervisors of all the supported plaforms (Windows, macOS and Linux)"
 - Fast to install and to use.
@@ -30,7 +30,7 @@ multipass shell worker1
 
 ![image](https://user-images.githubusercontent.com/10358317/156150843-db217ba0-8fff-4a77-9f3d-09f9f71314df.png)
 
-#### 2. IP-Tables Bridged Traffic Configuration
+#### 1.2 IP-Tables Bridged Traffic Configuration
 
 - Run on both nodes: 
 ``` 
@@ -58,7 +58,7 @@ sudo sysctl --system
 
 ![image](https://user-images.githubusercontent.com/10358317/156158062-01f3edc8-df31-4a83-9dcc-d173c3cc921b.png)
 
-#### 3. Install Containerd
+#### 1.3 Install Containerd
 - Run on both nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
@@ -113,7 +113,7 @@ sudo systemctl restart containerd
 
 ![image](https://user-images.githubusercontent.com/10358317/156160102-ce0437a8-1054-46ab-b79d-47527d4462e3.png)
 
-#### 4. Install KubeAdm
+#### 1.4 Install KubeAdm
 - Run on both nodes: 
 ``` 
 sudo apt-get update
@@ -134,7 +134,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ![image](https://user-images.githubusercontent.com/10358317/156161142-e7ba1322-9cf8-4edf-9018-082fa5b2f76a.png)
 
 
-#### 5. Install Kubernetes Cluster
+#### 1.5 Install Kubernetes Cluster
 
 - Run on both nodes: 
 ``` 
@@ -193,7 +193,7 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 ![image](https://user-images.githubusercontent.com/10358317/156163717-c9c771c1-a850-4706-80dd-7fa85b890c2a.png)
 
 
-#### 6. Install Kubernetes Network Infrastructure
+#### 1.6 Install Kubernetes Network Infrastructure
 
 - Calico is used for network plugin on K8s. Others (flannel, weave) could be also used. 
 - Run only on Master: 
@@ -215,7 +215,7 @@ kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
 
-### Join New K8s Worker Node to Existing Cluster
+## 2. Joining New K8s Worker Node to Existing Cluster
 
 - We are adding new node to existing cluster above. We need to get join token, discovery token CA cert hash, API server advertise address. After getting info, we'll create join command for each nodes. 
 - Run on Master to get certificate and token information:
@@ -265,7 +265,7 @@ kubectl get nodes
 
 - Ref: https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
 
-### IP address changes in Kubernetes Master Node
+##  3. IP address changes in Kubernetes Master Node
 - After restarting Master Node, it could be possible that the IP of master node is updated. Your K8s cluster API's IP is still old IP of the node. So you should configure the K8s cluster with new IP.
 
 - You cannot reach API when using kubectl commands:
@@ -325,6 +325,9 @@ kubectl get nodes
 ```
 
 ![image](https://user-images.githubusercontent.com/10358317/156805995-49e8a6f5-5293-46b8-9684-59f18d6f5ab2.png)
+
+##  4. Dismissing the One of the Node from Cluster: 
+
 
 
 ### Reference
