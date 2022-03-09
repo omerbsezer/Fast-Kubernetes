@@ -418,6 +418,48 @@ curl http://127.0.0.1:5000/v2/_catalog
 ![image](https://user-images.githubusercontent.com/10358317/157031139-edf0162d-d753-4d75-a39a-127583bb47fe.png)
 
 
+##  6. After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error 
+
+- After Installing Docker on Existing Cluster:  When it needs to restart Master, both containerd and docker run on the master node and when running "Kubeadm init", you will encounter that kubelet does not work properly. 
+
+![image](https://user-images.githubusercontent.com/10358317/157424299-ff6d20c2-65e5-4a70-abf3-43579a04f5e1.png)
+
+- It can be solved with creating  this file "daemon.json" in the directory "/etc/docker" and add the following:
+
+```
+{
+"exec-opts": ["native.cgroupdriver=systemd"]
+}
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157424989-671ee3e8-b33c-4d7e-b0d6-ee1fd5685f70.png)
+
+![image](https://user-images.githubusercontent.com/10358317/157425768-a8446317-3477-4719-9bf8-0014ef134335.png)
+
+- Restart your docker service: systemctl restart docker
+
+```
+systemctl restart docker
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157425383-4d82e707-1a98-4dcd-b59e-1239121b5850.png)
+
+
+- Reset kubeadm initializations and run normal: 
+
+```
+sudo kubeadm reset
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+kubectl get nodes
+sudo docker image ls
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157425595-a05f8ec6-ef76-4e64-a525-3d20e7b6ed3d.png)
+
+
 ### Reference
  
  - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
