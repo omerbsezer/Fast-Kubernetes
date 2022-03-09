@@ -422,6 +422,11 @@ curl http://127.0.0.1:5000/v2/_catalog
 
 - After Installing Docker on Existing Cluster:  When it needs to restart Master, both containerd and docker run on the master node and when running "Kubeadm init", you will encounter that kubelet does not work properly. 
 
+```
+[kubelet-check] It seems like the kubelet isn't running or healthy.
+[kubelet-check] The HTTP call equal to 'curl -sSL http://localhost:10248/healthz' failed with error: Get "http://localhost:10248/healthz": dial tcp [::1]:10248: connect: connection refused.
+```
+
 ![image](https://user-images.githubusercontent.com/10358317/157424299-ff6d20c2-65e5-4a70-abf3-43579a04f5e1.png)
 
 - It can be solved with creating  this file "daemon.json" in the directory "/etc/docker" and add the following:
