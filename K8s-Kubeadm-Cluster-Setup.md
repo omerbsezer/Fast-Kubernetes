@@ -9,6 +9,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
 - [Removing the Worker Node from Cluster](#removing)
 - [Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image](#docker_registry)
+- [After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error](#kubelet_error)
 
 ## 1. Creating Cluster With Kubeadm <a name="creating"></a>
 
@@ -418,7 +419,7 @@ curl http://127.0.0.1:5000/v2/_catalog
 ![image](https://user-images.githubusercontent.com/10358317/157031139-edf0162d-d753-4d75-a39a-127583bb47fe.png)
 
 
-##  6. After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error 
+##  6. After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error  <a name="kubelet_error"></a>
 
 - After Installing Docker on Existing Cluster:  When it needs to restart Master, both containerd and docker run on the master node and when running "Kubeadm init", you will encounter that kubelet does not work properly. 
 
