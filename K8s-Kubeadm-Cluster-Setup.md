@@ -586,3 +586,6 @@ kubectl get pods -o wide
  - https://multipass.run/
  - https://computingforgeeks.com/join-new-kubernetes-worker-node-to-existing-cluster/
  - https://docs.docker.com/engine/install/ubuntu/
+ - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+ - https://stackoverflow.com/questions/32726923/pulling-images-from-private-registry-in-kubernetes
+ - https://stackoverflow.com/questions/65681045/adding-insecure-registry-in-containerd
