@@ -479,6 +479,7 @@ sudo docker image ls
 
 ```
 sudo nano /etc/docker/daemon.json
+# copy insecure-registries and paste it
 {
 "exec-opts": ["native.cgroupdriver=systemd"],
 "insecure-registries":["192.168.219.64:5000"]
