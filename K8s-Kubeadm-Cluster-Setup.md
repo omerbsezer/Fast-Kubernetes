@@ -561,17 +561,21 @@ sudo systemctl restart containerd.service
 ![image](https://user-images.githubusercontent.com/10358317/157726335-fc7091da-2300-4f4e-a9da-6416a6810329.png)
 
 
+- If registry ip and port is not defined, you will get this error:  "http: server gave HTTP response to HTTPS client.
+- If pod's status is ImagePullBackOff (Error), it can be inspected with describe command:
+
+```
+kubectl describe pods my-private-pod
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157730392-09a1a2b6-0eec-4f68-97e9-066d00ea541d.png)
+
+
 - On Master:
 
 ```
 kubectl apply -f nginx_pod.yaml
 kubectl get pods -o wide
-```
-
-- If pod's status is ImagePullBackOff (Error), it can be inspected with describe command:
-
-```
-kubectl describe pods my-private-pod
 ```
 ![image](https://user-images.githubusercontent.com/10358317/157725926-90b57357-cf8f-4d27-a91c-01a7d0eb047c.png)
 
