@@ -536,6 +536,8 @@ spec:
     - name: registrypullsecret
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/157726621-858e57b1-4e4c-48dc-9900-c5fe3024d5ae.png)
+
 On the each worker node, registry ip and port should be defined:
 
 ```
@@ -552,6 +554,9 @@ cat /etc/containerd/config.toml   # if containerd is using as runtime. If this w
 sudo systemctl restart containerd.service
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/157726335-fc7091da-2300-4f4e-a9da-6416a6810329.png)
+
+
 On Master:
 
 ```
@@ -559,6 +564,11 @@ kubectl apply -f nginx_pod.yaml
 kubectl get pods -o wide
 ```
 
+- If pod's status is ImagePullBackOff (Error), it can be inspected with describe command:
+
+```
+kubectl describe pods my-private-pod
+```
 ![image](https://user-images.githubusercontent.com/10358317/157725926-90b57357-cf8f-4d27-a91c-01a7d0eb047c.png)
 
 ### Reference
