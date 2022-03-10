@@ -542,7 +542,7 @@ spec:
 - On the each worker node, registry ip and port should be defined:
 
 ```
-cat /etc/containerd/config.toml   # if containerd is using as runtime. If this was Docker, on /etc/docker/daemon.js add insecure-registries like master 
+sudo nano /etc/containerd/config.toml   # if containerd is using as runtime. If this was Docker, on /etc/docker/daemon.js add insecure-registries like master 
 # copy and paste (our IP: 192.168.219.64, change it with your IP):
     [plugins."io.containerd.grpc.v1.cri".registry]
       [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
