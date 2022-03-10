@@ -486,6 +486,8 @@ sudo nano /etc/docker/daemon.json
 sudo systemctl restart docker.service
 ```
 
+![image](https://user-images.githubusercontent.com/10358317/157729358-cf496d8f-24f9-4bff-b263-7a196efb035c.png)
+
 - Pull image from DockerHub, label with new tag and push the local registry on master node:
 
 ```
