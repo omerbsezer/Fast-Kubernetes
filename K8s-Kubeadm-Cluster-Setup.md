@@ -471,6 +471,95 @@ sudo docker image ls
 
 ![image](https://user-images.githubusercontent.com/10358317/157425595-a05f8ec6-ef76-4e64-a525-3d20e7b6ed3d.png)
 
+##  7. Pulling Image from Docker Local Registry and Configure Containerd  <a name="local_image"></a>
+
+- In this scenario, docker local registry already runs on the Master node (see [Section 5](#docker_registry))
+- First add insecure-registry into /etc/docker/daemon.js on Master node:
+
+```
+sudo nano /etc/docker/daemon.json
+{
+"exec-opts": ["native.cgroupdriver=systemd"],
+"insecure-registries":["192.168.219.64:5000"]
+}
+sudo systemctl restart docker.service
+```
+
+- Pull image from DockerHub, label with new tag and push the local registry on master node:
+
+```
+sudo docker image pull nginx:latest
+ifconfig                           # to get master IP
+sudo docker image tag nginx:latest 192.168.219.64:5000/nginx:latest
+sudo docker image push 192.168.219.64:5000/nginx:latest
+curl http://192.168.219.64:5000/v2/_catalog
+sudo docker image pull 192.168.219.64:5000/nginx:latest
+```
+
+- Create docker config and get authentication username and pass in base64 coded:
+
+```
+sudo docker login       # this creates /root/.docker/config
+sudo cat /root/.docker/config.json | base64 -w0   # copy the base64 encoded key
+```
+
+- Create my-secret.yaml and paste the base64 encoded key: 
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: registrypullsecret
+data:
+  .dockerconfigjson: <base-64-encoded-json-here>
+type: kubernetes.io/dockerconfigjson
+```
+
+- Create secret. Kubelet uses this secret to pull image:
+
+```
+kubectl create -f my-secret.yaml && kubectl get secrets
+```
+
+- Create nginx_pod.yaml. Image name shows where the image is pulled from. In addition, "imagePullSecrets" should be defined, which secret should be used for pulling image for local docker registry.  
+ 
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-private-pod
+spec:
+  containers:
+    - name: private
+      image: 192.168.219.64:5000/nginx:latest
+  imagePullSecrets:
+    - name: registrypullsecret
+```
+
+On the each worker node, registry ip and port should be defined:
+
+```
+cat /etc/containerd/config.toml   # if containerd is using as runtime. If this was Docker, on /etc/docker/daemon.js add insecure-registries like master 
+# copy and paste (our IP: 192.168.219.64, change it with your IP):
+    [plugins."io.containerd.grpc.v1.cri".registry]
+      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+        [plugins."io.containerd.grpc.v1.cri".registry.mirrors."192.168.219.64:5000"]
+          endpoint = ["http://192.168.219.64:5000"]
+    [plugins."io.containerd.grpc.v1.cri".registry.configs]
+      [plugins."io.containerd.grpc.v1.cri".registry.configs."192.168.219.64:5000".tls]
+        insecure_skip_verify = true
+# restart containerd.service
+sudo systemctl restart containerd.service
+```
+
+On Master:
+
+```
+kubectl apply -f nginx_pod.yaml
+kubectl get pods -o wide
+```
+
+![image](https://user-images.githubusercontent.com/10358317/157725926-90b57357-cf8f-4d27-a91c-01a7d0eb047c.png)
 
 ### Reference
  
