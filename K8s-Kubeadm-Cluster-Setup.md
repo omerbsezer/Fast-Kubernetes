@@ -10,6 +10,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 - [Removing the Worker Node from Cluster](#removing)
 - [Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image](#docker_registry)
 - [After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error](#kubelet_error)
+- [Pulling Image from Docker Local Registry and Configure Containerd](#local_image)
 
 ## 1. Creating Cluster With Kubeadm <a name="creating"></a>
 
