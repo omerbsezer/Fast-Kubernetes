@@ -280,6 +280,12 @@ kubectl get nodes
 
 ![image](https://user-images.githubusercontent.com/10358317/156803085-e99717a4-da62-453f-97bb-fb86c09edaca.png)
 
+- If you installed the docker for the docker registry, you can remove the exited containers:
+
+```
+sudo docker rm $(sudo docker ps -a -f status=exited -q)
+```
+
 #### On Master Node: 
 
 ```
