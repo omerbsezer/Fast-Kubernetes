@@ -1,10 +1,10 @@
-## LAB: K8s Kubeadm Cluster Setup 
+## LAB: K8s Cluster Setup with Kubeadm and Containerd 
 
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd) 
 
 
 ### Table of Contents
-- [Creating Cluster With Kubeadm](#creating)
+- [Creating Cluster With Kubeadm, Containerd](#creating)
 - [Joining New K8s Worker Node to Existing Cluster](#joining)
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
 - [Removing the Worker Node from Cluster](#removing)
@@ -12,7 +12,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 - [After Installing Docker on Existing Cluster=> When restarting Master, kubeadm init (kubelet) error](#kubelet_error)
 - [Pulling Image from Docker Local Registry and Configure Containerd](#local_image)
 
-## 1. Creating Cluster With Kubeadm <a name="creating"></a>
+## 1. Creating Cluster With Kubeadm, Containerd <a name="creating"></a>
 
 #### 1.1 Multipass Installation - Creating VM
 
