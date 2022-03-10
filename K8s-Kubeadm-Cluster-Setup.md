@@ -539,7 +539,7 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/157726621-858e57b1-4e4c-48dc-9900-c5fe3024d5ae.png)
 
-On the each worker node, registry ip and port should be defined:
+- On the each worker node, registry ip and port should be defined:
 
 ```
 cat /etc/containerd/config.toml   # if containerd is using as runtime. If this was Docker, on /etc/docker/daemon.js add insecure-registries like master 
@@ -558,7 +558,7 @@ sudo systemctl restart containerd.service
 ![image](https://user-images.githubusercontent.com/10358317/157726335-fc7091da-2300-4f4e-a9da-6416a6810329.png)
 
 
-On Master:
+- On Master:
 
 ```
 kubectl apply -f nginx_pod.yaml
