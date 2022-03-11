@@ -16,7 +16,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 - **Link:** https://multipass.run/
 
 ``` 
-# creating 
+# creating VM
 multipass launch --name k8s-controller --cpus 2 --mem 2048M --disk 10G 
 multipass launch --name k8s-node1 --cpus 2 --mem 1024M --disk 7G
 multipass launch --name k8s-node2 --cpus 2 --mem 1024M --disk 7G
@@ -37,6 +37,7 @@ multipass list
 #### 1.2 Install Docker
 
 - Run for all 3 nodes on different terminals:
+
 ``` 
 sudo apt-get update
 sudo apt-get install docker.io -y                # install Docker
@@ -49,6 +50,7 @@ newgrp docker                                    # make the system aware of the 
 #### 1.3 Install Kubeadm
 
 - Run for all 3 nodes on different terminals:
+
 ```
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add              # add the repository key and the repository
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
@@ -56,6 +58,7 @@ sudo apt-get install kubeadm kubelet kubectl -y                                 
 ```
 
 - Run on new terminal:
+
 ```
 multipass list
 ```
@@ -63,6 +66,7 @@ multipass list
 ![image](https://user-images.githubusercontent.com/10358317/157883859-55497a48-3774-4f6c-bf8c-29cc8d591a82.png)
 
 - Run on controller, add IPs of PCs:
+
 ```
 sudo nano /etc/hosts
 ```
@@ -70,6 +74,7 @@ sudo nano /etc/hosts
 ![image](https://user-images.githubusercontent.com/10358317/157883663-af21c3fb-bc19-4b37-9da1-112b1c974c84.png)
 
 - Run for all 3 nodes on different terminals:
+
 ```
 sudo swapoff -a         # turn off swap
 ```
@@ -102,20 +107,22 @@ sudo kubectl get nodes
 ![image](https://user-images.githubusercontent.com/10358317/157887715-27661178-2a0b-4314-ae84-30598cfd5e68.png)
 
 - Run on the nodes (node1, node2):
+
 ```
 sudo kubeadm join 172.29.108.209:6443 --token ug13ec.cvi0jwi9xyf82b6f \
         --discovery-token-ca-cert-hash sha256:12d59142ccd0148d3f12a673b5c47a2f549cce6b7647963882acd90f9b0fbd28
-```        
+```      
+
 - Run "kubectl get nodes" on the controller, after deploying pod network, nodes will be ready.
 
 ![image](https://user-images.githubusercontent.com/10358317/157888135-5ad0e931-8a2d-4389-83c2-ec1d8d909c25.png)
 
 - Run on Controller to deploy a pod network:
-  - 1. Flannel:
+  - Flannel:
     ```
     sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
     ```
-  - 2. Calico:
+  - Calico:
     ```
     kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
     kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
