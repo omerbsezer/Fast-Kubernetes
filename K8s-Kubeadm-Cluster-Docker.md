@@ -134,10 +134,6 @@ sudo kubeadm join 172.29.108.209:6443 --token ug13ec.cvi0jwi9xyf82b6f \
 ##  2. IP address changes in Kubernetes Master Node <a name="master_ip_changed"></a>
 - After restarting Master Node, it could be possible that the IP of master node is updated. Your K8s cluster API's IP is still old IP of the node. So you should configure the K8s cluster with new IP.
 
-- You cannot reach API when using kubectl commands:
-
-![image](https://user-images.githubusercontent.com/10358317/156803085-e99717a4-da62-453f-97bb-fb86c09edaca.png)
-
 - If you installed the docker for the docker registry, you can remove the exited containers:
 
 ```
@@ -152,19 +148,13 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 ```
 
-![image](https://user-images.githubusercontent.com/10358317/156803554-21741c6e-74bb-4902-9130-bc835b91e76f.png)
-
-![image](https://user-images.githubusercontent.com/10358317/156803646-f943be3e-158d-4f3d-9f26-fe06a8436439.png)
-
 - It shows which command should be used to join cluster:
 
 ```
 sudo kubeadm join 172.31.40.125:6443 --token 07vo3z.q2n2qz6bd07ipdnf \
         --discovery-token-ca-cert-hash sha256:46c7dcb092ca091e71ab39bd542e73b90b3f7bdf0c486202b857a678cd9879ba
 ```
-![image](https://user-images.githubusercontent.com/10358317/156803877-89ac5a24-6dd6-40d0-8568-3c6b70acbd89.png)
 
-![image](https://user-images.githubusercontent.com/10358317/156804162-cc8c3f2b-5d3f-407a-9ced-31322b6bb39b.png)
 
 
 - Network Configuratin with new IP:
@@ -174,7 +164,7 @@ kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
 kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
 ```
 
-![image](https://user-images.githubusercontent.com/10358317/156804328-c8068ef9-5a7d-4230-a4e9-56aa6a111da9.png)
+
 
 ### Reference
 - https://thenewstack.io/deploy-a-kubernetes-desktop-cluster-with-ubuntu-multipass/
