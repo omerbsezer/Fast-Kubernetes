@@ -143,6 +143,14 @@ sudo docker rm $(sudo docker ps -a -f status=exited -q)
 
 #### On Master Node: 
 
+- Run on controller, add IPs of PCs, after restarting IPs should be again updated:
+
+```
+sudo nano /etc/hosts
+```
+
+- Reset kubeadm and init new cluster:
+
 ```
 sudo kubeadm reset
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16
