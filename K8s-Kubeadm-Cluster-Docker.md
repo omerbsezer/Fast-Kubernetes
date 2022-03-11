@@ -4,6 +4,7 @@
 
 ### Table of Contents
 - [Creating Cluster With Kubeadm, Docker](#creating)
+- [IP address changes in Kubernetes Master Node](#master_ip_changed)
 
 
 ## 1. Creating Cluster With Kubeadm, Docker <a name="creating"></a>
