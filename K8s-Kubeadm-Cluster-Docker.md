@@ -1,7 +1,6 @@
 ## LAB: K8s Cluster Setup with Kubeadm and Docker
 
-This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, docker) 
-
+- This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, docker) 
 
 ### Table of Contents
 - [Creating Cluster With Kubeadm, Docker](#creating)
@@ -130,6 +129,7 @@ sudo kubeadm join 172.29.108.209:6443 --token ug13ec.cvi0jwi9xyf82b6f \
     
 ![image](https://user-images.githubusercontent.com/10358317/157889081-d9ee73ed-ebb3-4386-bbef-03113b199ef3.png)
     
+- After testing more (restarting master, etc.), Containerd is more stable than Dockerd run time => [KubeAdm-Containerd Setup](#https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
 
 ### Reference
 - https://thenewstack.io/deploy-a-kubernetes-desktop-cluster-with-ubuntu-multipass/
