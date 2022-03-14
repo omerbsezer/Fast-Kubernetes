@@ -130,7 +130,7 @@ sudo kubeadm join 172.29.108.209:6443 --token ug13ec.cvi0jwi9xyf82b6f \
     
 ![image](https://user-images.githubusercontent.com/10358317/157889081-d9ee73ed-ebb3-4386-bbef-03113b199ef3.png)
     
-- After testing more (restarting master, etc.), Containerd is more stable than Dockerd run time => [KubeAdm-Containerd Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
+- After testing more (restarting master, etc.), Containerd is more flexible and usable than Dockerd run time => [KubeAdm-Containerd Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md), because every restart, /etc/hosts should be updated. However, updating of /etc/hosts is not required in the containerd. 
 
 ##  2. IP address changes in Kubernetes Master Node <a name="master_ip_changed"></a>
 - After restarting Master Node, it could be possible that the IP of master node is updated. Your K8s cluster API's IP is still old IP of the node. So you should configure the K8s cluster with new IP.
