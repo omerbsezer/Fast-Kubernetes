@@ -310,7 +310,7 @@ sudo kubeadm join 172.31.40.125:6443 --token 07vo3z.q2n2qz6bd07ipdnf \
 ![image](https://user-images.githubusercontent.com/10358317/156804162-cc8c3f2b-5d3f-407a-9ced-31322b6bb39b.png)
 
 
-- Network Configuratin with new IP:
+- Network Configuration with new IP:
 
 ```
 kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
