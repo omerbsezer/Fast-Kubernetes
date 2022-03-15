@@ -215,6 +215,8 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
   ```
 
+**NOTE:** If you create Windows node to join K8s Cluster as worker node, it is required to configure flannel. Please have a look here for more information: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/
+
 ![image](https://user-images.githubusercontent.com/10358317/156164127-d21ff5be-35d6-4ec6-a507-2ae0155031ac.png)
 
 ![image](https://user-images.githubusercontent.com/10358317/156164265-1d13bab5-6c55-4421-b7a8-e835d5d0ebfc.png)
