@@ -205,15 +205,15 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 
 - Calico is used for network plugin on K8s. Others (flannel, weave) could be also used. 
 - Run only on Master: 
- - Calico:
- ```
- kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
- kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
- ```
- - Flannel:
- ```
- kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
- ```
+  - Calico:
+  ```
+  kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+  ```
+  - Flannel:
+  ```
+  kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  ```
 
 ![image](https://user-images.githubusercontent.com/10358317/156164127-d21ff5be-35d6-4ec6-a507-2ae0155031ac.png)
 
