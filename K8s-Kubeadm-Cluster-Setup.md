@@ -217,6 +217,32 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 
 **NOTE:** If you create Windows node to join K8s Cluster as worker node, it is required to configure flannel for Linux Control-Plane. Please have a look here for more information: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/
 
+##### 1.6.1 Configuring Flannel.yml for Windows Worker Node 
+
+- On the master, run:
+```
+wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+```
+- Modify kube-flannel.yml by adding "VNI": 4096, "Port": 4789:
+```
+net-conf.json: |
+    {
+      "Network": "10.244.0.0/16",
+      "Backend": {
+        "Type": "vxlan",
+        "VNI": 4096,
+        "Port": 4789
+      }
+    }
+ ``` 
+**NOTE:** The VNI must be set to 4096 and port 4789 for Flannel on Linux to interoperate with Flannel on Windows. See the [VXLAN documentation](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#vxlan). for an explanation of these fields.
+
+- Run on master: 
+```
+kubectl apply -f kube-flannel.yml
+kubectl get pods -n kube-system
+```
+
 ![image](https://user-images.githubusercontent.com/10358317/156164127-d21ff5be-35d6-4ec6-a507-2ae0155031ac.png)
 
 ![image](https://user-images.githubusercontent.com/10358317/156164265-1d13bab5-6c55-4421-b7a8-e835d5d0ebfc.png)
