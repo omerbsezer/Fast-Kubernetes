@@ -217,7 +217,7 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 
 **NOTE:** If you create Windows node to join K8s Cluster as worker node, it is required to configure flannel for Linux Control-Plane. Please have a look here for more information: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/
 
-#### 1.6.1 Configuring Flannel.yml for Windows Worker Node (If Windows Worker Node added into the K8s Cluster)
+#### 1.6.1 Configuring Flannel.yml for Windows Worker Node (If Windows Worker Node will be added into the K8s Cluster)
 
 - On the master, run:
 ```
