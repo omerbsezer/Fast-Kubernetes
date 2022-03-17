@@ -327,6 +327,13 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 ```
 
+- After kubeadm reset, if there is an error that shows the some of the ports still using, please use following command to kill process, then run kubeadm init:
+
+```
+sudo netstat -lnp | grep <PortNumber>
+sudo kill <PID>
+```
+
 ![image](https://user-images.githubusercontent.com/10358317/156803554-21741c6e-74bb-4902-9130-bc835b91e76f.png)
 
 ![image](https://user-images.githubusercontent.com/10358317/156803646-f943be3e-158d-4f3d-9f26-fe06a8436439.png)
