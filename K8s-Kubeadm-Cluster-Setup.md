@@ -218,7 +218,7 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 #### 1.6 Install Kubernetes Network Infrastructure
 
 - Calico is used for network plugin on K8s. Others (flannel, weave) could be also used. 
-- Run only on Master: 
+- Run only on Master, in our examples, we are using Calico instead of Flannel: 
   - Calico:
   ```
   kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
@@ -229,34 +229,6 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
   kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
   ```
 
-**NOTE:** If you create Windows node to join K8s Cluster as worker node, it is required to configure flannel for Linux Control-Plane. Please have a look here for more information: https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-windows-nodes/
-
-#### 1.6.1 Configuring Flannel.yml for Windows Worker Node (If Windows Worker Node will be added into the K8s Cluster)
-
-- On the master, run:
-```
-wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
-```
-- Modify kube-flannel.yml by adding "VNI": 4096, "Port": 4789:
-```
-net-conf.json: |
-    {
-      "Network": "10.244.0.0/16",
-      "Backend": {
-        "Type": "vxlan",
-        "VNI": 4096,
-        "Port": 4789
-      }
-    }
- ``` 
-**NOTE:** The VNI must be set to 4096 and port 4789 for Flannel on Linux to interoperate with Flannel on Windows. See the [VXLAN documentation](https://github.com/flannel-io/flannel/blob/master/Documentation/backends.md#vxlan). for an explanation of these fields.
-
-- Run on master: 
-```
-kubectl apply -f kube-flannel.yml
-kubectl get pods -n kube-system
-```
-
 ![image](https://user-images.githubusercontent.com/10358317/156164127-d21ff5be-35d6-4ec6-a507-2ae0155031ac.png)
 
 ![image](https://user-images.githubusercontent.com/10358317/156164265-1d13bab5-6c55-4421-b7a8-e835d5d0ebfc.png)
@@ -265,12 +237,50 @@ kubectl get pods -n kube-system
 
 ![image](https://user-images.githubusercontent.com/10358317/156164572-5525bda3-6ff5-49a2-9a2f-392a804b4da2.png)
 
-
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
+#### 1.6.1 If You have Windows Node to add your Cluster:
+- Instead of running it as above, you should run Calico with this way:
+```
+# Download Calico CNI
+curl https://docs.projectcalico.org/manifests/calico.yaml > calico.yaml
+# Apply Calico CNI
+kubectl apply -f ./calico.yaml
+```
+
+Run on the Master Node: 
+```
+# required to add windows node
+sudo -i
+cd /usr/local/bin/
+curl -o calicoctl -O -L  "https://github.com/projectcalico/calicoctl/releases/download/v3.19.1/calicoctl" 
+chmod +x calicoctl
+exit  
+        
+# Disable "IPinIP":        
+calicoctl get ipPool default-ipv4-ippool  -o yaml > ippool.yaml
+nano ippool.yaml  # set ipipmode: Never
+calicoctl apply -f ippool.yaml
+    
+kubectl get felixconfigurations.crd.projectcalico.org default  -o yaml -n kube-system > felixconfig.yaml
+nano felixconfig.yaml #Set: "ipipEnabled: false"
+kubectl apply -f felixconfig.yaml     
+
+# This is required to prevent Linux nodes from borrowing IP addresses from Windows nodes:"
+calicoctl ipam configure --strictaffinity=true
+sudo reboot
+
+kubectl cluster-info
+kubectl get nodes -o wide
+ssh <username>@<WindowsIP> 'mkdir c:\k'
+scp -r $HOME/.kube/config <username>@<WindowsIP>:/k/        # send to Win PC from master node, while installing calico, it is required
+```
+
+- Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/setupcluster.sh
 
 ## 2. Joining New K8s Worker Node to Existing Cluster <a name="joining"></a>
 
+### 2.1 Brute-Force Method:
 - If we lose the token and token CA cert dash and API server address, wé need to learn them to join a new node into the cluster.
 - We are adding new node to existing cluster above. We need to get join token, discovery token CA cert hash, API server advertise address. After getting info, we'll create join command for each nodes. 
 - Run on Master to get certificate and token information:
@@ -310,6 +320,12 @@ sudo kubeadm join 172.31.32.27:6443 --token 39g7sx.v589tv38nxhus74k --discovery-
 
 ![image](https://user-images.githubusercontent.com/10358317/156350852-d1df7b93-13aa-462d-8cce-51f3b9b6e553.png)
 
+### 2.2 Easy Way to get join command
+- Run on the master node:
+```
+kubeadm token create --print-join-command 
+```
+- Copy the join command above and paste it for all worker nodes.
 - Then, we get nodes ready, run on master:
 
 ```
