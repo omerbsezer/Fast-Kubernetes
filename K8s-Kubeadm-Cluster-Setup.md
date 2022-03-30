@@ -40,14 +40,14 @@ multipass shell worker1
 
 #### 1.2 IP-Tables Bridged Traffic Configuration
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 br_netfilter
 EOF
 ``` 
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.bridge.bridge-nf-call-ip6tables = 1
@@ -59,7 +59,7 @@ EOF
 
 ![image](https://user-images.githubusercontent.com/10358317/156151447-e4685bef-6437-46ba-9460-2cdd0f1dbe12.png)
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo sysctl --system
 ```
@@ -81,7 +81,7 @@ export no_proxy="192.168.*.*, ::6443, <yourMasterIP>:6443, 172.24.*.*, 172.25.*.
 ```
 
 #### 1.3 Install Containerd
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
 overlay
@@ -89,13 +89,13 @@ br_netfilter
 EOF
 ```
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo modprobe overlay
 sudo modprobe br_netfilter
 ```
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/sysctl.d/99-kubernetes-cri.conf
 net.bridge.bridge-nf-call-iptables  = 1
@@ -104,7 +104,7 @@ net.bridge.bridge-nf-call-ip6tables = 1
 EOF
 ```
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo sysctl --system
 ```
@@ -113,7 +113,7 @@ sudo sysctl --system
 
 ![image](https://user-images.githubusercontent.com/10358317/156159208-dfc96be6-62b6-4b6d-8e12-1a48541e89cb.png)
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -136,7 +136,7 @@ sudo systemctl restart containerd
 ![image](https://user-images.githubusercontent.com/10358317/156160102-ce0437a8-1054-46ab-b79d-47527d4462e3.png)
 
 #### 1.4 Install KubeAdm
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl
@@ -158,7 +158,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 #### 1.5 Install Kubernetes Cluster
 
-- Run on both nodes: 
+- Run on ALL nodes: 
 ``` 
 sudo kubeadm config images pull
 ```
@@ -171,7 +171,7 @@ ping master
 ```
 ![image](https://user-images.githubusercontent.com/10358317/156161683-63d2d56a-e5b1-4826-9665-e872a333d520.png)
 
-- Run on master: 
+- Run on Master: 
 ``` 
 sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<ip> --control-plane-endpoint=<ip>
 # sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=172.31.45.74 --control-plane-endpoint=172.31.45.74
@@ -183,7 +183,7 @@ sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-addres
  
 ![image](https://user-images.githubusercontent.com/10358317/156163029-e31ea507-9912-4377-a93d-93863c37039a.png)
 
-- On the master node run:
+- On the Master node run:
 
 ```
 mkdir -p $HOME/.kube
@@ -239,8 +239,8 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
-#### 1.6.1 If You have Windows Node to add your Cluster:
-- Instead of running it as above, you should run Calico with this way:
+##### 1.6.1 If You have Windows Node to add your Cluster:
+- Instead of running it as above, you should run Calico with this way, run on Master node:
 ```
 # Download Calico CNI
 curl https://docs.projectcalico.org/manifests/calico.yaml > calico.yaml
@@ -277,6 +277,69 @@ scp -r $HOME/.kube/config <username>@<WindowsIP>:/k/        # send to Win PC fro
 ```
 
 - Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/setupcluster.sh
+
+#### (Optional) If you need Windows Node: Creating Windows Node
+
+- Kubernetes requires a minimum Windows-2019 Server (https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/)
+- Run-on the PowerShell with administration privilege on the Windows nodes:
+
+```
+New-NetFireWallRule -DisplayName "Allow All Traffic" -Direction OutBound -Action Allow  
+New-NetFireWallRule -DisplayName "Allow All Traffic" -Direction InBound -Action Allow 
+
+Install-WindowsFeature -Name containers    # install docker
+Restart-Computer -Force 
+
+Install-Module DockerMsftProvider -Force 
+     
+Install-Package Docker -ProviderName DockerMsftProvider -Force      
+Restart-Computer -Force 
+
+Set-Service -Name docker -StartupType 'Automatic' 
+ 
+#Install additional Windows networking components 
+
+Install-WindowsFeature RemoteAccess 
+Install-WindowsFeature RSAT-RemoteAccess-PowerShell 
+Install-WindowsFeature Routing 
+Restart-Computer -Force 
+Install-RemoteAccess -VpnType RoutingOnly 
+Set-Service -Name RemoteAccess -StartupType 'Automatic' 
+start-service RemoteAccess 
+
+# Install Calico
+mkdir c:\k 
+#Copy the Kubernetes kubeconfig file from the master node (default, Location $HOME/.kube/config), to c:\k\config. 
+
+Invoke-WebRequest https://docs.projectcalico.org/scripts/install-calico-windows.ps1 -OutFile c:\install-calico-windows.ps1 
+
+c:\install-calico-windows.ps1 -KubeVersion 1.23.5 
+ 
+#Verify that the Calico services are running. 
+Get-Service -Name CalicoNode 
+Get-Service -Name CalicoFelix 
+
+#Install and start kubelet/kube-proxy service. Execute following PowerShell script/commands. 
+C:\CalicoWindows\kubernetes\install-kube-services.ps1 
+Start-Service -Name kubelet 
+Start-Service -Name kube-proxy 
+
+#Copy kubectl.exe, kubeadm.etc to the folder below which is on the path (in our case user is qqtechinfra):  
+cp C:\k\*.exe C:\Users\<username>\AppData\Local\Microsoft\WindowsApps 
+ 
+#Test Win node##################################### 
+#List all cluster nodes 
+kubectl get nodes -o wide     
+ 
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://<ProxyIP>:3128", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://<ProxyIP>:3128", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("NO_PROXY", "192.168.*.*, ::6443, <MasterNodeIP>:6443, 172.24.*.*, 172.25.*.*, 10.*.*.*, localhost, 127.0.0.1, 0.0.0.0/8", [EnvironmentVariableTarget]::Machine)
+Restart-Service docker
+```
+
+- Create win-webserver.yaml file for testing of Win Node, run on the Windows2019, details:  https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/
+
+Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/Setting-ThingsUp-On-Windows-Server.sh
 
 ## 2. Joining New K8s Worker Node to Existing Cluster <a name="joining"></a>
 
