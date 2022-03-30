@@ -21,6 +21,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
   - [Installing Docker](#installingdocker)
   - [Running Docker Registry](#dockerregistry)
 - [Pulling Image from Docker Local Registry and Configure Containerd](#local_image)
+- [NFS Server Connection for Persistent Volume](#nfs_server)
 
 ## 1. Creating Cluster With Kubeadm, Containerd <a name="creating"></a>
 
@@ -705,6 +706,22 @@ kubectl apply -f nginx_pod.yaml
 kubectl get pods -o wide
 ```
 ![image](https://user-images.githubusercontent.com/10358317/157725926-90b57357-cf8f-4d27-a91c-01a7d0eb047c.png)
+
+## 7. NFS Server Connection for Persistent Volume <a name="nfs_server"></a>
+
+- If it is required NFS Server, you can create NFS Server 
+  - if you have Windows 2019 Server: https://youtu.be/_x3vg25i7GQ
+  - if you have Ubuntu: https://rudimartinsen.com/2022/01/05/nginx-nfs-kubernetes/
+  
+- Run on ALL Nodes to reach NFS Server:
+
+```
+sudo apt install nfs-common
+sudo apt install cifs-utils
+sudo mkdir /data                                           # create /data directory under root and mount it to NFS
+sudo mount -t nfs <NFSServerIP>:/share /data/              # /share directory is created while creating NFS server
+sudo chmod 777 /data                                       # give permissions to reach mounted shared area
+```
 
 ### Reference
  
