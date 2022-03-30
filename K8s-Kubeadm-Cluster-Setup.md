@@ -325,7 +325,7 @@ sudo kubeadm join 172.31.32.27:6443 --token 39g7sx.v589tv38nxhus74k --discovery-
 ```
 kubeadm token create --print-join-command 
 ```
-- Copy the join command above and paste it for all worker nodes.
+- Copy the join command above and paste it on ***ALL worker nodes**.
 - Then, we get nodes ready, run on master:
 
 ```
