@@ -338,8 +338,7 @@ Restart-Service docker
 ```
 
 - Create win-webserver.yaml file for testing of Win Node, run on the Windows2019, details:  https://kubernetes.io/docs/setup/production-environment/windows/user-guide-windows-containers/
-
-Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/Setting-ThingsUp-On-Windows-Server.sh
+- Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/Setting-ThingsUp-On-Windows-Server.sh
 
 ## 2. Joining New K8s Worker Node to Existing Cluster <a name="joining"></a>
 
