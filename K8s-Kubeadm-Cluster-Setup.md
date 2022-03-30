@@ -450,6 +450,35 @@ kubectl get nodes
 
 ![image](https://user-images.githubusercontent.com/10358317/157028638-6931e150-65b0-4361-8d37-ab2f0c9a8461.png)
 
+- Copy and run on all nodes to change Docker's Cgroup:
+
+```
+cd /etc/docker
+sudo touch daemon.json
+sudo nano daemon.json
+# in the file, paste:
+{
+"exec-opts": ["native.cgroupdriver=systemd"]
+}
+sudo systemctl restart docker
+```
+
+If your cluster is behind the proxy, configure PROXY settings of Docker (ref: add docker proxy: https://docs.docker.com/config/daemon/systemd/). Copy and run on all nodes:
+```
+sudo mkdir -p /etc/systemd/system/docker.service.d
+cd /etc/systemd/system/docker.service.d/
+sudo touch http-proxy.conf
+sudo nano http-proxy.conf
+# copy and paste in the file:
+[Service]
+Environment="HTTP_PROXY=http://<ProxyIP>:3128"
+Environment="HTTPS_PROXY=http://<ProxyIP>:3128"
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+sudo systemctl show --property=Environment docker
+sudo docker run hello-world
+```
+
 #### 5.2 Running Docker Registry
 
 Run on Master to pull registry:
