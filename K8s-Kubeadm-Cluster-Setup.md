@@ -66,6 +66,20 @@ sudo sysctl --system
 
 ![image](https://user-images.githubusercontent.com/10358317/156158062-01f3edc8-df31-4a83-9dcc-d173c3cc921b.png)
 
+##### This part is optional:
+
+- Close swaps on the OS. Because it is required if you run on directly OS (on-premise)(instead of running on VM)
+```
+sudo swapoff -a
+sudo sed -i '/ swap / s/^/#/' /etc/fstab
+```
+
+- If you install your cluster behind the proxy, you should define http_proxy, https_proxy, ftp_proxy and no_proxy environment variables on /etc/environment.
+- You should add ::6443 and Master Node IP.
+```
+export no_proxy="192.168.*.*, ::6443, <yourMasterIP>:6443, 172.24.*.*, 172.25.*.*, 10.*.*.*, localhost, 127.0.0.1"
+```
+
 #### 1.3 Install Containerd
 - Run on both nodes: 
 ``` 
