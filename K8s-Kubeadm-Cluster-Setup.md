@@ -324,7 +324,7 @@ C:\CalicoWindows\kubernetes\install-kube-services.ps1
 Start-Service -Name kubelet 
 Start-Service -Name kube-proxy 
 
-#Copy kubectl.exe, kubeadm.etc to the folder below which is on the path (in our case user is qqtechinfra):  
+#Copy kubectl.exe, kubeadm.etc to the folder below which is on the path:  
 cp C:\k\*.exe C:\Users\<username>\AppData\Local\Microsoft\WindowsApps 
  
 #Test Win node##################################### 
