@@ -5,6 +5,13 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 
 ### Table of Contents
 - [Creating Cluster With Kubeadm, Containerd](#creating)
+  - [Multipass Installation - Creating VM](#creatingvm)
+  - [IP-Tables Bridged Traffic Configuration](#ip-tables)
+  - [Install Containerd](#installcontainerd)
+  - [Install KubeAdm](#installkubeadm)
+  - [Install Kubernetes Cluste](#installkubernetes)
+  - [Install Kubernetes Network Infrastructure](#network)
+  - [(Optional) If you need Windows Node: Creating Windows Node](#creatingWindows)
 - [Joining New K8s Worker Node to Existing Cluster](#joining)
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
 - [Removing the Worker Node from Cluster](#removing)
@@ -14,7 +21,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 
 ## 1. Creating Cluster With Kubeadm, Containerd <a name="creating"></a>
 
-#### 1.1 Multipass Installation - Creating VM
+#### 1.1 Multipass Installation - Creating VM <a name="creatingvm"></a>
 
 - "Multipass is a mini-cloud on your workstation using native hypervisors of all the supported plaforms (Windows, macOS and Linux)"
 - Fast to install and to use.
@@ -38,7 +45,7 @@ multipass shell worker1
 
 ![image](https://user-images.githubusercontent.com/10358317/156150843-db217ba0-8fff-4a77-9f3d-09f9f71314df.png)
 
-#### 1.2 IP-Tables Bridged Traffic Configuration
+#### 1.2 IP-Tables Bridged Traffic Configuration <a name="ip-tables"></a>
 
 - Run on ALL nodes: 
 ``` 
@@ -80,7 +87,7 @@ sudo sed -i '/ swap / s/^/#/' /etc/fstab
 export no_proxy="192.168.*.*, ::6443, <yourMasterIP>:6443, 172.24.*.*, 172.25.*.*, 10.*.*.*, localhost, 127.0.0.1"
 ```
 
-#### 1.3 Install Containerd
+#### 1.3 Install Containerd <a name="installcontainerd"></a>
 - Run on ALL nodes: 
 ``` 
 cat <<EOF | sudo tee /etc/modules-load.d/containerd.conf
@@ -135,7 +142,7 @@ sudo systemctl restart containerd
 
 ![image](https://user-images.githubusercontent.com/10358317/156160102-ce0437a8-1054-46ab-b79d-47527d4462e3.png)
 
-#### 1.4 Install KubeAdm
+#### 1.4 Install KubeAdm <a name="installkubeadm"></a>
 - Run on ALL nodes: 
 ``` 
 sudo apt-get update
@@ -156,7 +163,7 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ![image](https://user-images.githubusercontent.com/10358317/156161142-e7ba1322-9cf8-4edf-9018-082fa5b2f76a.png)
 
 
-#### 1.5 Install Kubernetes Cluster
+#### 1.5 Install Kubernetes Cluster <a name="installkubernetes"></a>
 
 - Run on ALL nodes: 
 ``` 
@@ -215,7 +222,7 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 ![image](https://user-images.githubusercontent.com/10358317/156163717-c9c771c1-a850-4706-80dd-7fa85b890c2a.png)
 
 
-#### 1.6 Install Kubernetes Network Infrastructure
+#### 1.6 Install Kubernetes Network Infrastructure <a name="network"></a>
 
 - Calico is used for network plugin on K8s. Others (flannel, weave) could be also used. 
 - Run only on Master, in our examples, we are using Calico instead of Flannel: 
@@ -240,6 +247,7 @@ sudo kubeadm join 172.31.45.74:6443 --token w7nntd.7t6qg4cd418wzkup \
 ![image](https://user-images.githubusercontent.com/10358317/156165250-f1647540-467a-445d-8381-dd320922a70d.png)
 
 ##### 1.6.1 If You have Windows Node to add your Cluster:
+
 - Instead of running it as above, you should run Calico with this way, run on Master node:
 ```
 # Download Calico CNI
@@ -278,7 +286,7 @@ scp -r $HOME/.kube/config <username>@<WindowsIP>:/k/        # send to Win PC fro
 
 - Ref: https://github.com/gary-RR/my_YouTube_Kuberenetes_Hybird/blob/main/setupcluster.sh
 
-#### (Optional) If you need Windows Node: Creating Windows Node
+#### (Optional) If you need Windows Node: Creating Windows Node <a name="creatingWindows"></a>
 
 - Kubernetes requires a minimum Windows-2019 Server (https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/)
 - Run-on the PowerShell with administration privilege on the Windows nodes:
