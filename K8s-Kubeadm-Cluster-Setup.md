@@ -14,7 +14,7 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
   - [(Optional) If you need Windows Node: Creating Windows Node](#creatingWindows)
 - [Joining New K8s Worker Node to Existing Cluster](#joining)
   - [Brute-Force Method](#bruteforce)
-  - [Easy Way to get join command](#easy)
+  - [Easy Way to Get Join Command](#easy)
 - [IP address changes in Kubernetes Master Node](#master_ip_changed)
 - [Removing the Worker Node from Cluster](#removing)
 - [Installing Docker on Existing Cluster & Starting of Running Local Registry for Storing Local Image](#docker_registry)
@@ -394,7 +394,7 @@ sudo kubeadm join 172.31.32.27:6443 --token 39g7sx.v589tv38nxhus74k --discovery-
 
 ![image](https://user-images.githubusercontent.com/10358317/156350852-d1df7b93-13aa-462d-8cce-51f3b9b6e553.png)
 
-### 2.2 Easy Way to get join command <a name="easy"></a>
+### 2.2 Easy Way to Get Join Command <a name="easy"></a>
 - Run on the master node:
 ```
 kubeadm token create --print-join-command 
@@ -474,7 +474,7 @@ sudo kubeadm join 172.31.40.125:6443 --token 07vo3z.q2n2qz6bd07ipdnf \
 
 ![image](https://user-images.githubusercontent.com/10358317/156805882-e2e2144d-f3dc-4b87-81a8-a9f1c4827a5b.png)
 
-On Master Node:
+- On Master Node:
 
 - Worker1 is now joined the cluster.
 
@@ -496,7 +496,7 @@ kubectl delete node worker2
 
 ![image](https://user-images.githubusercontent.com/10358317/157018826-8cbae29e-b5e4-4a6d-bf8e-72d3006ce33e.png)
 
-Run on the specific deleted node (worker2)
+- Run on the specific deleted node (worker2)
 
 ```
 sudo kubeadm reset
@@ -554,7 +554,7 @@ kubectl get nodes
 
 ![image](https://user-images.githubusercontent.com/10358317/157425383-4d82e707-1a98-4dcd-b59e-1239121b5850.png)
 
-If your cluster is behind the proxy, configure PROXY settings of Docker (ref: add docker proxy: https://docs.docker.com/config/daemon/systemd/). Copy and run on all nodes:
+- If your cluster is behind the proxy, configure PROXY settings of Docker (ref: add docker proxy: https://docs.docker.com/config/daemon/systemd/). Copy and run on all nodes:
 ```
 sudo mkdir -p /etc/systemd/system/docker.service.d
 cd /etc/systemd/system/docker.service.d/
@@ -572,7 +572,7 @@ sudo docker run hello-world
 
 #### 5.2 Running Docker Registry <a name="dockerregistry"></a>
 
-Run on Master to pull registry:
+- Run on Master to pull registry:
 
 ```
 sudo docker image pull registry
