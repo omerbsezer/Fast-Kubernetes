@@ -72,6 +72,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
 - [Helm Commands Cheatsheet](#helm_cheatsheet)
 - [Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass](#cluster_setup)
+- [Monitoring Kubernetes Cluster with SSH, Prometheus and Grafana](#prometheus_grafana)
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
 
