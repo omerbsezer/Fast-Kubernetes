@@ -90,6 +90,7 @@ helm uninstall prometheus
 ```
 
 - Open values.yaml file (kube-prometheus-stack/charts/grafana/values.yaml), change type from "ClusterIP" to "NodePort" and add "nodePort: 32333" 
+
 ![image](https://user-images.githubusercontent.com/10358317/171122676-59c04a9d-1170-42cb-8c84-d1de9e6c341e.png)
 
 - Run the new release
