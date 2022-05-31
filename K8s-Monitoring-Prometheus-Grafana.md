@@ -124,11 +124,14 @@ helm uninstall prometheus
 ```
 
 - Open values.yaml in the kube-prometheus-stack directory (targets:  Windows IP, default port 9182)
+
+```
     #additionalScrapeConfigs: [] (Line ~2480)
     additionalScrapeConfigs:
     - job_name: 'kubernetes-windows-exporter'
       static_configs:
-        - targets: ["WindowsIP:9182"]  
+        - targets: ["WindowsIP:9182"] 
+```
 
 - Run the new release
 
