@@ -4,8 +4,8 @@ This scenario shows how to implement Prometheus and Grafana on K8s Cluster
 
 
 ### Table of Contents
-- [Creating Cluster With Kubeadm, Containerd](#creating)
-  - [Multipass Installation - Creating VM](#creatingvm)
+- [Monitoring With SSH](#ssh)
+- [Monitoring With Prometheus and Grafana](#prometheus-grafana)
 
 There are different options to monitor K8s cluster: SSH, Kubernetes Dashboard, Prometheus and Grafana, etc.
   
