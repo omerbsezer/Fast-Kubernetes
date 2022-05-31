@@ -31,7 +31,8 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Cluster Setup with Kubeadm and Containerd](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md)
 - [LAB: K8s Cluster Setup with Kubeadm and Docker](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Docker.md)
 - [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)
-- [LAB: Enable Dashboard on Real K8s Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)    
+- [LAB: Enable Dashboard on Real K8s Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
+- [LAB: K8s Monitoring - Prometheus and Grafana](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Monitoring-Prometheus-Grafana.md)    
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
 
@@ -1038,6 +1039,12 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 ## Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass <a name="cluster_setup"></a>
     
 **Goto:** [LAB: K8s Kubeadm Cluster Setup](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Setup.md) 
+    
+## Monitoring Kubernetes Cluster with SSH, Prometheus and Grafana <a name="prometheus_grafana"></a>
+       
+**Goto:** [LAB: K8s Monitoring - Prometheus and Grafana](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Monitoring-Prometheus-Grafana.md)
+
+**Goto:** [LAB: Enable Dashboard on Real K8s Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
     
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
