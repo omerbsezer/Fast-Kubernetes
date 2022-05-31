@@ -1,6 +1,6 @@
 ## LAB: K8s Monitoring: Prometheus and Grafana
 
-This scenario shows how to implement Prometheus and Grafana on K8s Cluster
+This scenario shows how to implement Prometheus and Grafana on K8s Cluster.
 
 
 ### Table of Contents
