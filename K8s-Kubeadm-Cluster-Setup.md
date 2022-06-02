@@ -571,6 +571,14 @@ sudo systemctl show --property=Environment docker
 sudo docker run hello-world
 ```
 
+- Use docker command without sudo:
+
+```
+sudo groupadd docker
+sudo usermod -aG docker [non-root user]
+# logout and login to enable it
+```
+
 #### 5.2 Running Docker Registry <a name="dockerregistry"></a>
 
 - Run on Master to pull registry:
