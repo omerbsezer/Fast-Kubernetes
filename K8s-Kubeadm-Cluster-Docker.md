@@ -12,6 +12,7 @@
 #### 1.1 Multipass Installation - Creating VM
 
 - "Multipass is a mini-cloud on your workstation using native hypervisors of all the supported plaforms (Windows, macOS and Linux)"
+- Multipass is lightweight, fast, easy to use Ubuntu VM  (on demand for any workstation)
 - Fast to install and to use.
 - **Link:** https://multipass.run/
 
