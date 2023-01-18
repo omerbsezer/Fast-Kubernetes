@@ -101,12 +101,12 @@ Why should we use Kubernetes? "Kubernetes is a portable, extensible, open-source
 - **Run everywhere:** Kubernetes is an open source tool and gives you the freedom to take advantage of on-premises, hybrid, or public cloud infrastructure, letting you move workloads to anywhere you want
 - **Secret and configuration management:** Kubernetes lets you store and manage sensitive information
 
-## What is Kubertenes?  <a name="whatIsKubernetes"></a>
+## What is Kubernetes?  <a name="whatIsKubernetes"></a>
 - "Kubernetes is a portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation. It has a large, rapidly growing ecosystem. Kubernetes services, support, and tools are widely available." (Ref: Kubernetes.io)
 
 ![image](https://user-images.githubusercontent.com/10358317/146247396-5bc3bbf9-41fa-47ff-b10d-cac305379e21.png) (Ref: Kubernetes.io)
 
-### Kubertenes Architecture  <a name="architecture"></a>
+### Kubernetes Architecture  <a name="architecture"></a>
 
 ![image](https://user-images.githubusercontent.com/10358317/146250114-18759a06-e6a6-4554-bc7f-b23a13534f77.png)
 
