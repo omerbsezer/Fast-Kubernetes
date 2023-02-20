@@ -2,7 +2,6 @@
 ## this script is to install K8s dependency
 ## before using: chmod 777 install.sh
 ## usage => ./install.sh
-## if there is a proxy, pls run => ./install.sh proxy
 
 set -e -o pipefail # fail on error , debug all lines
 
