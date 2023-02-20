@@ -25,6 +25,10 @@ This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm,
 
 ## 1. Creating Cluster With Kubeadm, Containerd <a name="creating"></a>
 
+The easiest way, please use the following scripts to create K8s cluster:
+- https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install.sh
+- https://github.com/omerbsezer/Fast-Kubernetes/blob/main/master.sh
+
 #### 1.1 Multipass Installation - Creating VM <a name="creatingvm"></a>
 
 - "Multipass is a mini-cloud on your workstation using native hypervisors of all the supported plaforms (Windows, macOS and Linux)"
