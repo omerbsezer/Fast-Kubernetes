@@ -11,11 +11,11 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 echo "Install calico..."
-curl https://docs.projectcalico.org/manifests/calico.yaml > calico.yaml
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/calico.yaml > calico.yaml
 kubectl apply -f ./calico.yaml
 
 echo "Install calicoctl..."
-sudo curl -o /usr/local/bin/calicoctl -O -L  "https://github.com/projectcalico/calicoctl/releases/download/v3.19.1/calicoctl" 
+sudo curl -o /usr/local/bin/calicoctl -O -L "https://github.com/projectcalico/calico/releases/download/v3.25.0/calicoctl-linux-amd64"
 sudo chmod +x /usr/local/bin/calicoctl
 
 echo "Disable IPinIP..."  
@@ -39,6 +39,9 @@ echo ""
 echo "*******" 
 echo "*** Please REBOOT/RESTART the PC now..."
 echo "*** After restart run on this Master node: kubeadm token create --print-join-command"
+echo "*** After restart if you encounter error (not to reach cluster, or API), please run closing swap commands again:"
+echo "*** sudo swapoff -a"
+echo "*** sudo sed -i '/ swap / s/^/#/' /etc/fstab"
 echo "*** Copy and Paste the response into the each WORKER Node with SUDO command..."
 kubeadm token create --print-join-command 
 echo ""
