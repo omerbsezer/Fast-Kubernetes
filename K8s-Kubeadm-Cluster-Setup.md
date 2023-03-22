@@ -2,7 +2,9 @@
 
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd)
 
-When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, and Windows 2019 Server**. Because tested, and stable run on Ubuntu 20.04 and Windows 2019 Server: 
+When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, and Windows 2019 Server**. Because tested, and stable run on Ubuntu 20.04 and Windows 2019 Server:
+
+**Easy way to create K8s Cluster with Ubuntu20.04 (Control-Plane, Workers) and Windows 2019 Server:**
 
 - Ubuntu 20.04 Installation Files (updated: K8s 1.26.2, calico 3.25.0, containerd 1.6.10) without using Corporate Proxy:
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install.sh
@@ -39,10 +41,6 @@ When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, an
 - [NFS Server Connection for Persistent Volume](#nfs_server)
 
 ## 1. Creating Cluster With Kubeadm, Containerd <a name="creating"></a>
-
-The easiest way, please use the following scripts to create K8s cluster (updated: kubeadm 1.26.2, calico 3.25.0):
-- https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install.sh
-- https://github.com/omerbsezer/Fast-Kubernetes/blob/main/master.sh
 
 #### 1.1 Multipass Installation - Creating VM <a name="creatingvm"></a>
 
