@@ -6,7 +6,6 @@ echo "#########################################################"
 echo "Script will start in 10 Seconds..."
 Start-Sleep -s 10
 
-
 echo "Installing remote access..."
 Install-RemoteAccess -VpnType RoutingOnly 
 Set-Service -Name RemoteAccess -StartupType 'Automatic' 
