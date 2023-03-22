@@ -51,6 +51,7 @@ kubectl cluster-info
 kubectl get nodes -o wide
 #sudo reboot
 
+# https://docs.tigera.io/calico/latest/getting-started/kubernetes/windows-calico/kubeconfig
 echo "*******" 
 echo "*** Calico-Node secret will be created for Windows Calico..."
 echo "*******" 
