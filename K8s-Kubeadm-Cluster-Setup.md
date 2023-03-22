@@ -11,8 +11,10 @@ When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, an
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install1.ps1
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install2.ps1
 
-**PS:** If your cluster is behind the corporate proxy, you should add proxy settings on Environment Variables, Docker Config, Containerd Config. 
+**PS:** If your cluster is behind the corporate proxy, you should add proxy settings on Environment Variables, Docker Config, Containerd Config.
+
 **PS:** Links in the script files might be change in time (e.g. Calico updated their links)
+
 **PS:** https://kubernetes.io/docs/concepts/windows/intro/, https://kubernetes.io/docs/concepts/windows/intro/#windows-os-version-support
 
 ### Table of Contents
