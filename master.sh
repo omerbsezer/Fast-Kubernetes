@@ -50,3 +50,17 @@ echo "*******"
 kubectl cluster-info
 kubectl get nodes -o wide
 #sudo reboot
+
+echo "*******" 
+echo "*** Calico-Node secret will be created for Windows Calico..."
+echo "*******" 
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Secret
+metadata:
+  name: calico-node
+  namespace: kube-system
+  annotations:
+    kubernetes.io/service-account.name: calico-node
+type: kubernetes.io/service-account-token
+EOF
