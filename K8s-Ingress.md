@@ -27,6 +27,7 @@ minikube addons list
 ![image](https://user-images.githubusercontent.com/10358317/152980050-9f59638e-22d2-4581-a045-0c4199cb0be1.png)
 
 - Copy and save (below) as file on your PC (appingress.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/ingress/appingress.yaml
 
 ```     
 apiVersion: networking.k8s.io/v1
@@ -59,6 +60,7 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/154954648-e730fbcd-4eb0-4a4c-a189-f1e9e118cdd0.png)
 
 - Copy and save (below) as file on your PC (todoingress.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/ingress/todoingress.yaml
 
 ```     
 apiVersion: networking.k8s.io/v1
@@ -82,6 +84,7 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/154954757-4e873d67-855b-4123-85ce-48b6acfc839e.png)
 
 - Copy and save (below) as file on your PC (deploy.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/ingress/deploy.yaml
 
 ```     
 apiVersion: apps/v1
