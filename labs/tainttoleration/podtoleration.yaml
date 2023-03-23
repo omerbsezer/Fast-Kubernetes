@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: toleratedpod1
+  labels:
+    env: test
+spec:
+  containers:
+  - name: toleratedcontainer1
+    image: nginx:latest
+  tolerations:
+  - key: "platform"
+    operator: "Equal"
+    value: "production"
+    effect: "NoSchedule"
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: toleratedpod2
+  labels:
+    env: test
+spec:
+  containers:
+  - name: toleratedcontainer2
+    image: nginx
+  tolerations:
+  - key: "platform"
+    operator: "Exists"
+    effect: "NoSchedule"

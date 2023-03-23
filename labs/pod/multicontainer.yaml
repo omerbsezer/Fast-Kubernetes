@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multicontainer
+spec:
+  containers:
+  - name: webcontainer
+    image: nginx
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: sharedvolume
+      mountPath: /usr/share/nginx/html
+  - name: sidecarcontainer
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do wget -O /var/log/index.html https://raw.githubusercontent.com/omerbsezer/Fast-Kubernetes/main/index.html; sleep 15; done"]
+    volumeMounts:
+    - name: sharedvolume
+      mountPath: /var/log
+  volumes:
+  - name: sharedvolume
+    emptyDir: {}

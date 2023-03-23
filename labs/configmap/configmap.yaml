@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myconfigmap
+data:
+  db_server: "db.example.com"
+  database: "mydatabase"
+  site.settings: |
+    color=blue
+    padding:25px
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmappod
+spec:
+  containers:
+  - name: configmapcontainer
+    image: nginx
+    env:
+      - name: DB_SERVER
+        valueFrom:
+          configMapKeyRef:
+            name: myconfigmap
+            key: db_server
+      - name: DATABASE
+        valueFrom:
+          configMapKeyRef:
+            name: myconfigmap
+            key: database
+    volumeMounts:
+      - name: config-vol
+        mountPath: "/config"
+        readOnly: true
+  volumes:
+    - name: config-vol
+      configMap:
+        name: myconfigmap
