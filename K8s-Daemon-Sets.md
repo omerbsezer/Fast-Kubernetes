@@ -5,6 +5,7 @@ This scenario shows how K8s Daemonsets work on minikube by adding new nodes
 ### Steps
 
 - Copy and save (below) as file on your PC (daemonset.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/daemonset/daemonset.yaml
 
 ```     
 apiVersion: apps/v1
