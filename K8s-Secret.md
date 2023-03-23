@@ -13,7 +13,8 @@ This scenario shows:
 
 ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
 
-- Create Yaml file (secret.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (secret.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/secret.yaml
 
 ``` 
 # Secret Object Creation  
@@ -30,10 +31,11 @@ stringData:
 
 ![image](https://user-images.githubusercontent.com/10358317/154717259-629e529e-4178-489e-8d20-bad22faeb782.png)
 
-- Create Yaml file (secret-pods.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (secret-pods.yaml) in your directory and copy the below definition into the file.
 - 3 Pods:
   - secret binding using volume
   - secret binding environment variable: 1. explicitly, 2. implicitly
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/secret-pods.yaml
   
 ```
 apiVersion: v1
@@ -133,6 +135,10 @@ kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com 
   - server.txt    => put into "db.example.com" with "cat" command
   - password.txt  => put into "password" with "cat" command
   - username.txt  => put into "admin" with "cat" command
+- Files: 
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/server.txt
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/password.txt
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/username.txt
 
 ```     
 kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt
@@ -140,7 +146,9 @@ kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-
 
 ![image](https://user-images.githubusercontent.com/10358317/153639595-4f8e5c95-151c-4990-93ac-6e8b98776fbd.png)
 
-- Create json file (config.json) and put following content
+- Create json file (config.json) and put following content.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/secret/config.json
+
 ```
 {
     "apiKey": "7ac4108d4b2212f2c30c71dfa279e1f77dd12356",
