@@ -4,7 +4,7 @@ This scenario shows how the liveness probe works.
 
 ### Steps
 
-- Create 3 Pods with following YAML file (pods.yaml):
+- Create 3 Pods with following YAML file (liveness.yaml):
   - In the first pod (e.g. web app), it sends HTTP Get Request to "http://localhost/healthz:8080" (port 8080)
     - If returns 400 > HTTP Code > 200, this Pod works correctly.
     - If returns HTTP Code > = 400, this Pod does not work properly.
@@ -20,6 +20,8 @@ This scenario shows how the liveness probe works.
     - If returns negative response (e.g. connection refuse), this Pod does not work properly.
     - initialDelaySeconds: 15 => after 15 seconds, start liveness probe. 
     - periodSecond: 20 => Wait 20 seconds between each request.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/liveness/liveness.yaml
+
 ```
 apiVersion: v1
 kind: Pod
@@ -90,8 +92,8 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/154686913-4d5cc891-b3cc-497d-b8be-568faccf4bc0.png)
 
-- Run on terminal: kubectl apply -f pods.yaml
-- Run on another terminal: kubectl get pods -w
+- Run on terminal: kubectl apply -f liveness.yaml
+- Run on another terminal: kubectl get pods -o wide --all-namespaces
 
  ![image](https://user-images.githubusercontent.com/10358317/150846081-7e9142d1-b833-431f-82bc-a7385c73a875.png)
  
