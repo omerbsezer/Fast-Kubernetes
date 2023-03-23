@@ -12,7 +12,8 @@ This scenario shows:
 
 ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
 
-- Create Yaml file (podtoleration.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (podtoleration.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/tainttoleration/podtoleration.yaml
 
 ``` 
 apiVersion: v1
