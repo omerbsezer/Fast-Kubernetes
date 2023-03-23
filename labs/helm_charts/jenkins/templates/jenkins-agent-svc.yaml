@@ -1,0 +1,34 @@
+{{- if .Values.controller.agentListenerEnabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "jenkins.fullname" . }}-agent
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    {{- if .Values.renderHelmLabels }}
+    "helm.sh/chart": "{{ template "jenkins.label" .}}"
+    {{- end }}
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+  {{- if .Values.controller.agentListenerServiceAnnotations }}
+  annotations:
+    {{- toYaml .Values.controller.agentListenerServiceAnnotations | nindent 4 }}
+  {{- end }}
+spec:
+  ports:
+    - port: {{ .Values.controller.agentListenerPort }}
+      targetPort: {{ .Values.controller.agentListenerPort }}
+      {{- if (and (eq .Values.controller.agentListenerServiceType "NodePort") (not (empty .Values.controller.agentListenerNodePort))) }}
+      nodePort: {{ .Values.controller.agentListenerNodePort }}
+      {{- end }}
+      name: agent-listener
+  selector:
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+  type: {{ .Values.controller.agentListenerServiceType }}
+  {{- if and (eq .Values.controller.agentListenerServiceType "LoadBalancer") (.Values.controller.agentListenerLoadBalancerIP) }}
+  loadBalancerIP: {{  .Values.controller.agentListenerLoadBalancerIP }}
+  {{- end }}
+  {{- end }}

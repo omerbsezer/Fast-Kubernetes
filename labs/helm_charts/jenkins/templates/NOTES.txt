@@ -1,0 +1,51 @@
+1. Get your '{{ .Values.controller.adminUser }}' user password by running:
+  kubectl exec --namespace {{ template "jenkins.namespace" . }} -it svc/{{ template "jenkins.fullname" . }} -c jenkins -- /bin/cat /run/secrets/chart-admin-password && echo
+{{- if .Values.controller.ingress.hostName }}
+
+2. Visit http://{{ .Values.controller.ingress.hostName }}
+{{- else }}
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+{{- if contains "NodePort" .Values.controller.serviceType }}
+  export NODE_PORT=$(kubectl get --namespace {{ template "jenkins.namespace" . }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ template "jenkins.fullname" . }})
+  export NODE_IP=$(kubectl get nodes --namespace {{ template "jenkins.namespace" . }} -o jsonpath="{.items[0].status.addresses[0].address}")
+  echo http://$NODE_IP:$NODE_PORT/login
+
+{{- else if contains "LoadBalancer" .Values.controller.serviceType }}
+  NOTE: It may take a few minutes for the LoadBalancer IP to be available.
+        You can watch the status of by running 'kubectl get svc --namespace {{ template "jenkins.namespace" . }} -w {{ template "jenkins.fullname" . }}'
+  export SERVICE_IP=$(kubectl get svc --namespace {{ template "jenkins.namespace" . }} {{ template "jenkins.fullname" . }} --template "{{ "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}" }}")
+{{- if .Values.controller.httpsKeyStore.enable }}
+  echo https://$SERVICE_IP:{{ .Values.controller.servicePort }}/login
+{{- else }}
+  echo http://$SERVICE_IP:{{ .Values.controller.servicePort }}/login
+{{- end }}
+
+{{- else if contains "ClusterIP"  .Values.controller.serviceType }}
+  echo http://127.0.0.1:{{ .Values.controller.servicePort }}
+  kubectl --namespace {{ template "jenkins.namespace" . }} port-forward svc/{{template "jenkins.fullname" . }} {{ .Values.controller.servicePort }}:{{ .Values.controller.servicePort }}
+{{- end }}
+{{- end }}
+
+3. Login with the password from step 1 and the username: {{ .Values.controller.adminUser }}
+4. Configure security realm and authorization strategy
+5. Use Jenkins Configuration as Code by specifying configScripts in your values.yaml file, see documentation: http://{{ .Values.controller.ingress.hostName }}/configuration-as-code and examples: https://github.com/jenkinsci/configuration-as-code-plugin/tree/master/demos
+
+For more information on running Jenkins on Kubernetes, visit:
+https://cloud.google.com/solutions/jenkins-on-container-engine
+
+For more information about Jenkins Configuration as Code, visit:
+https://jenkins.io/projects/jcasc/
+
+{{ if (eq .Values.controller.image "jenkins/jenkins") }}
+NOTE: Consider using a custom image with pre-installed plugins
+{{- else if .Values.controller.installPlugins }}
+NOTE: Consider disabling `installPlugins` if your image already contains plugins.
+{{- end }}
+
+{{- if .Values.persistence.enabled }}
+{{- else }}
+#################################################################################
+######   WARNING: Persistence is disabled!!! You will lose your data when   #####
+######            the Jenkins pod is terminated.                            #####
+#################################################################################
+{{- end }}

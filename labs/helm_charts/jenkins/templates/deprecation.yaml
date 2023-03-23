@@ -1,0 +1,115 @@
+{{- if .Values.checkDeprecation }}
+   {{- if .Values.master }}
+      {{ fail "`master` does no longer exist. It has been renamed to `controller`" }}
+   {{- end }}
+
+   {{- if .Values.controller.imageTag }}
+      {{ fail "`controller.imageTag` does no longer exist. Please use `controller.tag` instead" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveListenerPort }}
+      {{ fail "`controller.slaveListenerPort` does no longer exist. It has been renamed to `controller.agentListenerPort`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveHostPort }}
+      {{ fail "`controller.slaveHostPort` does no longer exist. It has been renamed to `controller.agentListenerHostPort`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveKubernetesNamespace }}
+      {{ fail "`controller.slaveKubernetesNamespace` does no longer exist. It has been renamed to `agent.namespace`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveDefaultsProviderTemplate }}
+      {{ fail "`controller.slaveDefaultsProviderTemplate` does no longer exist. It has been renamed to `agent.defaultsProviderTemplate`" }}
+   {{- end }}
+
+   {{- if .Values.controller.useSecurity }}
+      {{ fail "`controller.useSecurity` does no longer exist. It has been renamed to `controller.adminSecret`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveJenkinsUrl }}
+      {{ fail "`controller.slaveJenkinsUrl` does no longer exist. It has been renamed to `agent.jenkinsUrl`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveJenkinsTunnel }}
+      {{ fail "`controller.slaveJenkinsTunnel` does no longer exist. It has been renamed to `agent.jenkinsTunnel`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveConnectTimeout }}
+      {{ fail "`controller.slaveConnectTimeout` does no longer exist. It has been renamed to `agent.kubernetesConnectTimeout`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveReadTimeout }}
+      {{ fail "`controller.slaveReadTimeout` does no longer exist. It has been renamed to `agent.kubernetesReadTimeout`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveListenerServiceType }}
+      {{ fail "`controller.slaveListenerServiceType` does no longer exist. It has been renamed to `controller.agentListenerServiceType`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveListenerLoadBalancerIP }}
+      {{ fail "`controller.slaveListenerLoadBalancerIP` does no longer exist. It has been renamed to `controller.agentListenerLoadBalancerIP`" }}
+   {{- end }}
+
+   {{- if .Values.controller.slaveListenerServiceAnnotations }}
+      {{ fail "`controller.slaveListenerServiceAnnotations` does no longer exist. It has been renamed to `controller.agentListenerServiceAnnotations`" }}
+   {{- end }}
+
+   {{- if .Values.agent.slaveConnectTimeout }}
+      {{ fail "`agent.slaveConnectTimeout` does no longer exist. It has been renamed to `agent.connectTimeout`" }}
+   {{- end }}
+
+   {{- if .Values.NetworkPolicy }}
+
+      {{- if .Values.NetworkPolicy.Enabled }}
+         {{ fail "`NetworkPolicy.Enabled` does no longer exist. It has been renamed to `networkPolicy.enabled`" }}
+      {{- end }}
+
+      {{- if .Values.NetworkPolicy.ApiVersion }}
+         {{ fail "`NetworkPolicy.ApiVersion` does no longer exist. It has been renamed to `networkPolicy.apiVersion`" }}
+      {{- end }}
+
+      {{ fail "NetworkPolicy.* values have been renamed, please check the documentation" }}
+   {{- end }}
+
+
+   {{- if .Values.rbac.install }}
+      {{ fail "`rbac.install` does no longer exist. It has been renamed to `rbac.create` and is enabled by default!" }}
+   {{- end }}
+
+   {{- if .Values.rbac.serviceAccountName }}
+      {{ fail "`rbac.serviceAccountName` does no longer exist. It has been renamed to `serviceAccount.name`" }}
+   {{- end }}
+
+   {{- if .Values.rbac.serviceAccountAnnotations }}
+      {{ fail "`rbac.serviceAccountAnnotations` does no longer exist. It has been renamed to `serviceAccount.annotations`" }}
+   {{- end }}
+
+   {{- if .Values.rbac.roleRef }}
+      {{ fail "`rbac.roleRef` does no longer exist. RBAC roles are now generated, please check the documentation" }}
+   {{- end }}
+
+   {{- if .Values.rbac.roleKind }}
+      {{ fail "`rbac.roleKind` does no longer exist. RBAC roles are now generated, please check the documentation" }}
+   {{- end }}
+
+   {{- if .Values.rbac.roleBindingKind }}
+      {{ fail "`rbac.roleBindingKind` does no longer exist. RBAC roles are now generated, please check the documentation" }}
+   {{- end }}
+
+   {{- if .Values.controller.JCasC.pluginVersion }}
+      {{ fail "controller.JCasC.pluginVersion has been deprecated, please use controller.installPlugins instead" }}
+   {{- end }}
+
+   {{- if .Values.controller.deploymentLabels }}
+   {{ fail "`controller.deploymentLabels` does no longer exist. It has been renamed to `controller.statefulSetLabels`" }}
+   {{- end }}
+
+   {{- if .Values.controller.deploymentAnnotations }}
+   {{ fail "`controller.deploymentAnnotations` does no longer exist. It has been renamed to `controller.statefulSetAnnotations`" }}
+   {{- end }}
+
+   {{- if .Values.controller.rollingUpdate }}
+   {{ fail "`controller.rollingUpdate` does no longer exist. It is no longer relevant, since a StatefulSet is used for the Jenkins controller" }}
+   {{- end }}
+{{- end }}

@@ -1,0 +1,18 @@
+{{- if .Values.controller.initScripts -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "jenkins.fullname" . }}-init-scripts
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+data:
+{{- range $key, $val := .Values.controller.initScripts }}
+  init{{ $key }}.groovy: |-
+{{ tpl $val $ | indent 4 }}
+{{- end }}
+{{- end }}

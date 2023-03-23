@@ -1,0 +1,86 @@
+{{- $jenkinsHome := .Values.controller.jenkinsHome -}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "jenkins.fullname" . }}
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+data:
+  apply_config.sh: |-
+    set -e
+{{- if .Values.controller.initializeOnce }}
+    if [ -f {{ .Values.controller.jenkinsHome }}/initialization-completed ]; then
+      echo "controller was previously initialized, refusing to re-initialize"
+      exit 0
+    fi
+{{- end }}
+    echo "disable Setup Wizard"
+    # Prevent Setup Wizard when JCasC is enabled
+    echo $JENKINS_VERSION > {{ .Values.controller.jenkinsHome }}/jenkins.install.UpgradeWizard.state
+    echo $JENKINS_VERSION > {{ .Values.controller.jenkinsHome }}/jenkins.install.InstallUtil.lastExecVersion
+{{- if .Values.controller.overwritePlugins }}
+    echo "remove all plugins from shared volume"
+    # remove all plugins from shared volume
+    rm -rf {{ .Values.controller.jenkinsHome }}/plugins/*
+{{- end }}
+{{- if .Values.controller.installPlugins }}
+    echo "download plugins"
+    # Install missing plugins
+    cp /var/jenkins_config/plugins.txt {{ .Values.controller.jenkinsHome }};
+    rm -rf {{ .Values.controller.jenkinsRef }}/plugins/*.lock
+    version () { echo "$@" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }'; }
+    if [ -f "{{ .Values.controller.jenkinsWar }}" ] && [ -n "$(command -v jenkins-plugin-cli)" 2>/dev/null ] && [ $(version $(jenkins-plugin-cli --version)) -ge $(version "2.1.1") ]; then
+      jenkins-plugin-cli --verbose --war "{{ .Values.controller.jenkinsWar }}" --plugin-file "{{ .Values.controller.jenkinsHome }}/plugins.txt" --latest {{ .Values.controller.installLatestPlugins }}{{- if .Values.controller.installLatestSpecifiedPlugins }} --latest-specified{{- end }};
+    else
+      /usr/local/bin/install-plugins.sh `echo $(cat {{ .Values.controller.jenkinsHome }}/plugins.txt)`;
+    fi
+    echo "copy plugins to shared volume"
+    # Copy plugins to shared volume
+    yes n | cp -i {{ .Values.controller.jenkinsRef }}/plugins/* /var/jenkins_plugins/;
+{{- end }}
+  {{- if not .Values.controller.sidecars.configAutoReload.enabled }}
+    echo "copy configuration as code files"
+    mkdir -p {{ .Values.controller.jenkinsHome }}/casc_configs;
+    rm -rf {{ .Values.controller.jenkinsHome }}/casc_configs/*
+    {{- if .Values.controller.JCasC.configScripts }}
+    cp -v /var/jenkins_config/*.yaml {{ .Values.controller.jenkinsHome }}/casc_configs
+    {{- end }}
+  {{- end }}
+    echo "finished initialization"
+{{- if .Values.controller.initializeOnce }}
+    touch {{ .Values.controller.jenkinsHome }}/initialization-completed
+{{- end }}
+  {{- if not .Values.controller.sidecars.configAutoReload.enabled }}
+# Only add config to this script if we aren't auto-reloading otherwise the pod will restart upon each config change:
+{{- if .Values.controller.JCasC.defaultConfig }}
+  jcasc-default-config.yaml: |-
+    {{- include "jenkins.casc.defaults" . |nindent 4}}
+{{- end }}
+{{- range $key, $val := .Values.controller.JCasC.configScripts }}
+  {{ $key }}.yaml: |-
+{{ tpl $val $| indent 4 }}
+{{- end }}
+{{- end }}
+  plugins.txt: |-
+{{- if .Values.controller.installPlugins }}
+  {{- range $installPlugin := .Values.controller.installPlugins }}
+    {{- $installPlugin | nindent 4 }}
+  {{- end }}
+  {{- range $addlPlugin := .Values.controller.additionalPlugins }}
+    {{- /* duplicate plugin check */}}
+    {{- range $installPlugin := $.Values.controller.installPlugins }}
+      {{- if eq (splitList ":" $addlPlugin | first) (splitList ":" $installPlugin | first) }}
+        {{- $message := print "[PLUGIN CONFLICT] controller.additionalPlugins contains '" $addlPlugin "'" }}
+        {{- $message := print $message " but controller.installPlugins already contains '" $installPlugin "'." }}
+        {{- $message := print $message " Override controller.installPlugins to use '" $addlPlugin "' plugin." }}
+        {{- fail $message }}
+      {{- end }}
+    {{- end }}
+    {{- $addlPlugin | nindent 4 }}
+  {{- end }}
+{{- end }}

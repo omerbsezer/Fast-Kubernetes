@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{template "jenkins.fullname" . }}
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    {{- if .Values.renderHelmLabels }}
+    "helm.sh/chart": "{{ template "jenkins.label" .}}"
+    {{- end }}
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+    {{- if .Values.controller.serviceLabels }}
+{{ toYaml .Values.controller.serviceLabels | indent 4 }}
+    {{- end }}
+{{- if .Values.controller.serviceAnnotations }}
+  annotations:
+{{ toYaml .Values.controller.serviceAnnotations | indent 4 }}
+{{- end }}
+spec:
+  {{- if .Values.controller.serviceExternalTrafficPolicy }}
+  externalTrafficPolicy: {{.Values.controller.serviceExternalTrafficPolicy}}
+  {{- end }}
+  {{- if (and (eq .Values.controller.serviceType "ClusterIP") (not (empty .Values.controller.clusterIP))) }}
+  clusterIP: {{.Values.controller.clusterIP}}
+  {{- end }}
+  ports:
+    - port: {{.Values.controller.servicePort}}
+      name: http
+      targetPort: {{ .Values.controller.targetPort }}
+      {{- if (and (eq .Values.controller.serviceType "NodePort") (not (empty .Values.controller.nodePort))) }}
+      nodePort: {{.Values.controller.nodePort}}
+      {{- end }}
+{{- range $index, $port := .Values.controller.extraPorts }}
+    - port: {{ $port.port }}
+      name: {{ $port.name }}
+      targetPort: {{ $port.port }}
+{{- end }}
+  selector:
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+  type: {{.Values.controller.serviceType}}
+  {{if eq .Values.controller.serviceType "LoadBalancer"}}
+{{- if .Values.controller.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+{{ toYaml .Values.controller.loadBalancerSourceRanges | indent 4 }}
+{{- end }}
+  {{if .Values.controller.loadBalancerIP}}
+  loadBalancerIP: {{.Values.controller.loadBalancerIP}}
+  {{end}}
+  {{end}}

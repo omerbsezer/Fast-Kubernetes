@@ -1,0 +1,164 @@
+{{- if .Values.backup.enabled }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ template "jenkins.fullname" . }}-backup
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    {{- if .Values.renderHelmLabels }}
+    "helm.sh/chart": "{{ template "jenkins.label" .}}"
+    {{- end }}
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.backup.componentName }}"
+spec:
+  schedule: {{ .Values.backup.schedule | quote }}
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 120
+  jobTemplate:
+    spec:
+{{- if .Values.backup.activeDeadlineSeconds }}
+      activeDeadlineSeconds: {{ .Values.backup.activeDeadlineSeconds }}
+{{- end }}
+      template:
+        metadata:
+          {{- if .Values.backup.labels }}
+          labels:
+            {{- toYaml .Values.backup.labels | trim | nindent 12 }}
+          {{- end }}
+          {{- if .Values.backup.annotations }}
+          annotations:
+            {{- toYaml .Values.backup.annotations | trim | nindent 12 }}
+          {{- end }}
+        spec:
+          restartPolicy: OnFailure
+          serviceAccountName: {{ include "backup.serviceAccountBackupName" . }}
+          {{- if .Values.backup.usePodSecurityContext }}
+          securityContext:
+            {{- if hasKey .Values.backup "podSecurityContextOverride" }}
+              {{- tpl (toYaml .Values.backup.podSecurityContextOverride | nindent 12) . }}
+            {{- else }}
+            runAsUser: {{ default 0 .Values.backup.runAsUser }}
+              {{- if and (.Values.backup.runAsUser) (.Values.backup.fsGroup) }}
+                {{- if not (eq (int .Values.backup.runAsUser) 0) }}
+            fsGroup: {{ .Values.backup.fsGroup }}
+                {{- end }}
+              {{- end }}
+              {{- if .Values.backup.securityContextCapabilities }}
+          capabilities:
+              {{- toYaml .Values.backup.securityContextCapabilities | nindent 12 }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
+          containers:
+          - name: jenkins-backup
+            image: "{{ .Values.backup.image.repository }}:{{ .Values.backup.image.tag }}"
+            command: ["kube-tasks"]
+            args:
+            - simple-backup
+            - -n
+            - {{ template "jenkins.namespace" . }}
+            - -l
+            - app.kubernetes.io/instance={{ .Release.Name }}
+            - --container
+            - jenkins
+            - --path
+            {{- if .Values.backup.onlyJobs }}
+            - {{ .Values.controller.jenkinsHome }}/jobs
+            {{- else}}
+            - {{ .Values.controller.jenkinsHome }}
+            {{- end}}
+            - --dst
+            - {{ .Values.backup.destination }}
+            {{- with .Values.backup.extraArgs }}
+              {{- toYaml . | nindent 12 }}
+            {{- end }}
+            env:
+            {{- with .Values.backup.env }}
+              {{- toYaml . | trim | nindent 12 }}
+            {{- end }}
+            {{- if .Values.backup.existingSecret }}
+            {{- range $key,$value := .Values.backup.existingSecret }}
+            {{- if $value.awsaccesskey }}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $key }}
+                  key: {{ $value.awsaccesskey | quote }}
+            {{- end }}
+            {{- if $value.awssecretkey }}
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $key }}
+                  key: {{ $value.awssecretkey | quote}}
+            {{- end }}
+            {{- if $value.azstorageaccount }}
+            - name: AZURE_STORAGE_ACCOUNT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $key }}
+                  key: {{ $value.azstorageaccount | quote}}
+            {{- end }}
+            {{- if $value.azstoragekey }}
+            - name: AZURE_STORAGE_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ $key }}
+                  key: {{ $value.azstoragekey | quote}}
+            {{- end }}
+            {{- if $value.gcpcredentials }}
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: "/var/run/secrets/{{ $key }}/{{ $value.gcpcredentials }}"
+            {{- end }}
+            {{- end }}
+            {{- end }}
+          {{- with .Values.backup.resources }}
+            resources:
+              {{- toYaml . | trim | nindent 14 }}
+          {{- end }}
+            volumeMounts:
+          {{- if .Values.backup.existingSecret }}
+          {{- range $key,$value := .Values.backup.existingSecret }}
+          {{- if $value.gcpcredentials }}
+            - mountPath: /var/run/secrets/{{ $key }}
+              name: {{ $key }}
+          {{- end }}
+          {{- end }}
+          {{- end }}
+          volumes:
+          {{- if .Values.backup.existingSecret }}
+          {{- range $key,$value := .Values.backup.existingSecret }}
+          {{- if $value.gcpcredentials }}
+          - name:  {{ $key }}
+            secret:
+              secretName:  {{ $key }}
+          {{- end }}
+          {{- end }}
+          {{- end }}
+          affinity:
+            podAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  topologyKey: "kubernetes.io/hostname"
+                  labelSelector:
+                    matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                      - {{ template "jenkins.fullname" . }}
+                    - key: release
+                      operator: In
+                      values:
+                      - {{ .Release.Name }}
+      {{- with .Values.controller.tolerations }}
+          tolerations:
+          {{- toYaml . | nindent 10 }}
+      {{- end }}
+      {{- with .Values.controller.nodeSelector }}
+          nodeSelector:
+          {{- toYaml . | nindent 12 }}
+      {{- end }}
+{{- end }}
