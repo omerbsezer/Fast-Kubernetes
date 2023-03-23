@@ -16,6 +16,7 @@ docker run -dit --privileged --restart unless-stopped -e SHARED_DIRECTORY=/data 
 
 - Now our simulated server enabled.
 - Copy and save (below) as file on your PC (pv.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/persistentvolume/pv.yaml
 
 ```     
 apiVersion: v1                               
@@ -42,6 +43,7 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/152173879-837bb03a-fd9f-44ba-becc-fa3ab7ae748f.png)
 
 - Copy and save (below) as file on your PC (pvc.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/persistentvolume/pvc.yaml
 
 ```     
 apiVersion: v1
@@ -67,7 +69,8 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/152174156-9d20270f-3be7-46b1-ac07-2c32c56036c4.png)
 
-- Copy and save (below) as file on your PC (deploy.yaml). 
+- Copy and save (below) as file on your PC (deploy.yaml).
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/persistentvolume/deploy.yaml 
 
 ```     
 apiVersion: v1                                     # Create Secret object for password
