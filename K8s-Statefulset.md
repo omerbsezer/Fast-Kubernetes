@@ -4,7 +4,8 @@ This scenario shows how K8s statefulset object works on minikube
 
 ### Steps
 
-- Copy and save (below) as file on your PC (statefulset_nginx.yaml). 
+- Copy and save (below) as file on your PC (statefulset_nginx.yaml).
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/statefulset/statefulset.yaml 
 
 ```     
 apiVersion: v1
