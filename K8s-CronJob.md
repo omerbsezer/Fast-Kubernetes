@@ -5,6 +5,7 @@ This scenario shows how K8s Cron job object works on minikube
 ### Steps
 
 - Copy and save (below) as file on your PC (cronjob.yaml). 
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/cronjob/cronjob.yaml
 
 ```     
 apiVersion: batch/v1
