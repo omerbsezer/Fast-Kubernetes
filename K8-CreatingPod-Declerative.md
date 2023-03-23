@@ -12,6 +12,7 @@ This scenario shows:
   ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
   
 - Create Yaml file (pod1.yaml) in your directory and copy the below definition into the file:
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/pod/pod1.yaml 
 
 ```
 apiVersion: v1      
@@ -30,6 +31,7 @@ spec:
       - name: USER
         value: "username"
 ```
+
 ![image](https://user-images.githubusercontent.com/10358317/153674646-8997eb99-12b9-4394-91f2-2de4032ee3db.png)
 
 
