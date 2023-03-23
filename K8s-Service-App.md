@@ -11,7 +11,7 @@ This scenario shows how to create Services (ClusterIp, NodePort and LoadBalancer
 
 ### Steps
 
-- Create 3 x front-end and 3 x back-end Pods with following YAML file run ("kubectl apply -f pods.yaml")
+- Create 3 x front-end and 3 x back-end Pods with following YAML file run ("kubectl apply -f deploy.yaml")
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: ozgurozturknet/k8s:latest
+        image: nginx:latest
         ports:
         - containerPort: 80
 ---
@@ -94,7 +94,7 @@ spec:
     
 ![image](https://user-images.githubusercontent.com/10358317/149767889-29c64bd6-54bf-42bf-b12b-ed83ffedb0a8.png)
 
-- Create NodePort Service to reach frontend pods from the outside of the cluster.
+- Create NodePort Service to reach frontend pods from the outside of the cluster (run: "kubectl apply -f backend_nodeport.yaml").
 ```
 apiVersion: v1
 kind: Service
@@ -121,7 +121,7 @@ spec:
 
 ![image](https://user-images.githubusercontent.com/10358317/149770958-87b0c840-92b3-4f9d-81cc-84e725381bf3.png)
 
-- LoadBalancer Service is only available wih cloud services (because in the local cluster, it can not possible to get external-ip of the load-balancer service). So if you have connection to the one of the cloud service (Azure-AKS, AWS EKS, GCP GKE), please create loadbalance service on it. 
+- LoadBalancer Service is only available wih cloud services (because in the local cluster, it can not possible to get external-ip of the load-balancer service). So if you have connection to the one of the cloud service (Azure-AKS, AWS EKS, GCP GKE), please create loadbalance service on it (run: "kubectl apply -f backend_loadbalancer.yaml"). 
 
 ```
 apiVersion: v1
