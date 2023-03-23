@@ -14,7 +14,8 @@ This scenario shows:
 
   ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
   
-- Create Yaml file (deployment1.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (deployment1.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/deployment/deployment1.yaml
 
 ```
 apiVersion: apps/v1
