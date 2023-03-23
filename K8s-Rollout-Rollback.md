@@ -19,7 +19,8 @@ This scenario shows:
 
 ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
   
-- Create Yaml file (recreate-deployment.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (recreate-deployment.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/deployment/recreate-deployment.yaml
 
 ```
 apiVersion: apps/v1
@@ -50,7 +51,8 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/154661824-0e6db25e-cf67-4789-97be-acd8d90f7c07.png)
 
 
-- Create Yaml file (rolling-deployment.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (rolling-deployment.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/deployment/rolling-deployment.yaml
 
 ```
 apiVersion: apps/v1
