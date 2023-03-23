@@ -13,7 +13,8 @@ This scenario shows:
 
 ![image](https://user-images.githubusercontent.com/10358317/153183333-371fe598-d5a4-4b86-9b5d-9e33f35063cc.png)
 
-- Create Yaml file (config.yaml) in your directory and copy the below definition into the file:
+- Create Yaml file (config.yaml) in your directory and copy the below definition into the file.
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/configmap/configmap.yaml
 
 ``` 
 apiVersion: v1
@@ -67,6 +68,7 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/153647020-54a0cf44-582f-4aab-8375-18c9d82ca494.png)
 
 - Define configmap with imperative way (--from-file and --from-literal) (create a file and put into "theme=dark")
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/configmap/theme.txt
 
 ```
 kubectl create configmap myconfigmap2 --from-literal=background=red --from-file=theme.txt
