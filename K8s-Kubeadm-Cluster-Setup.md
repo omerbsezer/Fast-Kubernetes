@@ -7,11 +7,11 @@ When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, an
 **Easy way to create K8s Cluster with Ubuntu20.04 (Control-Plane, Workers) and Windows 2019 Server:**
 
 - Ubuntu 20.04 Installation Files (updated: K8s 1.26.2, calico 3.25.0, containerd 1.6.10) without using Corporate Proxy:
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install.sh
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/master.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/master.sh
 - Windows 2019 Server Installation Files (K8s 1.23.5, calico 3.25.0, docker as container runtime) without using Corporate Proxy:
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install1.ps1
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/install2.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install1.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install2.ps1
 
 **IMPORTANT:** 
 - If your cluster is behind the corporate proxy, you should add proxy settings on **Environment Variables, Docker Config, Containerd Config**.
