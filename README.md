@@ -67,7 +67,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
     - [Authentication, Role Based Access Control, Service Account](#authentication)
     - [Ingress](#ingress)
     - [Dashboard](#dashboard)
-- [Play With Kubernetes](#playWithKubernetes)
+- [Play With Kubernetes](#playwithkubernetes)
 - [Helm: Kuberbetes Package Manager](#helm)
 - [Kubernetes Commands Cheatsheet](#cheatsheet)
 - [Helm Commands Cheatsheet](#helm_cheatsheet)
@@ -1008,7 +1008,7 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
     
 **Goto the scenario:** [LAB: Enable Dashboard on Real Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
 
-## Play With Kubernetes <a name="playWithKubernetes"></a>
+## Play With Kubernetes <a name="playwithkubernetes"></a>
 
 - https://labs.play-with-k8s.com/
 
