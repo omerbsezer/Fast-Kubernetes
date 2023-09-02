@@ -222,14 +222,14 @@ For learning K8s and running on a computer, **Kubectl and Minikube** are enough 
   - Multi containers that run on the same Pod run on the same Node.
   - Containers in the same Pod run/pause/deleted at the same time.
   - Containers in the same Pod communicate with each other on localhost, there is not any network isolation.
-  - Containers in the same Pod use one volume commonly and they can reasch same files in the volume.   
+  - Containers in the same Pod use one volume commonly and they can reach same files in the volume.   
 
-#### Init Container
-- Init container is used for configuration of app before running app container. 
-- Init container handle what it should run, then it closes successfully, after init container close, app container starts. 
+#### Init Containers
+- Init containers are used for configuration of apps before running app container. 
+- Init containers handle what it should run, then it closes successfully, after init containers close, app containers start. 
 - Example below shows how to define init containers in one Pod. There are 2 containers: appcontainer and initcontainer. Initcontainer is polling the service (myservice). When it finds, it closes and app container starts.  
 
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -244,7 +244,7 @@ spec:
     image: busybox                # init container starts firstly and look up myservice is up or not in every 2 seconds, if there is myservice available, initcontainer closes. 
     command: ['sh', '-c', "until nslookup myservice; do echo waiting for myservice; sleep 2; done"]
 ```
-```
+```yaml
 # save as service.yaml and run after pod creation
 apiVersion: v1
 kind: Service
@@ -270,7 +270,7 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/153675164-62265978-60c3-4167-ad0c-4bfbbf1f704b.png)
 
 - In the command (imperative way), we can also add label to the pods.
-```
+```shell
 kubectl label pods pod1 team=development  #adding label team=development on pod1
 kubectl get pods --show-labels
 kubectl label pods pod1 team-  #remove team (key:value) from pod1
@@ -278,8 +278,8 @@ kubectl label --overwrite pods pod1 team=test #overwrite/change label on pod1
 kubectl label pods --all foo=bar  # add label foo=bar for all pods
 ```
 #### Selector
-- We can select/filter pod with kubectl command. 
-```
+- We can select/filter pods with kubectl. 
+```shell
 kubectl get pods -l "app=firstapp" --show-labels
 kubectl get pods -l "app=firstapp,tier=frontend" --show-labels
 kubectl get pods -l "app=firstapp,tier!=frontend" --show-labels
@@ -290,12 +290,12 @@ kubectl get pods -l "app=firstapp,app=secondapp" --show-labels # comma means and
 kubectl get pods -l "app in (firstapp,secondapp)" --show-labels # it means or => firstapp or secondapp
 ```
 #### Node Selector
-- With Node Selector, we can choose which pod run on which Node. 
+- With Node Selector, we can specify which pod run on which Node. 
  
  ![image](https://user-images.githubusercontent.com/10358317/153676102-03b2137b-ecc8-4802-9a9f-41694e1ce6fa.png)
 
 - It is also possible to label nodes with imperative way. 
-```
+```shell
 kubectl apply -f podnode.yaml
 kubectl get pods -w #always watch
 kubectl label nodes minikube hddtype=ssd #after labelling node, pod11 configuration can run, because node is labelled with hddtype:ssd 
@@ -305,7 +305,7 @@ kubectl label nodes minikube hddtype=ssd #after labelling node, pod11 configurat
 
 ![image](https://user-images.githubusercontent.com/10358317/153675516-4b71b55a-f7ec-40a4-9e32-0b794208e6ae.png)
 
-```
+```shell
 kubectl apply -f podannotation.yaml
 kubectl describe pod annotationpod
 kubectl annotate pods annotationpod foo=bar #imperative way
@@ -313,13 +313,13 @@ kubectl delete -f podannotation.yaml
 ```
 
 #### Namespaces
-- Namespaces provides a mechanism for isolating groups of resources within a single cluster. It provides a scope for names. 
+- Namespaces provides a mechanism for isolating groups of resources within a single cluster. They provide a scope for names. 
 - Namespaces cannot be nested inside one another and each Kubernetes resource can only be in one namespace.
-- Kubectl commands run on default namespaces if it is not determined in the command.
+- Kubectl commands run in default namespaces if it is not determined in the command.
 
 ![image](https://user-images.githubusercontent.com/10358317/148784384-96681287-e4c4-46e8-b63f-5953270a5b28.png)
 
-```
+```shell
 kubectl get pods --namespaces kube-system  #get all pods in the kube-system namespaces
 kubectl get pods --all-namespaces  # get pods from all namespaces
 kubectl create namespace development  #create new development namespace in imperative way
@@ -329,7 +329,7 @@ kubectl get pods -n development  # get pods from all namespace
 
 ![image](https://user-images.githubusercontent.com/10358317/153675331-ee6ccfb6-b186-4e29-8e85-55adee465a53.png)
 
-```
+```shell
 kubectl apply -f namespace.yaml
 kubectl get pods -n development  #get pods in the development namespace
 kubectl exec -it namespacedpod -n development -- /bin/sh  #run namespacepod in development namespace
@@ -337,7 +337,7 @@ kubectl exec -it namespacedpod -n development -- /bin/sh  #run namespacepod in d
 
 - We can avoid to use -n <namespacename> for all command with changing of default namespace  (because, if we don't use -n namespace, kubectl commands run on the default namespace).    
     
-```
+```shell
 kubectl config set-context --current  --namespace=development  #now default namespace is development
 kubectl get pods     #returns pods in the development namespace  
 kubectl config set-context --current  --namespace=default  #now namespace is default 
@@ -347,8 +347,9 @@ kubectl delete namespaces development  #delete development namespace
 - A Deployment provides declarative updates for Pods and ReplicaSets.
 - We define states in the deployment, deployment controller compares desired state and take necessary actions to keep desire state. 
 - Deployment object is the higher level K8s object that controls and keeps state of single or multiple pods automatically.
-- Imperative way:   
-```
+- Imperative way:
+
+```shell
 kubectl create deployment firstdeployment --image=nginx:latest --replicas=2 
 kubectl get deployments
 kubectl get pods -w    #on another terminal
@@ -356,13 +357,13 @@ kubectl delete pods <oneofthepodname> #we can see another terminal, new pod will
 kubectl scale deployments firstdeployment --replicas=5
 kubectl delete deployments firstdeployment
 ```
-- Please have a look Scenario (below link) to learn more about the deployment and declerative way of creating deployment.
+- Please have a look Scenario (below link) to learn more about the deployment and declarative way of creating deployment.
 
 **Goto the Scenario:** [LAB: K8s Deployment - Scale Up/Down - Bash Connection - Port Forwarding](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Deployment.md) 
     
 ### Replicaset <a name="replicaset"></a>
 - Deployment object create Replicaset object. Deployment provides the transition of the different replicaset automatically. 
-- Replicaset is the responsible for the management of replica creation and remove. But, when the pods are updated (e.g. image changed), it can not update replicaset pods. However, deployment can update for all change. So, best practice is to use deployment directly, not to use replicaset directly.
+- Replicaset is responsible for the management of replica creation and remove. But, when the pods are updated (e.g. image changed), it can not update replicaset pods. However, deployment can update for all change. So, best practice is to use deployment, not to use replicaset directly.
 - **Important:** It can be possible to create replicaset directly, but we could not use rollout/rollback, undo features with replicaset. Deployment provide to use rollout/rollback, undo features.
     
 ![image](https://user-images.githubusercontent.com/10358317/148804992-8ad27155-1c1e-436f-949e-4aec9a1a9d05.png)
@@ -371,12 +372,12 @@ kubectl delete deployments firstdeployment
 ### Rollout and Rollback <a name="rollout-rollback"></a>
 - Rollout and Rollback enable to update and return back containers that run under the deployment.
 - 2 strategy for rollout:
-    - **Recreate Strategy:** Delete all pods firstly and create Pods from scratch. If two different version of SW affect each other negatively, this strategy could be used.     
+    - **Recreate Strategy:** Delete all pods first and create Pods from scratch. If two different versions of SW affect each other negatively, this strategy could be used.     
     - **RollingUpdate Strategy (default)**: It updates pods step by step. Pods are updated step by step, all pods are not deleted at the same time.
-        - **maxUnavailable:** At the update duration, it shows the max number of deleted containers (total:10 container; if maxUn:2, min:8 containers run in that time period)
-        - **maxSurge:** At the update duration, it shows that the max number of containers run on the cluster (total:10 container; if maxSurge:2, max:12 containers run in a time)
+        - **maxUnavailable:** At the update duration, it shows the max number of deleted containers (total:10 containers; if maxUn:2, min:8 containers run in that time period)
+        - **maxSurge:** At the update duration, it shows that the max number of containers run on the cluster (total:10 containers; if maxSurge:2, max:12 containers run in a time)
     
-```    
+```shell
 kubectl set image deployment rolldeployment nginx=httpd:alpine --record     # change image of deployment
 kubectl rollout history deployment rolldeployment                           #shows record/history revisions 
 kubectl rollout history deployment rolldeployment --revision=2              #select the details of the one of the revisions
@@ -397,7 +398,7 @@ kubectl rollout resume deployment rolldeployment                            #res
 - The IP of the POD is same throughout the cluster.
 
 #### CNI (Container Network Interface)
-- Networking of container and nodes with different vendors and devices is difficult to handle. So K8s give this responsibility to CNI plugins to handle networking requirements. 
+- Networking of containers and nodes with different vendors and devices is difficult to handle. So K8s give this responsibility to CNI plugins to handle networking requirements. 
 - "CNI (Container Network Interface), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins." => https://github.com/containernetworking/cni 
 - K8s has CNI plugins that are selected by the users. Some of the CNI methods are: Flannel, calico, weave, and canal. 
 - Calico (https://github.com/projectcalico/calico) is the one of the popular and open source CNI method/plugin in K8s.
@@ -416,7 +417,7 @@ kubectl rollout resume deployment rolldeployment                            #res
     - **LoadBalancer:** Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
     - **ExternalName:** Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up." (Ref: Kubernetes.io)
 - Example of Service Object Definition:  (Selector binds service to the related pods, get traffic from port 80 to port 9376) 
-```    
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -482,7 +483,7 @@ spec:
 #### Emptydir Volume
 - Emptydir (empty directory on the node) is created on which node the pod is created on and it is mounted on the container using "volumeMounts". Multiple containers in the pod can reach this volume (read/write).   
 - Emptydir volume is dependent of Pod Lifecycle. If the pod is deleted, emptydir is also deleted.    
-```  
+```yaml
 spec: 
   containers:
   - name: sidecar
@@ -501,7 +502,7 @@ spec:
     
 #### Hostpath Volume
 - It is similar to emtpydir, hostpath is also created on which node the pod is created on. In addition, the hostpath is specifically defined path on the node.
-```  
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -541,19 +542,19 @@ spec:
 - Secrets are called by the pod in 2 different ways: volume and environment variable   
 - Imperative way, run on the terminal (geneneric in the command = opaque): 
 
-``` 
+```shell
 kubectl create secret generic mysecret2 --from-literal=db_server=db.example.com --from-literal=db_username=admin --from-literal=db_password=P@ssw0rd!
 ```     
       
 - Imperative way with file to hide pass in the command history
     
-```     
+```shell
 kubectl create secret generic mysecret3 --from-file=db_server=server.txt --from-file=db_username=username.txt --from-file=db_password=password.txt
 ``` 
-    
+
 - Imperative way with json file to hide pass in the command history
 
-``` 
+```shell
 kubectl create secret generic mysecret4 --from-file=config.json
 ``` 
     
@@ -579,9 +580,9 @@ kubectl create secret generic mysecret4 --from-file=config.json
     - **preferredDuringSchedulingIgnoredDuringExecution:** Find a node during scheduling according to "matchExpression" and run pod on that node. If it is not found, run this pod wherever it finds. 
         - **weight:** Preference weight. If weight is more than other weights, this weight is higher priority than others. 
 
-- To understand better, please have a look [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
+- For a better understanding, please have a look [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
     
-**Goto the Scenario:** [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
+**Go to the Scenario:** [LAB: K8s Node Affinity](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Node-Affinity.md)    
     
 #### Pod Affinity 
 - Some of the pods should run with other pods on same node or same availability zone (e.g. frontend pods run with cache pod on the same availability zone) 
@@ -594,7 +595,7 @@ kubectl create secret generic mysecret4 --from-file=config.json
     - "topology.kubernetes.io/region": e.g. "topology.kubernetes.io/region=northeurope"
     - "topology.kubernetes.io/zone": e.g. "topology.kubernetes.io/zone=northeurope-1"
 
-```    
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -616,7 +617,7 @@ metadata:
 spec:
   affinity:
     podAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:    # required: if not find, not run this pod on any node
+      requiredDuringSchedulingIgnoredDuringExecution:    # required: if not found, not run this pod on any node
       - labelSelector:
           matchExpressions:
           - key: app
@@ -624,7 +625,7 @@ spec:
             values:
             - frontend
         topologyKey: kubernetes.io/hostname               # run this pod with the POD which includes "app=frontend" on the same worker NODE  
-      preferredDuringSchedulingIgnoredDuringExecution:    # preferred: if not find, run this pod on any node
+      preferredDuringSchedulingIgnoredDuringExecution:    # preferred: if not found, run this pod on any node
       - weight: 1
         podAffinityTerm:
           labelSelector:
@@ -695,7 +696,7 @@ spec:
     - "Recycle": volume is not deleted but all data in the volume is deleted. We get empty volume if it is chosen.
     - "Delete" : volume is deleted after using it.
 
-```
+```yaml
 # Creating Persistent Volume on NFS Server on the network    
 apiVersion: v1                               
 kind: PersistentVolume
@@ -717,10 +718,11 @@ spec:
 ![image](https://user-images.githubusercontent.com/10358317/154734368-323af0cc-e745-4aa0-b844-65b4a410426d.png)
     
 #### Persistent Volume Claim (PVC)  
-- We should create PVC to use volume. With PVC, existed PVs can be chosen.
+- We should create PVCs to use volume. With PVCs, existed PVs can be chosen.
 - The reason why K8s manage volume with 2 files (PVC and PV) is to seperate the management of K8s Cluster (PV) and using of volume (PVC).
 - If there is seperate role of system management of K8s cluster, system manager creates PV (to connect different storage vendors), developers only use existed PVs with PVCs.    
-```    
+
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -735,7 +737,7 @@ spec:
   storageClassName: ""
   selector:
     matchLabels:                          
-      app: mysql                            # chose/select "mysql" PV that is defined above.
+      app: mysql                            # choose/select "mysql" PV that is defined above.
  ```
 
 ![image](https://user-images.githubusercontent.com/10358317/154735404-80221355-1493-4043-ba7a-8c7a4ddc8df0.png)
@@ -747,7 +749,7 @@ spec:
 - Cloud providers provide storage classes on their infrastructure.
 - When pod/deployment is created, storage class is triggered to create PV automatically (Trigger order: Pod -> PVC -> Storage Class -> PV). 
 
-```
+```yaml
 # Storage Class Creation on Azure
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
@@ -763,8 +765,8 @@ volumeBindingMode: WaitForFirstConsumer
 ```
     
 - "storageClassName" is added into PVC file.
-    
-```    
+
+```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -794,11 +796,11 @@ spec:
 #### Job Object 
 - "A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate". If the container is not successfully completed, it will recreated again.  
 - "When a specified number of successful completions is reached, the task (ie, Job) is complete."
-- After finishing job, pods are not deleted. Logs in the pods can be viewed.
+- After finishing a job, pods are not deleted. Logs in the pods can be viewed.
 - Job is used for the task that runs once (e.g. maintanence scripts, scripts that are used for creating DB)
 - Job is also used for processing tasks that are stored in queue or bucket. 
 
-```  
+```yaml
 spec:
   parallelism: 2               # each step how many pods start in parallel at a time
   completions: 10              # number of pods that run and complete job at the end of the time
@@ -833,7 +835,7 @@ spec:
 #  "/" means "repetitive"
 ``` 
   
-``` 
+```yaml
 spec:
   schedule: "*/1 * * * *"                        # At every 1st minute: 00:01 - 00:02 ...
   jobTemplate:
@@ -872,7 +874,7 @@ spec:
 - "Role", "RoleBinding" K8s objects are used to bind users for specific "namespace". 
 - "ClusterRole", "ClusterRoleBinding" K8s objects are used to bind users for specific "namespace". 
 
-``` 
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -885,8 +887,8 @@ rules:
 ``` 
 
 ![image](https://user-images.githubusercontent.com/10358317/154953311-84f616cf-3a25-486f-beb9-e2d6a3a2e01a.png)
-    
-```     
+
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
@@ -903,8 +905,8 @@ roleRef:
 ```
     
 ![image](https://user-images.githubusercontent.com/10358317/154953439-1dd52309-611b-48bf-8f7b-51433b678f8c.png)
-    
-```
+
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -916,8 +918,8 @@ rules:
 ```  
     
 ![image](https://user-images.githubusercontent.com/10358317/154953542-3723d691-632e-41d6-908f-5b15080ffa7b.png)
-    
-```    
+
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -950,7 +952,7 @@ roleRef:
  
 ![image](https://user-images.githubusercontent.com/10358317/152972977-5cfb148f-4ac7-4fb6-b68b-9a576e199e68.png) (ref: Kubernetes.io)
 
-```
+```yaml
 # Simple Ingress Object Definition    
 apiVersion: networking.k8s.io/v1
 kind: Ingress
