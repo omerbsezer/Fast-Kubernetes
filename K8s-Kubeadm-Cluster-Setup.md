@@ -12,10 +12,11 @@ When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, an
 - Windows 2019 Server Installation Files (K8s 1.23.5, calico 3.25.0, docker as container runtime) without using Corporate Proxy:
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install1.ps1
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install2.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install-docker-ce.ps1
 
 **IMPORTANT:** 
 - If your cluster is behind the corporate proxy, you should add proxy settings on **Environment Variables, Docker Config, Containerd Config**.
-- Links in the script files might be change in time (e.g. Calico updated their links)
+- Links in the script files might change in time (e.g. Calico updated their links)
 - Important Notes from K8s:
   - K8s on Windows: https://kubernetes.io/docs/concepts/windows/intro/ 
   - Supported Versions: https://kubernetes.io/docs/concepts/windows/intro/#windows-os-version-support
@@ -319,10 +320,7 @@ New-NetFireWallRule -DisplayName "Allow All Traffic" -Direction InBound -Action 
 Install-WindowsFeature -Name containers    # install docker
 Restart-Computer -Force 
 
-Install-Module DockerMsftProvider -Force 
-     
-Install-Package Docker -ProviderName DockerMsftProvider -Force      
-Restart-Computer -Force 
+.\install-docker-ce.ps1
 
 Set-Service -Name docker -StartupType 'Automatic' 
  
