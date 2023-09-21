@@ -9,13 +9,15 @@ New-NetFireWallRule -DisplayName "Allow All Traffic" -Direction InBound -Action 
 echo "Installing Docker Container..."
 Install-WindowsFeature -Name containers  
 
-echo "Installing DockerMsftProvider, Waiting 15 Seconds..."
-Start-Sleep -s 15
-Install-Module DockerMsftProvider -Force
+# DockerMsftProvider Depreciated!! instead of it, using install-docker-ce.ps1 from Microsoft to install on Windows Servers
+#echo "Installing DockerMsftProvider, Waiting 15 Seconds..."
+#Start-Sleep -s 15
+#Install-Module DockerMsftProvider -Force
+#Install-Package Docker -ProviderName DockerMsftProvider -Force 
 
-echo "Installing Package Docker, Waiting 15 Seconds..."
-Start-Sleep -s 15
-Install-Package Docker -ProviderName DockerMsftProvider -Force 
+echo "Installing Docker, Waiting 10 Seconds..."
+Start-Sleep -s 10
+.\install-docker-ce.ps1
 
 echo "Setting Service Docker, Waiting 20 Seconds..."
 Start-Sleep -s 20
