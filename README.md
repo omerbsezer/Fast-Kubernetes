@@ -320,10 +320,10 @@ kubectl delete -f podannotation.yaml
 ![image](https://user-images.githubusercontent.com/10358317/148784384-96681287-e4c4-46e8-b63f-5953270a5b28.png)
 
 ```shell
-kubectl get pods --namespaces kube-system  #get all pods in the kube-system namespaces
+kubectl get pods --namespaces kube-system  # get all pods in the kube-system namespaces
 kubectl get pods --all-namespaces  # get pods from all namespaces
-kubectl create namespace development  #create new development namespace in imperative way
-kubectl get pods -n development  # get pods from all namespace
+kubectl create namespace development  # create new development namespace in imperative way
+kubectl get pods -n development  # get pods from the development namespace
 ```
 - In declerative way, it is possible to create namespaces and run pod on the related namespace.
 
