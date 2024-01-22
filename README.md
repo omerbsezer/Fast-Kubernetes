@@ -787,7 +787,7 @@ spec:
 - Differences between Deployment and Statefulset:
     - Name of the pods in the statefulset are not assigned randomly. It gives name statefulsetName_0,1,2,3.
     - Pods in the statefulset are not created at the same time. Pods are created in order (new pod creation waits until previous pod's running status).
-    - When scaling down of statefulset, pods are deleted in random. Pods are deleted in order.
+    - When scaling down of statefulset, pods are not deleted in random. Pods are deleted in reverse order.
     - If PVC is defined in the statefulset, each pod in the statefulset has own PV
 
 **Goto the scenario:** [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
