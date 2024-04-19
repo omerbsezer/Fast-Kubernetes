@@ -320,10 +320,10 @@ kubectl delete -f podannotation.yaml
 ![image](https://user-images.githubusercontent.com/10358317/148784384-96681287-e4c4-46e8-b63f-5953270a5b28.png)
 
 ```shell
-kubectl get pods --namespaces kube-system  #get all pods in the kube-system namespaces
+kubectl get pods --namespaces kube-system  # get all pods in the kube-system namespaces
 kubectl get pods --all-namespaces  # get pods from all namespaces
-kubectl create namespace development  #create new development namespace in imperative way
-kubectl get pods -n development  # get pods from all namespace
+kubectl create namespace development  # create new development namespace in imperative way
+kubectl get pods -n development  # get pods from the development namespace
 ```
 - In declerative way, it is possible to create namespaces and run pod on the related namespace.
 
@@ -787,7 +787,7 @@ spec:
 - Differences between Deployment and Statefulset:
     - Name of the pods in the statefulset are not assigned randomly. It gives name statefulsetName_0,1,2,3.
     - Pods in the statefulset are not created at the same time. Pods are created in order (new pod creation waits until previous pod's running status).
-    - When scaling down of statefulset, pods are deleted in random. Pods are deleted in order.
+    - When scaling down of statefulset, pods are not deleted in random. Pods are deleted in reverse order.
     - If PVC is defined in the statefulset, each pod in the statefulset has own PV
 
 **Goto the scenario:** [LAB: K8s Stateful Sets - Nginx](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Statefulset.md)  
