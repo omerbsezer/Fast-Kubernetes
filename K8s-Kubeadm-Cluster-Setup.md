@@ -2,9 +2,7 @@
 
 This scenario shows how to create K8s cluster on virtual PC (multipass, kubeadm, containerd)
 
-When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, and Windows 2019 Server**. Because tested, and stable run on Ubuntu 20.04 and Windows 2019 Server.
-
-**Easy way to create K8s Cluster with Ubuntu20.04 (Control-Plane, Workers) and Windows 2019 Server:**
+**Easy way to create K8s Cluster with Ubuntu (Control-Plane, Workers) and Windows Servers:**
 
 - Ubuntu 20.04 Installation Files (updated: K8s 1.26.2, calico 3.25.0, containerd 1.6.10) without using Corporate Proxy:
   - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/ubuntu20.04-kubeadm1.26.2-calico3.25.0-containerd1.6.10/install.sh
