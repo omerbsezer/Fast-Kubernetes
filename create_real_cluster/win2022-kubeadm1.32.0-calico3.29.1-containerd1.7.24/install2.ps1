@@ -36,3 +36,4 @@ echo "#########################################################"
 echo "Congrulations, kubernetes installed on Win..." 
 echo "Calico Ref: https://docs.tigera.io/calico/latest/getting-started/kubernetes/windows-calico/kubernetes/standard"
 echo "#########################################################"
+# ref: https://medium.com/@lubomir-tobek/kubernetes-cluster-and-adding-a-windows-worker-node-0a5b65bffbaa
