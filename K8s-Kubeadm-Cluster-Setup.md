@@ -7,15 +7,18 @@ When creating K8s cluster with Ubuntu and Windows, please use **Ubuntu 20.04, an
 **Easy way to create K8s Cluster with Ubuntu20.04 (Control-Plane, Workers) and Windows 2019 Server:**
 
 - Ubuntu 20.04 Installation Files (updated: K8s 1.26.2, calico 3.25.0, containerd 1.6.10) without using Corporate Proxy:
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install.sh
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/master.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/ubuntu20.04-kubeadm1.26.2-calico3.25.0-containerd1.6.10/install.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/ubuntu20.04-kubeadm1.26.2-calico3.25.0-containerd1.6.10/master.sh
 - Ubuntu 24.04 Installation Files (updated: K8s 1.32.0, calico 3.29.1, containerd 1.7.24) without using Corporate Proxy:
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install-ubuntu24.04-k8s1.32.sh
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/master-ubuntu24.04-k8s1.32.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/ubuntu24.04-kubeadm1.32.0-calico3.29.1-containerd1.7.24/install-ubuntu24.04-k8s1.32.sh
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/ubuntu24.04-kubeadm1.32.0-calico3.29.1-containerd1.7.24/master-ubuntu24.04-k8s1.32.sh
 - Windows 2019 Server Installation Files (K8s 1.23.5, calico 3.25.0, docker as container runtime) without using Corporate Proxy:
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install1.ps1
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install2.ps1
-  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/install-docker-ce.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/win2019-kubeadm1.26.2-calico3.25.0-docker/install1.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/win2019-kubeadm1.26.2-calico3.25.0-docker/install2.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/win2019-kubeadm1.26.2-calico3.25.0-docker/install-docker-ce.ps1
+- Windows 2022 Server Installation Files (K8s 1.32.0, calico 3.29.1, containerd 1.7.24) without using Corporate Proxy:
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/win2022-kubeadm1.32.0-calico3.29.1-containerd1.7.24/install1.ps1
+  - https://github.com/omerbsezer/Fast-Kubernetes/blob/main/create_real_cluster/win2022-kubeadm1.32.0-calico3.29.1-containerd1.7.24/install2.ps1
 
 **IMPORTANT:** 
 - If your cluster is behind the corporate proxy, you should add proxy settings on **Environment Variables, Docker Config, Containerd Config**.
