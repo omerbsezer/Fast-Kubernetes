@@ -1084,7 +1084,7 @@ Meshery is designed to be a versatile and powerful tool that addresses the moder
 
 Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
 
-#### Installation Guide (./meshery-kanvas-docs/meshery-installation/quick-start-guide.md) <a name="meshery-installation-guide"></a>
+#### [Installation Guide](./meshery-kanvas-docs/meshery-installation/quick-start-guide.md) <a name="meshery-installation-guide"></a>
 
 **Goto the scenario:** 
 - [LAB: Deploy Azure resources with Meshery](./meshery-kanvas-labs/meshery-azure-resources-deployment.md)
