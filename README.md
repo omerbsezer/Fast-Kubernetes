@@ -85,10 +85,16 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Helm Commands Cheatsheet](#helm_cheatsheet)
 - [Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass](#cluster_setup)
 - [Monitoring Kubernetes Cluster with SSH, Prometheus and Grafana](#prometheus_grafana)
-- [What is Meshery?](#Meshery)
-    - [Quick Start]()
-- [What is Kanvas?](#Kanvas)
-    - 
+- [Meshery](#Meshery)
+    - [What is Meshery](#what-is-meshery)
+    - [Meshery's Purpose](#meshery-purpose)
+    - [Quick Start Guide](#meshery-quick-start-guide)
+    - [Architectural Components](#meshery-architectural-components)
+    - [Logical Components](#meshery-logical-components)
+- [Kanvas](#kanvas)
+    - [What is Kanvas?](#what-is-kanvas)
+    - [Getting Started with Designs](#getting-started-designs)
+    - [Exploring Designer](#exploring-designer)
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
 
@@ -1053,16 +1059,6 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 **Goto:** [LAB: K8s Monitoring - Prometheus and Grafana](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Monitoring-Prometheus-Grafana.md)
 
 **Goto:** [LAB: Enable Dashboard on Real K8s Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
-    
-## Other Useful Resources Related Docker  <a name="resource"></a>
-- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
-- Docker and Kubernetes Tutorial - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
-
-## References  <a name="references"></a>
-- [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
-- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
-- [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
-- [Helm.sh](https://helm.sh/)
 
 ## Meshery <a name="Meshery"></a>
 
@@ -1120,13 +1116,13 @@ Getting Meshery up and running locally on a Docker-enabled system or in Kubernet
 
 Kanvas delivers a collaborative experience for engineers similar to how Google Workplace transforms the digital work environment and how Figma democratizes UX design tooling.
 
-### What is Kanvas? <a name="references"></a>
+### What is Kanvas? <a name="what-is-kanvas"></a>
 
 <p style="display:flex;text-align:center;margin:1rem auto;color:white;"><i>Kanvas is like Google Workspace for DevOps, as it allows you to create, test, and deploy cloud native architectures collaboratively and easily.</i></p>
 
 Kanvas is a web-based application that allows you to create and share orchestratable diagrams of cloud native infrastructure for Kubernetes and public cloud services. You can draw shapes, lines, text, and icons to represent your infrastructure components and their relationships. Kanvas also supports freestyle design, meaning that you can customize the appearance and layout of your diagrams without any constraints. Kanvas enables real-time collaboration, meaning that you can invite others to join your sessions and edit the diagrams together. Kanvas is a simple and intuitive tool for designing and communicating cloud native infrastructure for Kubernetes and multi-cloud services.
 
-### Getting Started with Designs <a name="references"></a>
+### Getting Started with Designs <a name="getting-started-designs"></a>
 
 #### Use Layer5 Kanvas for all of your diagrams and docs
 
@@ -1144,7 +1140,7 @@ Relationships identify and facilitate genealogy between Components.
 - [Working with Components](./Kanvas/getting-started/working-with-components.md)
 Meshery Components are reusable, interactive elements that can be used to build your Meshery designs. Learn how to work with components.
 
-### Exploring Designer <a name="references"></a>
+### Exploring Designer <a name="exploring-designer"></a>
  Designer mode is for those who want to create their own Kanvas, using the palette of components provided by Meshery. Collaborate with your team to create a Design. Enable collaboration mode using the Options mode available in the Kanvas canvas.
 
 - [Understanding Design Components](./Kanvas/designer/understanding-design-component/index.md)
@@ -1179,3 +1175,13 @@ How to export your designs for backup, sharing or offline use.
 
 - [Publishing Designs](./Kanvas/designer/publishing-designs/index.md)
 Learn to publish, manage, and work with designs in Meshery with clear state transitions, role-based permissions, and common workflow FAQs.
+
+## Other Useful Resources Related Docker  <a name="resource"></a>
+- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
+- Docker and Kubernetes Tutorial - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
+
+## References  <a name="references"></a>
+- [Kubernetes.io](https://kubernetes.io/docs/concepts/overview/)
+- [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
+- [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
+- [Helm.sh](https://helm.sh/)
