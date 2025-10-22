@@ -32,9 +32,21 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: K8s Cluster Setup with Kubeadm and Docker](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Kubeadm-Cluster-Docker.md)
 - [LAB: Helm-Jenkins on running K8s Cluster (2 Node Multipass VM)](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Helm-Jenkins.md)
 - [LAB: Enable Dashboard on Real K8s Cluster](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Enable-Dashboard-On-Cluster.md)
-- [LAB: K8s Monitoring - Prometheus and Grafana](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Monitoring-Prometheus-Grafana.md)    
+- [LAB: K8s Monitoring - Prometheus and Grafana](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/K8s-Monitoring-Prometheus-Grafana.md)
 - [Kubectl Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/KubernetesCommandCheatSheet.md)
 - [Helm Commands Cheatsheet](https://github.com/omerbsezer/Fast-Kubernetes/blob/main/HelmCheatsheet.md)
+- [LAB: Deploy Azure resources with Meshery](./meshery-kanvas-labs/meshery-azure-resources-deployment.md)
+- [LAB: Deploy AWS EC2 Instances with Meshery](./meshery-kanvas-labs/meshery-deploy-aws-ec2-instances-with-meshery.md)
+- [LAB: Deploy Azure Storage Account with Meshery](./meshery-kanvas-labs/meshery-deploy-azure-storage-account-with-meshery.md)
+- [LAB: Exploring Kubernetes Pods with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-pods.md)
+- [LAB: Exploring Kubernetes Deployments with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-deployments.md)
+- [LAB: Understanding Kubernetes ConfigMaps and Secrets with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-configmaps-secrets.md)
+- [LAB: Exploring Kubernetes CronJobs](./meshery-kanvas-labs/kanvas-exploring-kubernetes-cronjobs.md)
+- [LAB: Deploying Apache Cassandra with a StatefulSet in Meshery Playground](./meshery-kanvas-labs/kanvas-deploy-cassandra-with-statefulset.md)
+- [LAB: Deploying PHP Guestbook application with Redis in Meshery](./meshery-kanvas-labs/kanvas-deploy-php-redis.md)
+- [LAB: Embedding a Meshery Design in a WordPress Post](./meshery-kanvas-labs/kanvas-embedding-meshery-design-in-wordpress.md)
+- [LAB: Deploying WordPress and MySQL with Persistent Volumes with Meshery](./meshery-kanvas-labs/kanvas-wordpress-mysql-persistentvolume.md)
+
 
 # Table of Contents
 - [Motivation](#motivation)
