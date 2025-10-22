@@ -1080,7 +1080,7 @@ Meshery's primary purpose is to facilitate the collaborative design, operation, 
 
 Meshery is designed to be a versatile and powerful tool that addresses the modern needs of infrastructure management in cloud-native environments, making it easier for engineers to manage their infrastructure with confidence and efficiency.
 
-### Quick Start Guide <a name="meshery-quick-start-guide"></a>
+### [Quick Start Guide](./meshery-kanvas-docs/meshery-installation/quick-start-guide.md)<a name="meshery-quick-start-guide"></a>
 
 Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
 
