@@ -1064,18 +1064,69 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 - [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
 - [Helm.sh](https://helm.sh/)
 
+## Meshery <a name="Meshery"></a>
+
+### What is Meshery? <a name="what-is-meshery"></a>
+
+Meshery is a self-service engineering platform that enables collaborative design and operation of cloud and cloud-native infrastructure. It's a versatile tool designed to help engineers manage and operate their infrastructure visually, collaboratively, and confidently. Whether you are a platform engineer, a site reliability engineer, or part of a DevSecOps team, Meshery has something to offer.
+
+### Meshery's Purpose <a name="meshery-purpose"></a>
+
+Meshery's primary purpose is to facilitate the collaborative design, operation, and management of cloud and cloud-native infrastructure. By providing a unified platform that integrates with various tools and technologies, Meshery aims to streamline infrastructure management tasks for engineers. Its goals include:
+
+1. **Enhancing Collaboration:** Meshery allows teams of engineers to work together more effectively by providing a visual and intuitive interface for managing infrastructure.  
+2. **Simplifying Complexity:** It abstracts the complexity of managing multiple Kubernetes clusters and cloud-native environments, making it easier for engineers to deploy, monitor, and manage applications.  
+3. **Ensuring Extensibility:** As an open-source project, Meshery is highly extensible, allowing users to customize and extend its functionality to meet their specific needs.  
+4. **Improving Performance Management:** Meshery provides tools for performance analysis, helping teams understand and optimize the performance of their applications and infrastructure.  
+5. **Promoting Best Practices:** Through its various features and capabilities, Meshery encourages the adoption of best practices in cloud-native infrastructure management, such as using standardized designs and patterns.
+
+Meshery is designed to be a versatile and powerful tool that addresses the modern needs of infrastructure management in cloud-native environments, making it easier for engineers to manage their infrastructure with confidence and efficiency.
+
+### Architectural Components <a name="meshery-architectural-components"></a>
+
+Architectural components in Meshery are the physical and functional building blocks that enable the platform to operate and manage infrastructure. These include elements like the Meshery Server, Adapters, MeshSync, Broker, and Operator. Each architectural component has a distinct function, such as facilitating communication between cluster components (Broker), managing the lifecycle of deployed components (Operator), or synchronizing state information (MeshSync). Together, these components form a cohesive system that ensures Meshery can effectively integrate with various tools and environments, providing a robust and scalable infrastructure management solution.
+
+* [Adapters](https://docs.meshery.io/concepts/architecture/adapters) - Adapters extend Meshery's management capabilities in any number of ways, including lifecycle, configuration, performance, governance, identity...  
+* [Architecture](https://docs.meshery.io/concepts/architecture) - overview of different individual components of Meshery architecture and how they interact as a system.  
+* [Broker](https://docs.meshery.io/concepts/architecture/broker) - Meshery broker component facilitates data streaming between kubernetes cluster components and outside world.  
+* [Catalog](https://docs.meshery.io/concepts/catalog) - Browsing and using cloud native patterns  
+* [Database](https://docs.meshery.io/concepts/architecture/database) - Meshery offers support for internal caching with the help of file databases. This has been implemented with several libraries that supports different kinds of data formats.  
+* [MeshSync](https://docs.meshery.io/concepts/architecture/meshsync) - Meshery offers support for Kubernetes cluster and cloud state synchronization with the help of MeshSync.  
+* [Operator](https://docs.meshery.io/concepts/architecture/operator) - Meshery Operator controls and manages the lifecycle of components deployed inside a kubernetes cluster
+
+### Logical Components <a name="meshery-logical-components"></a>
+
+Logical components in Meshery refer to the conceptual elements that define and organize how infrastructure is managed and operated. These include components like Designs, Patterns, Policies, Environments, Models, and Workspaces. Each logical component has a specific role, such as defining the desired state of infrastructure (Designs), grouping resources (Environments), or enforcing governance rules (Policies). Logical components help structure the management process, making it more systematic and efficient by providing a clear framework for configuration, operation, and collaboration.
+
+* [Components](https://docs.meshery.io/concepts/logical/components) - Meshery Components identify and characterize infrastructure under management.  
+* [Connections](https://docs.meshery.io/concepts/logical/connections) - Meshery Connections are managed and unmanaged resources that either through discovery or manual entry are managed by a state machine and used within one or more Environments.  
+* [Credentials](https://docs.meshery.io/concepts/logical/credentials) - Meshery uses one or more Credentials when authenticating to a managed or unmanaged Connection.  
+* [Designs](https://docs.meshery.io/concepts/logical/designs) - Meshery Designs are descriptive, declarative characterizations of how your Kubernetes infrastructure should be configured.  
+* [Environments](https://docs.meshery.io/concepts/logical/environments) - Environments are how you organize your deployment targets (whether on-premises servers or cloud services) into resource groups.  
+* [Models](https://docs.meshery.io/concepts/logical/models) - Meshery uses a set of resource models to define concrete boundaries to ensure extensible and sustainable management.  
+* [Patterns](https://docs.meshery.io/concepts/logical/patterns) - Meshery Patterns are descriptive, declarative characterizations of how your Kubernetes infrastructure should be configured.  
+* [Policies](https://docs.meshery.io/concepts/logical/policies) - Meshery Policies enable you with a broad set of controls and governance of the behavior of systems under Meshery's management.  
+* [Registry](https://docs.meshery.io/concepts/logical/registry) - Meshery Registry is a database acting as the central repository for all capabilities known to Meshery. These capabilities encompass various entities, including models, components, relationships, and policies.  
+* [Relationships](https://docs.meshery.io/concepts/logical/relationships) - Meshery Relationships identify and facilitate genealogy between Components.  
+* [Workspaces](https://docs.meshery.io/concepts/logical/workspaces) - Meshery Workspaces act as a central collaboration point for teams.
+
+
+### Quick Start Guide <a name="meshery-quick-start-guide"></a>
+
+Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
+
 
 ## Kanvas <a name="kanvas"></a>
 
 Kanvas delivers a collaborative experience for engineers similar to how Google Workplace transforms the digital work environment and how Figma democratizes UX design tooling.
 
-### What is Kanvas?
+### What is Kanvas? <a name="references"></a>
 
 <p style="display:flex;text-align:center;margin:1rem auto;color:white;"><i>Kanvas is like Google Workspace for DevOps, as it allows you to create, test, and deploy cloud native architectures collaboratively and easily.</i></p>
 
 Kanvas is a web-based application that allows you to create and share orchestratable diagrams of cloud native infrastructure for Kubernetes and public cloud services. You can draw shapes, lines, text, and icons to represent your infrastructure components and their relationships. Kanvas also supports freestyle design, meaning that you can customize the appearance and layout of your diagrams without any constraints. Kanvas enables real-time collaboration, meaning that you can invite others to join your sessions and edit the diagrams together. Kanvas is a simple and intuitive tool for designing and communicating cloud native infrastructure for Kubernetes and multi-cloud services.
 
-#### Getting Started with Designs
+### Getting Started with Designs <a name="references"></a>
 
 #### Use Layer5 Kanvas for all of your diagrams and docs
 
@@ -1093,36 +1144,38 @@ Relationships identify and facilitate genealogy between Components.
 - [Working with Components](./Kanvas/getting-started/working-with-components.md)
 Meshery Components are reusable, interactive elements that can be used to build your Meshery designs. Learn how to work with components.
 
-### Exploring Designer
+### Exploring Designer <a name="references"></a>
  Designer mode is for those who want to create their own Kanvas, using the palette of components provided by Meshery. Collaborate with your team to create a Design. Enable collaboration mode using the Options mode available in the Kanvas canvas.
 
-- [Understanding Design Components](./Kanvas/designer/understanding-design-component/)
+- [Understanding Design Components](./Kanvas/designer/understanding-design-component/index.md)
 A complete reference for all components available in the Kanvas designer.
-- [Understanding Edge Styles](./Kanvas/designer/understanding-edges/)
+
+- [Understanding Edge Styles](./Kanvas/designer/understanding-edges/index.md)
 Learn how to use and customize edge styles in Kanvas to create clear and meaningful designs.
-- [Interpreting Component Badges](./Kanvas/designer/interpreting-component-badges/)
+
+- [Interpreting Component Badges](./Kanvas/designer/interpreting-component-badges/index.md)
 Learn to interpret component badges, the small visual indicators that provide at-a-glance information about a component’s status in both Designer and Operator modes.
 
-- [Understanding Tool Modes](./Kanvas/designer/understanding-tool-modes/)
+- [Understanding Tool Modes](./Kanvas/designer/understanding-tool-modes/index.md)
 Kanvas Designer offers three modes: Default, Pencil, and Connector, which behave differently based on the context in which they are used. Learn how to interact with components and the canvas in each mode.
 
-- [Whiteboarding](./Kanvas/designer/whiteboarding/)
+- [Whiteboarding](./Kanvas/designer/whiteboarding/index.md)
 Whiteboarding and Freestyle Drawing inside Kanvas
 
 - [Reviewing Designs](./Kanvas/designer/)
 Learn how to leverage comments in Kanvas’s Designer Mode to enhance collaboration and streamline design reviews.
 
-- [Sharing Designs](./Kanvas/designer/sharing/)
+- [Sharing Designs](./Kanvas/designer/sharing/index.md)
 Share designs with other users and use access controls to manage design permissions and visibility.
 
-- [Embedding Designs](./Kanvas/designer/embedding-designs/)
+- [Embedding Designs](./Kanvas/designer/embedding-designs/index.md)
 How to embed your designs for sharing on your sites.
 
-- [Working with Tags](./Kanvas/designer/tagsets/)
+- [Working with Tags](./Kanvas/designer/tagsets/index.md)
 Share design with other users and use control access to manage design access permissions and visibility.
 
-- [Exporting Designs](./Kanvas/designer/export-designs/)
+- [Exporting Designs](./Kanvas/designer/export-designs/index.md)
 How to export your designs for backup, sharing or offline use.
 
-- [Publishing Designs](./Kanvas/designer/publishing-designs/)
+- [Publishing Designs](./Kanvas/designer/publishing-designs/index.md)
 Learn to publish, manage, and work with designs in Meshery with clear state transitions, role-based permissions, and common workflow FAQs.
