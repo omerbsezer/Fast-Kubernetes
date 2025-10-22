@@ -1,4 +1,4 @@
-# Deploying PHP Guestbook application with Redis in Meshery
+# LAB: Deploying PHP Guestbook application with Redis in Meshery
 
 Learn how to deploy a PHP Guestbook application with Redis on Kubernetes using Meshery.
 In this lab, we will deploy guest book built with PHP and Redis in Kubernetes. We will make use of Meshery Playground in an interactive live cluster environment."

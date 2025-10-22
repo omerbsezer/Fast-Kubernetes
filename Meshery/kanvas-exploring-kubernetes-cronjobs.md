@@ -1,4 +1,4 @@
-# Exploring Kubernetes CronJobs
+# LAB: Exploring Kubernetes CronJobs
 
 In this lab, we will explore how to use Meshery Playground, an interactive live cluster environment, to perform hands-on labs for managing Kubernetes CronJobs."
 

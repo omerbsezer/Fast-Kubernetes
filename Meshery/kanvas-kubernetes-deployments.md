@@ -1,4 +1,4 @@
-# Exploring Kubernetes Deployments with Meshery
+# LAB: Exploring Kubernetes Deployments with Meshery
 
 Explore a Kubernetes Deployment using Meshery Playground, an interactive live environment, through a series of hands-on exercises."
 

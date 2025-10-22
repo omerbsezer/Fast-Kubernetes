@@ -1,4 +1,4 @@
-# Publishing Meshery Designs to ArtifactHub
+# LAB: Publishing Meshery Designs to ArtifactHub
 
 Make your Meshery Designs available to the community by leveraging ArtifactHub
 

@@ -1,4 +1,4 @@
-# Exploring Kubernetes Pods with Meshery
+# LAB: Exploring Kubernetes Pods with Meshery
 
 Explore Kubernetes Pods using Meshery in an interactive live cluster environment, through a series of hands-on exercises.
 

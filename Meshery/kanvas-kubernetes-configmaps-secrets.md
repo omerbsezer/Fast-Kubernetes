@@ -1,4 +1,4 @@
-# Understanding Kubernetes ConfigMaps and Secrets with Meshery
+# LAB: Understanding Kubernetes ConfigMaps and Secrets with Meshery
 
 Learn how to work with ConfigMaps and Secrets in Kubernetes.
 

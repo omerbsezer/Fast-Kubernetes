@@ -1,4 +1,4 @@
-# Deploying Apache Cassandra with a StatefulSet in Meshery Playground
+# LAB: Deploying Apache Cassandra with a StatefulSet in Meshery Playground
 
 Learn how to deploy Apache Cassandra with a StatefulSet using Meshery. Deploy Apache Cassandra with a StatefulSet using Meshery Playground in an interactive live cluster environment.
 

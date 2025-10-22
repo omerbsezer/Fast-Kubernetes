@@ -1,4 +1,4 @@
-# Deploy Azure resources with Meshery
+# LAB: Deploy Azure resources with Meshery
 
 Learn how to deploy and manage Azure resources through Kubernetes with Meshery, utilizing ASO operator to enhance cloud resource management
 

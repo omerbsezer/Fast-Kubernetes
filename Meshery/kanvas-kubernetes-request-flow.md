@@ -1,4 +1,4 @@
-# Kubernetes Request Flow – A Visual Guide
+# LAB: Kubernetes Request Flow – A Visual Guide
 
 A visual walkthrough of how user requests flow through Kubernetes components using Meshery Kanvas.
 

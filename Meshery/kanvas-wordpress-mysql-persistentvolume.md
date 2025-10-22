@@ -1,4 +1,4 @@
-# Deploying WordPress and MySQL with Persistent Volumes with Meshery
+# LAB: Deploying WordPress and MySQL with Persistent Volumes with Meshery
 
 Deploy a WordPress site and a MySQL database with Persistent Volumes using Meshery Playground in an interactive live cluster environment
 

@@ -1,4 +1,4 @@
-# Embedding a Meshery Design in a WordPress Post
+# LAB: Embedding a Meshery Design in a WordPress Post
 
 Learn how to Embed a Meshery Design in a WordPress Post
 
