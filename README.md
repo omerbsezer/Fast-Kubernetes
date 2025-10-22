@@ -1077,23 +1077,9 @@ Kanvas is a web-based application that allows you to create and share orchestrat
 
 #### Getting Started with Designs
 
-##### Use Kanvas for your Diagrams
-
-{{< cardpane >}}
-{{% card header="Dev Env Documentation" %}}
-The dev environment is an often overlooked but critical part of an organization's infrastructure. Knowing what clusters and services are used, how to run and test services locally, and how to troubleshoot are critical parts for getting a team up and running quickly. With Layer5, you can easily embed designs into your How To and Getting Started guides, making it easy to create, maintain and update concise documentation.
-{{% /card %}}
-{{% card header="Migrations and Rollbacks" %}}
-Migrations and rollbacks are some of the most important things to get right when they're needed. By making it easy to create, find, and reference these documents and diagrams, you can be confident that your processes will be understood and your knowledge up to date.
-{{% /card %}}
-{{% card header="Deployment Pipeline" %}}
-Layer5's keyboard shortcuts and preset icons make it easy to create beautiful, informative designs that explain every aspect of your deploy, test, and monitor pipeline. You can also use our sequence diagram-as-code feature to easily build deploy flows. Embed several in one document to cover all of your different services, vendors, and data stores.
-{{% /card %}}
-{{% /cardpane %}}
-
 #### Use Layer5 Kanvas for all of your diagrams and docs
 
-Beyond data flow diagrams, do you need to create other technical docs and diagrams like design docs, RFCs, network diagrams, and API diagrams? Eraser provides a single platform for modern engineering teams to collaborate on docs and diagrams.
+Beyond data flow diagrams, do you need to create other technical docs and diagrams like design docs, RFCs, network diagrams, and API diagrams? Kanvas provides a single platform for modern engineering teams to collaborate on docs and diagrams.
 
 - [Starting from scratch](./Kanvas/getting-started/starting-scratch.md)
 Welcome to Kanvas, your comprehensive tool for creating and managing cloud native deployment designs. This documentation will guide you through the steps, emphasizing the underlying system behavior for each action you take.
@@ -1107,3 +1093,36 @@ Relationships identify and facilitate genealogy between Components.
 - [Working with Components](./Kanvas/getting-started/working-with-components.md)
 Meshery Components are reusable, interactive elements that can be used to build your Meshery designs. Learn how to work with components.
 
+### Exploring Designer
+ Designer mode is for those who want to create their own Kanvas, using the palette of components provided by Meshery. Collaborate with your team to create a Design. Enable collaboration mode using the Options mode available in the Kanvas canvas.
+
+- [Understanding Design Components](./Kanvas/designer/understanding-design-component/)
+A complete reference for all components available in the Kanvas designer.
+- [Understanding Edge Styles](./Kanvas/designer/understanding-edges/)
+Learn how to use and customize edge styles in Kanvas to create clear and meaningful designs.
+- [Interpreting Component Badges](./Kanvas/designer/interpreting-component-badges/)
+Learn to interpret component badges, the small visual indicators that provide at-a-glance information about a component’s status in both Designer and Operator modes.
+
+- [Understanding Tool Modes](./Kanvas/designer/understanding-tool-modes/)
+Kanvas Designer offers three modes: Default, Pencil, and Connector, which behave differently based on the context in which they are used. Learn how to interact with components and the canvas in each mode.
+
+- [Whiteboarding](./Kanvas/designer/whiteboarding/)
+Whiteboarding and Freestyle Drawing inside Kanvas
+
+- [Reviewing Designs](./Kanvas/designer/)
+Learn how to leverage comments in Kanvas’s Designer Mode to enhance collaboration and streamline design reviews.
+
+- [Sharing Designs](./Kanvas/designer/sharing/)
+Share designs with other users and use access controls to manage design permissions and visibility.
+
+- [Embedding Designs](./Kanvas/designer/embedding-designs/)
+How to embed your designs for sharing on your sites.
+
+- [Working with Tags](./Kanvas/designer/tagsets/)
+Share design with other users and use control access to manage design access permissions and visibility.
+
+- [Exporting Designs](./Kanvas/designer/export-designs/)
+How to export your designs for backup, sharing or offline use.
+
+- [Publishing Designs](./Kanvas/designer/publishing-designs/)
+Learn to publish, manage, and work with designs in Meshery with clear state transitions, role-based permissions, and common workflow FAQs.
