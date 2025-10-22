@@ -1080,11 +1080,16 @@ Meshery's primary purpose is to facilitate the collaborative design, operation, 
 
 Meshery is designed to be a versatile and powerful tool that addresses the modern needs of infrastructure management in cloud-native environments, making it easier for engineers to manage their infrastructure with confidence and efficiency.
 
-### [Quick Start Guide](./meshery-kanvas-docs/meshery-installation/quick-start-guide.md)<a name="meshery-quick-start-guide"></a>
+### Quick Start Guide<a name="meshery-quick-start-guide"></a>
 
 Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
 
-### Installation Guide <a name="meshery-installation-guide"></a>
+#### Installation Guide (./meshery-kanvas-docs/meshery-installation/quick-start-guide.md) <a name="meshery-installation-guide"></a>
+
+**Goto the scenario:** 
+- [LAB: Deploy Azure resources with Meshery](./meshery-kanvas-labs/meshery-azure-resources-deployment.md)
+- [LAB: Deploy AWS EC2 Instances with Meshery](./meshery-kanvas-labs/meshery-deploy-aws-ec2-instances-with-meshery.md)
+- [LAB: Deploy Azure Storage Account with Meshery](./meshery-kanvas-labs/meshery-deploy-azure-storage-account-with-meshery.md)
 
 ### Meshery is for all cloud and cloud native infrastructure
 
@@ -1153,10 +1158,7 @@ Logical components in Meshery refer to the conceptual elements that define and o
 * [Relationships](https://docs.meshery.io/concepts/logical/relationships) - Meshery Relationships identify and facilitate genealogy between Components.  
 * [Workspaces](https://docs.meshery.io/concepts/logical/workspaces) - Meshery Workspaces act as a central collaboration point for teams.
 
-**Goto the scenario:** 
-- [LAB: Deploy Azure resources with Meshery](./meshery-kanvas-labs/meshery-azure-resources-deployment.md)
-- [LAB: Deploy AWS EC2 Instances with Meshery](./meshery-kanvas-labs/meshery-deploy-aws-ec2-instances-with-meshery.md)
-- [LAB: Deploy Azure Storage Account with Meshery](./meshery-kanvas-labs/meshery-deploy-azure-storage-account-with-meshery.md)
+
 
 ## Kanvas <a name="kanvas"></a>
 
@@ -1174,52 +1176,52 @@ Kanvas is a web-based application that allows you to create and share orchestrat
 
 Beyond data flow diagrams, do you need to create other technical docs and diagrams like design docs, RFCs, network diagrams, and API diagrams? Kanvas provides a single platform for modern engineering teams to collaborate on docs and diagrams.
 
-- [Starting from scratch](./Kanvas/getting-started/starting-scratch.md)
+- [Starting from scratch](./meshery-kanvas-docs/getting-started/starting-scratch.md)
 Welcome to Kanvas, your comprehensive tool for creating and managing cloud native deployment designs. This documentation will guide you through the steps, emphasizing the underlying system behavior for each action you take.
 
-- [Importing a Design](./Kanvas/getting-started/import-designs.md)
+- [Importing a Design](./meshery-kanvas-docs/getting-started/import-designs.md)
 Learn how to import designs from various sources and formats, including Kubernetes manifests, Helm charts, Docker Compose files, and more.
 
-- [Creating Relationships](./Kanvas/getting-started/creating-relationships.md)
+- [Creating Relationships](./meshery-kanvas-docs/getting-started/creating-relationships.md)
 Relationships identify and facilitate genealogy between Components.
 
-- [Working with Components](./Kanvas/getting-started/working-with-components.md)
+- [Working with Components](./meshery-kanvas-docs/getting-started/working-with-components.md)
 Meshery Components are reusable, interactive elements that can be used to build your Meshery designs. Learn how to work with components.
 
 ### Exploring Designer <a name="exploring-designer"></a>
  Designer mode is for those who want to create their own Kanvas, using the palette of components provided by Meshery. Collaborate with your team to create a Design. Enable collaboration mode using the Options mode available in the Kanvas canvas.
 
-- [Understanding Design Components](./Kanvas/designer/understanding-design-component/index.md)
+- [Understanding Design Components](./meshery-kanvas-docs/designer/understanding-design-component/index.md)
 A complete reference for all components available in the Kanvas designer.
 
-- [Understanding Edge Styles](./Kanvas/designer/understanding-edges/index.md)
+- [Understanding Edge Styles](./meshery-kanvas-docs/designer/understanding-edges/index.md)
 Learn how to use and customize edge styles in Kanvas to create clear and meaningful designs.
 
-- [Interpreting Component Badges](./Kanvas/designer/interpreting-component-badges/index.md)
+- [Interpreting Component Badges](./meshery-kanvas-docs/designer/interpreting-component-badges/index.md)
 Learn to interpret component badges, the small visual indicators that provide at-a-glance information about a component’s status in both Designer and Operator modes.
 
-- [Understanding Tool Modes](./Kanvas/designer/understanding-tool-modes/index.md)
+- [Understanding Tool Modes](./meshery-kanvas-docs/designer/understanding-tool-modes/index.md)
 Kanvas Designer offers three modes: Default, Pencil, and Connector, which behave differently based on the context in which they are used. Learn how to interact with components and the canvas in each mode.
 
-- [Whiteboarding](./Kanvas/designer/whiteboarding/index.md)
+- [Whiteboarding](./meshery-kanvas-docs/designer/whiteboarding/index.md)
 Whiteboarding and Freestyle Drawing inside Kanvas
 
-- [Reviewing Designs](./Kanvas/designer/)
+- [Reviewing Designs](./meshery-kanvas-docs/designer/)
 Learn how to leverage comments in Kanvas’s Designer Mode to enhance collaboration and streamline design reviews.
 
-- [Sharing Designs](./Kanvas/designer/sharing/index.md)
+- [Sharing Designs](./meshery-kanvas-docs/designer/sharing/index.md)
 Share designs with other users and use access controls to manage design permissions and visibility.
 
-- [Embedding Designs](./Kanvas/designer/embedding-designs/index.md)
+- [Embedding Designs](./meshery-kanvas-docs/designer/embedding-designs/index.md)
 How to embed your designs for sharing on your sites.
 
-- [Working with Tags](./Kanvas/designer/tagsets/index.md)
+- [Working with Tags](./meshery-kanvas-docs/designer/tagsets/index.md)
 Share design with other users and use control access to manage design access permissions and visibility.
 
-- [Exporting Designs](./Kanvas/designer/export-designs/index.md)
+- [Exporting Designs](./meshery-kanvas-docs/designer/export-designs/index.md)
 How to export your designs for backup, sharing or offline use.
 
-- [Publishing Designs](./Kanvas/designer/publishing-designs/index.md)
+- [Publishing Designs](./meshery-kanvas-docs/designer/publishing-designs/index.md)
 Learn to publish, manage, and work with designs in Meshery with clear state transitions, role-based permissions, and common workflow FAQs.
 
 **Goto the scenario:** 
