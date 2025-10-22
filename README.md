@@ -41,7 +41,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [LAB: Exploring Kubernetes Pods with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-pods.md)
 - [LAB: Exploring Kubernetes Deployments with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-deployments.md)
 - [LAB: Understanding Kubernetes ConfigMaps and Secrets with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-configmaps-secrets.md)
-- [LAB: Exploring Kubernetes CronJobs](./meshery-kanvas-labs/kanvas-exploring-kubernetes-cronjobs.md)
+- [LAB: Exploring Kubernetes CronJobs with Meshery](./meshery-kanvas-labs/kanvas-exploring-kubernetes-cronjobs.md)
 - [LAB: Deploying Apache Cassandra with a StatefulSet in Meshery Playground](./meshery-kanvas-labs/kanvas-deploy-cassandra-with-statefulset.md)
 - [LAB: Deploying PHP Guestbook application with Redis in Meshery](./meshery-kanvas-labs/kanvas-deploy-php-redis.md)
 - [LAB: Embedding a Meshery Design in a WordPress Post](./meshery-kanvas-labs/kanvas-embedding-meshery-design-in-wordpress.md)
@@ -85,6 +85,10 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
 - [Helm Commands Cheatsheet](#helm_cheatsheet)
 - [Kubernetes Cluster Setup: Kubeadm, Containerd, Multipass](#cluster_setup)
 - [Monitoring Kubernetes Cluster with SSH, Prometheus and Grafana](#prometheus_grafana)
+- [What is Meshery?](#Meshery)
+    - [Quick Start]()
+- [What is Kanvas?](#Kanvas)
+    - 
 - [Other Useful Resources Related Kubernetes](#resource)
 - [References](#references)
 
@@ -1059,3 +1063,47 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
 - [udemy-course:Kubernetes-Temelleri](https://www.udemy.com/course/kubernetes-temelleri/)
 - [Helm.sh](https://helm.sh/)
+
+
+## Kanvas <a name="kanvas"></a>
+
+Kanvas delivers a collaborative experience for engineers similar to how Google Workplace transforms the digital work environment and how Figma democratizes UX design tooling.
+
+### What is Kanvas?
+
+<p style="display:flex;text-align:center;margin:1rem auto;color:white;"><i>Kanvas is like Google Workspace for DevOps, as it allows you to create, test, and deploy cloud native architectures collaboratively and easily.</i></p>
+
+Kanvas is a web-based application that allows you to create and share orchestratable diagrams of cloud native infrastructure for Kubernetes and public cloud services. You can draw shapes, lines, text, and icons to represent your infrastructure components and their relationships. Kanvas also supports freestyle design, meaning that you can customize the appearance and layout of your diagrams without any constraints. Kanvas enables real-time collaboration, meaning that you can invite others to join your sessions and edit the diagrams together. Kanvas is a simple and intuitive tool for designing and communicating cloud native infrastructure for Kubernetes and multi-cloud services.
+
+#### Getting Started with Designs
+
+##### Use Kanvas for your Diagrams
+
+{{< cardpane >}}
+{{% card header="Dev Env Documentation" %}}
+The dev environment is an often overlooked but critical part of an organization's infrastructure. Knowing what clusters and services are used, how to run and test services locally, and how to troubleshoot are critical parts for getting a team up and running quickly. With Layer5, you can easily embed designs into your How To and Getting Started guides, making it easy to create, maintain and update concise documentation.
+{{% /card %}}
+{{% card header="Migrations and Rollbacks" %}}
+Migrations and rollbacks are some of the most important things to get right when they're needed. By making it easy to create, find, and reference these documents and diagrams, you can be confident that your processes will be understood and your knowledge up to date.
+{{% /card %}}
+{{% card header="Deployment Pipeline" %}}
+Layer5's keyboard shortcuts and preset icons make it easy to create beautiful, informative designs that explain every aspect of your deploy, test, and monitor pipeline. You can also use our sequence diagram-as-code feature to easily build deploy flows. Embed several in one document to cover all of your different services, vendors, and data stores.
+{{% /card %}}
+{{% /cardpane %}}
+
+#### Use Layer5 Kanvas for all of your diagrams and docs
+
+Beyond data flow diagrams, do you need to create other technical docs and diagrams like design docs, RFCs, network diagrams, and API diagrams? Eraser provides a single platform for modern engineering teams to collaborate on docs and diagrams.
+
+- [Starting from scratch](./Kanvas/getting-started/starting-scratch.md)
+Welcome to Kanvas, your comprehensive tool for creating and managing cloud native deployment designs. This documentation will guide you through the steps, emphasizing the underlying system behavior for each action you take.
+
+- [Importing a Design](./Kanvas/getting-started/import-designs.md)
+Learn how to import designs from various sources and formats, including Kubernetes manifests, Helm charts, Docker Compose files, and more.
+
+- [Creating Relationships](./Kanvas/getting-started/creating-relationships.md)
+Relationships identify and facilitate genealogy between Components.
+
+- [Working with Components](./Kanvas/getting-started/working-with-components.md)
+Meshery Components are reusable, interactive elements that can be used to build your Meshery designs. Learn how to work with components.
+
