@@ -89,6 +89,7 @@ This repo covers Kubernetes objects' and components' details (Kubectl, Pod, Depl
     - [What is Meshery](#what-is-meshery)
     - [Meshery's Purpose](#meshery-purpose)
     - [Quick Start Guide](#meshery-quick-start-guide)
+    - [Meshery's Functionality](#meshery-functionality)
     - [Architectural Components](#meshery-architectural-components)
     - [Logical Components](#meshery-logical-components)
 - [Kanvas](#kanvas)
@@ -1066,6 +1067,7 @@ sensible-browser http://127.0.0.1:45771/api/v1/namespaces/kubernetes-dashboard/s
 
 Meshery is a self-service engineering platform that enables collaborative design and operation of cloud and cloud-native infrastructure. It's a versatile tool designed to help engineers manage and operate their infrastructure visually, collaboratively, and confidently. Whether you are a platform engineer, a site reliability engineer, or part of a DevSecOps team, Meshery has something to offer.
 
+Kubernetes-centric. Kubernetes not required.
 ### Meshery's Purpose <a name="meshery-purpose"></a>
 
 Meshery's primary purpose is to facilitate the collaborative design, operation, and management of cloud and cloud-native infrastructure. By providing a unified platform that integrates with various tools and technologies, Meshery aims to streamline infrastructure management tasks for engineers. Its goals include:
@@ -1077,6 +1079,51 @@ Meshery's primary purpose is to facilitate the collaborative design, operation, 
 5. **Promoting Best Practices:** Through its various features and capabilities, Meshery encourages the adoption of best practices in cloud-native infrastructure management, such as using standardized designs and patterns.
 
 Meshery is designed to be a versatile and powerful tool that addresses the modern needs of infrastructure management in cloud-native environments, making it easier for engineers to manage their infrastructure with confidence and efficiency.
+
+### Quick Start Guide <a name="meshery-quick-start-guide"></a>
+
+Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
+
+### Installation Guide <a name="meshery-installation-guide"></a>
+
+### Meshery is for all cloud and cloud native infrastructure
+
+Infrastructure diversity is a reality for any enterprise. Whether you're running a single Kubernetes cluster or multiple Kubernetes clusters, on one cloud or multiple clouds, you'll find that Meshery supports your infrastructure diversity (or lack thereof).
+
+### Meshery's Functionality <a name="#meshery-functionality"></a>
+
+Meshery supports all Kubernetes-based infrastructure including most cloud services of AWS and GCP platforms. Meshery features can be categorized by:
+
+1. Performance Management
+   - Workload and performance characterization with both built-in and external load generators
+   - Prometheus and Grafana integration
+2. Lifecycle Management (Day 0, Day 1)
+   - Cloud and cloud native provisioning
+   - Discovery and onboarding of existing environments and workloads
+3. Configuration Management (Day 2)
+   - Cloud native patterns catalog
+   - Configuration best practices
+   - Policy engine for relationship inference and context-aware design
+4. Collaboration
+   - Multi-player infrastructure design and operation
+5. Data Plane Intelligence
+   - Registry and configuration of WebAssembly filters for Envoy
+6. Interoperability and Federation
+   - Integration with thousands of cloud services and cloud native projects
+   - Manage multiple Infrastructure components concurrently
+   - Connect to multiple clusters independently
+
+### Meshery is for Developers, Operators, and Product Owners
+
+Whether making a Day 0 adoption choice or maintaining a Day 2 deployment, Meshery has useful capabilities in either circumstance. Targeted audience for Meshery project would be any technology operators that leverage cloud native infrastructurein their ecosystem; this includes developers, devops engineers, decision makers, architects, and organizations that rely on microservices platform.
+
+### Meshery is for cloud native patterns
+
+Through [Models]({{site.baseurl}}/concepts/logical/models), Meshery describes infrastructure under management, enabling you to define cloud native designs and patterns and then to export those designs and share within the <a href="https://meshery.io/catalog" target="_self_">Meshery Catalog</a>.
+
+### Meshery is for performance management
+
+Meshery helps users weigh the value of their cloud native deployments against the overhead incurred in running different deployment scenarios and different configruations. Meshery provides statistical analysis of the request latency and throughput seen across various permutations of your workload, infrastructure and infrastructure configuration. In addition to request latency and throughput, Meshery also tracks memory and CPU overhead in of the nodes in your cluster. Establish a performance benchmark and track performance against this baseline as your environment changes over time.
 
 ### Architectural Components <a name="meshery-architectural-components"></a>
 
@@ -1106,11 +1153,10 @@ Logical components in Meshery refer to the conceptual elements that define and o
 * [Relationships](https://docs.meshery.io/concepts/logical/relationships) - Meshery Relationships identify and facilitate genealogy between Components.  
 * [Workspaces](https://docs.meshery.io/concepts/logical/workspaces) - Meshery Workspaces act as a central collaboration point for teams.
 
-
-### Quick Start Guide <a name="meshery-quick-start-guide"></a>
-
-Getting Meshery up and running locally on a Docker-enabled system or in Kubernetes is easy. Meshery deploys as a set of Docker containers, which can be deployed to either a Docker host or Kubernetes cluster.
-
+**Goto the scenario:** 
+- [LAB: Deploy Azure resources with Meshery](./meshery-kanvas-labs/meshery-azure-resources-deployment.md)
+- [LAB: Deploy AWS EC2 Instances with Meshery](./meshery-kanvas-labs/meshery-deploy-aws-ec2-instances-with-meshery.md)
+- [LAB: Deploy Azure Storage Account with Meshery](./meshery-kanvas-labs/meshery-deploy-azure-storage-account-with-meshery.md)
 
 ## Kanvas <a name="kanvas"></a>
 
@@ -1176,6 +1222,15 @@ How to export your designs for backup, sharing or offline use.
 - [Publishing Designs](./Kanvas/designer/publishing-designs/index.md)
 Learn to publish, manage, and work with designs in Meshery with clear state transitions, role-based permissions, and common workflow FAQs.
 
+**Goto the scenario:** 
+- [LAB: Exploring Kubernetes Pods with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-pods.md)
+- [LAB: Exploring Kubernetes Deployments with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-deployments.md)
+- [LAB: Understanding Kubernetes ConfigMaps and Secrets with Meshery](./meshery-kanvas-labs/kanvas-kubernetes-configmaps-secrets.md)
+- [LAB: Exploring Kubernetes CronJobs with Meshery](./meshery-kanvas-labs/kanvas-exploring-kubernetes-cronjobs.md)
+- [LAB: Deploying Apache Cassandra with a StatefulSet in Meshery Playground](./meshery-kanvas-labs/kanvas-deploy-cassandra-with-statefulset.md)
+- [LAB: Deploying PHP Guestbook application with Redis in Meshery](./meshery-kanvas-labs/kanvas-deploy-php-redis.md)
+- [LAB: Embedding a Meshery Design in a WordPress Post](./meshery-kanvas-labs/kanvas-embedding-meshery-design-in-wordpress.md)
+- [LAB: Deploying WordPress and MySQL with Persistent Volumes with Meshery](./meshery-kanvas-labs/kanvas-wordpress-mysql-persistentvolume.md)
 ## Other Useful Resources Related Docker  <a name="resource"></a>
 - [KubernetesTutorial](https://kubernetes.io/docs/tutorials/)
 - Docker and Kubernetes Tutorial - Youtube: https://www.youtube.com/watch?v=bhBSlnQcq2k&t=3088s
