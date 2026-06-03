@@ -26,8 +26,8 @@ spec:
   containers:
   - name: toleratedcontainer1
     image: nginx:latest
-  tolerations:                    # pod tolerates "app=production:NoSchedule"
-  - key: "app"
+  tolerations:                    # pod tolerates "platform=production:NoSchedule"
+  - key: "platform"
     operator: "Equal"
     value: "production"
     effect: "NoSchedule"
@@ -43,8 +43,8 @@ spec:
   - name: toleratedcontainer2
     image: nginx:latest
   tolerations:
-  - key: "app"                     # pod tolerates "app:NoSchedule", value is not important in this pod
-    operator: "Exists"             # pod can run on the nodes which has "app=test:NoSchedule" or "app=production:NoSchedule"
+  - key: "platform"                     # pod tolerates "platform:NoSchedule", value is not important in this pod
+    operator: "Exists"             # pod can run on the nodes which has "platform=test:NoSchedule" or "platform=production:NoSchedule"
     effect: "NoSchedule" 
 ```
 
