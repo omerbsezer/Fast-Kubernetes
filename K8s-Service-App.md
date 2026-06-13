@@ -97,8 +97,8 @@ spec:
     
 ![image](https://user-images.githubusercontent.com/10358317/149767889-29c64bd6-54bf-42bf-b12b-ed83ffedb0a8.png)
 
-- Create NodePort Service to reach frontend pods from the outside of the cluster (run: "kubectl apply -f backend_nodeport.yaml").
-- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/service/backend_nodeport.yaml
+- Create NodePort Service to reach frontend pods from the outside of the cluster (run: "kubectl apply -f frontend_nodeport.yaml").
+- File: https://github.com/omerbsezer/Fast-Kubernetes/blob/main/labs/service/frontend_nodeport.yaml
 
 ```
 apiVersion: v1
