@@ -708,8 +708,8 @@ spec:
     
 #### Persistent Volume Claim (PVC)  
 - We should create PVCs to use volume. With PVCs, existed PVs can be chosen.
-- The reason why K8s manage volume with 2 files (PVC and PV) is to seperate the management of K8s Cluster (PV) and using of volume (PVC).
-- If there is seperate role of system management of K8s cluster, system manager creates PV (to connect different storage vendors), developers only use existed PVs with PVCs.    
+- The reason why K8s manage volume with 2 files (PVC and PV) is to separate the management of K8s Cluster (PV) and using of volume (PVC).
+- If there is separate role of system management of K8s cluster, system manager creates PV (to connect different storage vendors), developers only use existed PVs with PVCs.    
 
 ```yaml
 apiVersion: v1
